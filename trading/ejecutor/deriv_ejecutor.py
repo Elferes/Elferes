@@ -207,7 +207,9 @@ class Deriv:
             if r.get("req_id") == self.rid:
                 break
         if "error" in r:
-            raise DerivError(f"{r['error'].get('code')}: {r['error'].get('message')}")
+            err = r["error"]
+            det = f" | detalles: {json.dumps(err.get('details'), ensure_ascii=False)[:300]}" if err.get("details") else ""
+            raise DerivError(f"{err.get('code')}: {err.get('message')}{det}")
         return r
 
     async def call(self, msg):
@@ -252,16 +254,27 @@ class Deriv:
         return float(r["history"]["prices"][-1])
 
     async def comprar(self, simbolo, tipo, stake, m, stop_loss, take_profit):
-        p = {"amount": stake, "basis": "stake", "contract_type": tipo, "currency": self.cuenta["currency"],
-             "multiplier": m, "symbol": simbolo,
-             "limit_order": {"stop_loss": stop_loss, "take_profit": take_profit}}
-        try:
-            return (await self.call({"buy": 1, "price": stake, "parameters": p}))["buy"]
-        except DerivError as e:
-            if "currency" not in str(e):
-                raise
-            p.pop("currency")  # la API nueva puede rechazar la moneda explícita
-            return (await self.call({"buy": 1, "price": stake, "parameters": p}))["buy"]
+        """Cotiza (proposal) y compra con el id de la cotización.
+
+        Prueba variantes de campos porque la API nueva de Deriv renombró algunos
+        (symbol -> underlying_symbol) y puede no aceptar la moneda explícita.
+        """
+        base = {"amount": stake, "basis": "stake", "contract_type": tipo, "multiplier": m,
+                "limit_order": {"stop_loss": stop_loss, "take_profit": take_profit}}
+        errores = []
+        for campo_simbolo in ("underlying_symbol", "symbol"):
+            for con_moneda in (True, False):
+                p = dict(base, **{campo_simbolo: simbolo})
+                if con_moneda:
+                    p["currency"] = self.cuenta["currency"]
+                try:
+                    prop = (await self.call(dict({"proposal": 1}, **p)))["proposal"]
+                except DerivError as e:
+                    errores.append(f"proposal[{campo_simbolo}, moneda={con_moneda}] -> {e}")
+                    continue
+                r = await self.call({"buy": prop["id"], "price": float(prop.get("ask_price", stake))})
+                return r["buy"]
+        raise DerivError("No se pudo cotizar: " + " || ".join(errores))
 
     async def contrato(self, cid):
         return (await self.call({"proposal_open_contract": 1, "contract_id": cid}))["proposal_open_contract"]
@@ -461,7 +474,11 @@ async def ejecutar(plan, modo, cfg):
 async def operacion_prueba(api, reg, simbolo="frxEURUSD", stake=10.0, mult=100, sl=5.0, tp=5.0):
     """Abre UNA compra pequeña de prueba y la deja abierta para que el usuario la vea y la cierre."""
     precio = await api.precio(simbolo)
-    c = await api.comprar(simbolo, "MULTUP", stake, mult, sl, tp)
+    try:
+        c = await api.comprar(simbolo, "MULTUP", stake, mult, sl, tp)
+    except DerivError as e:
+        reg.evento(f"PRUEBA fallida: {e}")
+        return 1
     reg.datos["operaciones"].append({"prueba": True, "simbolo": simbolo, "contract_id": c.get("contract_id"),
                                      "precio_ref": precio, "stake": stake, "multiplicador": mult,
                                      "stop_loss_usd": sl, "take_profit_usd": tp})
