@@ -255,7 +255,13 @@ class Deriv:
         p = {"amount": stake, "basis": "stake", "contract_type": tipo, "currency": self.cuenta["currency"],
              "multiplier": m, "symbol": simbolo,
              "limit_order": {"stop_loss": stop_loss, "take_profit": take_profit}}
-        return (await self.call({"buy": 1, "price": stake, "parameters": p}))["buy"]
+        try:
+            return (await self.call({"buy": 1, "price": stake, "parameters": p}))["buy"]
+        except DerivError as e:
+            if "currency" not in str(e):
+                raise
+            p.pop("currency")  # la API nueva puede rechazar la moneda explícita
+            return (await self.call({"buy": 1, "price": stake, "parameters": p}))["buy"]
 
     async def contrato(self, cid):
         return (await self.call({"proposal_open_contract": 1, "contract_id": cid}))["proposal_open_contract"]
@@ -370,6 +376,9 @@ async def ejecutar(plan, modo, cfg):
         reg.evento("La cuenta NO es demo y DERIV_PERMITIR_REAL no es 'si': no se opera")
         return 1
 
+    if modo == "prueba":
+        return await operacion_prueba(api, reg)
+
     ops = []
     for op in plan.get("operaciones", []):
         err = validar_operacion(op)
@@ -449,15 +458,31 @@ async def ejecutar(plan, modo, cfg):
     return 0
 
 
+async def operacion_prueba(api, reg, simbolo="frxEURUSD", stake=10.0, mult=100, sl=5.0, tp=5.0):
+    """Abre UNA compra pequeña de prueba y la deja abierta para que el usuario la vea y la cierre."""
+    precio = await api.precio(simbolo)
+    c = await api.comprar(simbolo, "MULTUP", stake, mult, sl, tp)
+    reg.datos["operaciones"].append({"prueba": True, "simbolo": simbolo, "contract_id": c.get("contract_id"),
+                                     "precio_ref": precio, "stake": stake, "multiplicador": mult,
+                                     "stop_loss_usd": sl, "take_profit_usd": tp})
+    reg.evento(f"PRUEBA abierta: COMPRA {simbolo} x{mult}, stake {stake} USD, precio ~{precio}, "
+               f"stop loss -{sl} USD, take profit +{tp} USD, contrato {c.get('contract_id')}. "
+               "Queda abierta para cerrarla a mano en Deriv.")
+    await api.ws.close()
+    return 0
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--modo", choices=["verificar", "ejecutar"], default="verificar")
+    ap.add_argument("--modo", choices=["verificar", "ejecutar", "prueba"], default="verificar")
     ap.add_argument("--fecha", default="", help="AAAA-MM-DD (por defecto, hoy en Bogotá)")
     args = ap.parse_args()
     fecha = args.fecha or dt.datetime.now(ZONA).date().isoformat()
     if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", fecha):
         sys.exit("fecha inválida")
     ruta = RAIZ / "planes" / f"{fecha}.json"
+    if args.modo == "prueba" and not ruta.exists():
+        return asyncio.run(ejecutar({"fecha": fecha, "operaciones": []}, "prueba", CONFIG))
     if not ruta.exists():
         print(f"No hay plan para {fecha} ({ruta}); nada que hacer.")
         return 0

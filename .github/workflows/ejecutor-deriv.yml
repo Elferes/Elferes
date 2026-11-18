@@ -9,9 +9,9 @@ on:
   workflow_dispatch:
     inputs:
       modo:
-        description: "verificar = solo comprobar conexión; ejecutar = operar el plan"
+        description: "verificar = solo comprobar conexión; ejecutar = operar el plan; prueba = abrir 1 operación pequeña y dejarla abierta"
         type: choice
-        options: [verificar, ejecutar]
+        options: [verificar, ejecutar, prueba]
         default: verificar
       fecha:
         description: "Fecha del plan AAAA-MM-DD (vacío = hoy en Bogotá)"
