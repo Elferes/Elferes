@@ -1,7 +1,12 @@
 {
   "_nota": "Parámetros del scalper que el agente revisor-aprendizaje puede ajustar. scalper.py aplica límites de seguridad (LIMITES) y ignora claves desconocidas. Cambia como máximo UN parámetro por semana y registra el experimento en BITACORA.md.",
   "version": 1,
-  "activos": ["EUR/USD", "GBP/USD", "XAU/USD", "BTC/USD"],
+  "activos": [
+    "EUR/USD",
+    "GBP/USD",
+    "XAU/USD",
+    "BTC/USD"
+  ],
   "riesgo_pct": 1.0,
   "atr_stop": 1.2,
   "atr_objetivo": 1.8,
@@ -11,5 +16,9 @@
   "rsi_venta_max": 55,
   "max_velas_abierta": 6,
   "max_operaciones_dia": 6,
-  "bloqueo_noticias_min": 15
+  "bloqueo_noticias_min": 15,
+  "estrategias": [
+    "tendencia_retroceso"
+  ],
+  "_nota_estrategias": "Estrategias activas del scalper, en orden de prioridad. Opciones: tendencia_retroceso, ruptura_rango, reversion_bollinger, cruce_ema, envolvente_nivel. Solo activar las que salen APTA en trading/estrategias/RANKING.md."
 }

@@ -16,6 +16,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 import deriv_ejecutor as D  # noqa: E402
+import patrones as P  # noqa: E402
 import scalper as S  # noqa: E402
 
 # Equivalentes en Yahoo Finance para el historial largo (semanal, mensual, anual): Deriv solo da ~1 año diario.
@@ -147,6 +148,7 @@ async def exportar(api, fecha, carpeta):
         for tf, velas in series.items():
             datos["temporalidades"][tf] = {
                 "resumen": resumen(velas),
+                "patrones": P.detectar(velas),
                 "ultimas_velas": [{"t": dt.datetime.fromtimestamp(v["epoch"], dt.timezone.utc).strftime("%Y-%m-%d %H:%M"),
                                    **{k: v[k] for k in ("open", "high", "low", "close")}}
                                   for v in velas[-ULTIMAS_VELAS[tf]:]],
@@ -156,7 +158,9 @@ async def exportar(api, fecha, carpeta):
         indice["activos"][activo] = {"simbolo": sym, "archivo": str(archivo.relative_to(D.RAIZ.parent)),
                                      "precio": datos["temporalidades"]["15m"]["resumen"].get("precio"),
                                      "tendencias": {tf: datos["temporalidades"][tf]["resumen"].get("tendencia")
-                                                    for tf in datos["temporalidades"]}}
+                                                    for tf in datos["temporalidades"]},
+                                     "patrones": {tf: [x["patron"] for x in datos["temporalidades"][tf]["patrones"]]
+                                                  for tf in datos["temporalidades"]}}
     return indice
 
 

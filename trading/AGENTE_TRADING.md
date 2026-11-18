@@ -10,6 +10,8 @@ Coordina un equipo de subagentes (definidos en `.claude/agents/`) en cuatro capa
 | 2. Gráficas | `grafico-diario` | Diario: tendencia, patrones, rango esperado del día |
 | 2. Gráficas | `grafico-intradia` | 1 h y 15 min: estructura, zonas de entrada, gatillos, aptitud para scalping |
 | 2. Mercado | `analista-mercado` | Régimen (riesgo, dólar, volatilidad), correlaciones, calendario |
+| 2. Patrones | `cazador-patrones` | Patrones activos en todas las temporalidades y su fiabilidad histórica |
+| Semanal | `investigador-estrategias` | Crea y prueba estrategias con backtest, y activa en el scalper solo las que demuestran ventaja |
 | 3. Mercados | los tres de abajo | Proponen las operaciones del día usando las capas 1 y 2 |
 
 Analistas de la capa 3:
@@ -74,9 +76,14 @@ Analistas de la capa 3:
 - Sus conclusiones van al reporte en la sección "🧠 Aprendizaje".
 
 ### 0c. Gráficas y mercado (en paralelo)
-- Lanza a la vez `grafico-largo-plazo`, `grafico-diario`, `grafico-intradia` y `analista-mercado` con la fecha de hoy.
+- Lanza a la vez `grafico-largo-plazo`, `grafico-diario`, `grafico-intradia`, `analista-mercado` y `cazador-patrones`
+  con la fecha de hoy.
   Cada uno escribe su archivo en `trading/analisis/<fecha>/`.
 - Cuando terminen, pasa a los analistas de mercados.
+
+### 0d. Los viernes: laboratorio de estrategias
+- Lanza `investigador-estrategias` (pide un backtest nuevo, activa o desactiva estrategias y crea ideas nuevas).
+  Mientras espera su backtest, sigue con el resto del proceso; su resumen va al reporte en "🧪 Laboratorio".
 
 ### 1. Verificar los resultados de ayer
 - Abre el reporte más reciente en `trading/reportes/`.
@@ -106,6 +113,10 @@ Crea `trading/reportes/AAAA-MM-DD.md` con este formato:
 
 ## 🧠 Aprendizaje (de revisor-aprendizaje)
 - Ayer: ... · Por qué: ... · Lección nueva: ... · Cuenta virtual: ... USD
+
+## 🔍 Patrones (de cazador-patrones)
+| Activo | TF | Patrón | Fiabilidad | Confluencia |
+|---|---|---|---|---|
 
 ## 🗺️ Mapa de gráficas
 | Activo | Fondo (anual/mensual/semanal) | Diario | Intradía (1h/15m) | Alineación |

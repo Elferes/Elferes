@@ -80,6 +80,12 @@ def cargar_parametros(cfg, ruta=None):
     if cfg["atr_objetivo"] < 1.2 * cfg["atr_stop"]:
         cfg["atr_objetivo"] = round(1.2 * cfg["atr_stop"], 2)
         notas.append("atr_objetivo subido a 1.2 × atr_stop (R/B mínimo 1.2)")
+    if isinstance(p.get("estrategias"), list):
+        import estrategias as E
+        validas = [e for e in p["estrategias"] if e in E.ESTRATEGIAS]
+        cfg["estrategias"] = validas or ["tendencia_retroceso"]
+        if len(validas) != len(p["estrategias"]):
+            notas.append(f"estrategias desconocidas ignoradas: {set(p['estrategias']) - set(validas)}")
     if isinstance(p.get("activos"), list):
         cfg["simbolos"] = {a: s for a, s in cfg["simbolos"].items() if a in p["activos"]} or cfg["simbolos"]
     cfg["version_parametros"] = p.get("version")
@@ -173,6 +179,7 @@ async def abrir(api, simbolo, activo, s, cfg, reg):
     t = {"activo": activo, "simbolo": simbolo, "tipo": tipo, "contract_id": c["contract_id"], "precio_ref": precio,
          "stop": s["stop"], "tp": s["tp"], "multiplicador": m, "stake": stake, "sl_usd": sl, "tp_usd": tp,
          "rsi": s["rsi"], "atr": s["atr"], "contexto": s["contexto"], "direccion": s["direccion"],
+         "estrategia": s.get("estrategia", "tendencia_retroceso"),
          "abierta_epoch": time.time(), "abierto": True, "profit": 0.0, "cierre": None}
     reg.datos["operaciones"].append(t)
     reg.evento(f"{activo}: ABIERTA {s['direccion'].upper()} x{m} stake {stake} | entrada ~{precio:.5g} "
@@ -198,6 +205,7 @@ async def vigilar(api, t, cfg, reg, forzar=False):
 
 
 async def correr(plan, modo, cfg):
+    import estrategias as E
     fecha = plan["fecha"]
     reg = D.Registro(fecha)
     reg.ruta = D.RAIZ / "ejecuciones" / f"{fecha}-scalping.json"
@@ -214,7 +222,7 @@ async def correr(plan, modo, cfg):
     reg.evento(f"Scalper conectado: cuenta {'DEMO' if cuenta.get('is_virtual') else 'REAL'} {cuenta.get('loginid')} | "
                f"cuenta virtual {cfg['capital']} USD, riesgo {cfg['riesgo_pct']} % = "
                f"{cfg['capital'] * cfg['riesgo_pct'] / 100:.2f} USD por operación, meta {cfg['meta_diaria_usd']:.2f} USD, "
-               f"parámetros v{cfg.get('version_parametros')}")
+               f"parámetros v{cfg.get('version_parametros')}, estrategias {cfg.get('estrategias')}")
     for n in cfg.get("notas_parametros", []):
         reg.evento(f"Parámetros: {n}")
     if cfg["capital"] <= 10:
@@ -241,8 +249,9 @@ async def correr(plan, modo, cfg):
     if modo == "verificar":
         for activo, sym in simbolos.items():
             v = await api.velas(sym, cfg["granularidad"], 120)
-            s = senal(v, cfg, sesgos.get(sym))
-            reg.evento(f"{activo}: {len(v)} velas de 5 min, señal ahora: {s['direccion'] if s else 'ninguna'}")
+            s = E.buscar_senal(v, cfg, sesgos.get(sym))
+            reg.evento(f"{activo}: {len(v)} velas de 5 min, señal ahora: "
+                       f"{s['direccion'] + ' (' + s['estrategia'] + ')' if s else 'ninguna'}")
         reg.evento("Verificación del scalper terminada")
         await api.ws.close()
         return 0
@@ -285,7 +294,7 @@ async def correr(plan, modo, cfg):
                 if not v or v[-1]["epoch"] == ultima.get(sym):
                     continue
                 ultima[sym] = v[-1]["epoch"]
-                s = senal(v, cfg, sesgos.get(sym))
+                s = E.buscar_senal(v, cfg, sesgos.get(sym))
                 if s:
                     t = await abrir(api, sym, activo, s, cfg, reg)
                     if t:
