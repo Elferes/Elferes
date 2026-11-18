@@ -56,6 +56,7 @@ class DerivFalso:
     def __init__(self):
         self.cuenta = {"currency": "USD", "is_virtual": 1, "loginid": "VRTC1", "balance": 10000}
         self.paso, self.contratos, self.ws = 0, {}, self
+        self.nueva, self.app_id = True, "123"
         self.precios = [1.0995, 1.0990, 1.0975, 1.0959, 1.0985, 1.0992, 1.0992]
 
     async def close(self): pass

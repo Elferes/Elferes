@@ -13,8 +13,10 @@ Gestión por operación:
   * Freno diario: si la pérdida realizada llega a perdida_max_dia_pct (3%), se cierra todo y para.
 
 Variables de entorno:
-  DERIV_TOKEN           token de API de Deriv con permisos Read + Trade (obligatorio)
-  DERIV_APP_ID          app_id de Deriv (por defecto 1089, el público de pruebas)
+  DERIV_TOKEN           token de Deriv (obligatorio). Si empieza por "pat_" se usa la API nueva
+                        (api.derivws.com, con App ID + OTP); si no, la API antigua (ws.derivws.com).
+  DERIV_APP_ID          App ID de Deriv. API nueva: el de tu app registrada en developers.deriv.com
+                        (obligatorio). API antigua: por defecto 1089.
   DERIV_PERMITIR_REAL   "si" para permitir una cuenta real (por defecto se rechaza)
 
 Uso:
@@ -33,7 +35,8 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 RAIZ = Path(__file__).resolve().parents[1]  # carpeta trading/
-WS_URL = "wss://ws.derivws.com/websockets/v3?app_id={app_id}"
+WS_URL = "wss://ws.derivws.com/websockets/v3?app_id={app_id}"  # API antigua
+REST_URL = "https://api.derivws.com/trading/v1/options"         # API nueva (tokens pat_)
 ZONA = ZoneInfo("America/Bogota")
 GATILLOS = {"mercado", "ruptura_arriba", "ruptura_abajo", "retesteo_arriba", "retesteo_abajo"}
 
@@ -138,12 +141,58 @@ class DerivError(Exception):
 
 class Deriv:
     def __init__(self, token, app_id):
-        self.token, self.url, self.ws, self.rid = token, WS_URL.format(app_id=app_id), None, 0
+        self.token, self.app_id, self.ws, self.rid = token, app_id, None, 0
+        self.nueva = token.startswith("pat_")
         self.cuenta = None
+
+    # ---- API nueva: REST con Bearer + Deriv-App-ID, luego WebSocket con OTP de un solo uso
+    def _rest(self, metodo, ruta, cuerpo=None):
+        import urllib.error
+        import urllib.request
+        req = urllib.request.Request(REST_URL + ruta, method=metodo,
+                                     data=None if cuerpo is None else json.dumps(cuerpo).encode(),
+                                     headers={"Authorization": f"Bearer {self.token}",
+                                              "Deriv-App-ID": self.app_id,
+                                              "Content-Type": "application/json",
+                                              "User-Agent": "elferes-ejecutor/1.0"})
+        try:
+            with urllib.request.urlopen(req, timeout=30) as r:
+                return json.load(r)
+        except urllib.error.HTTPError as e:
+            raise DerivError(f"HTTP {e.code} en {metodo} {ruta}: {e.read().decode(errors='replace')[:400]}")
+
+    @staticmethod
+    def _lista(r):
+        d = r.get("data", r) if isinstance(r, dict) else r
+        if isinstance(d, dict):
+            d = d.get("accounts", [d])
+        return d if isinstance(d, list) else []
+
+    async def _conectar_nueva(self):
+        import websockets
+        if not self.app_id or self.app_id == "1089":
+            raise DerivError("La API nueva necesita DERIV_APP_ID (App ID de tu app en developers.deriv.com)")
+        cuentas = self._lista(await asyncio.to_thread(self._rest, "GET", "/accounts"))
+        if not cuentas:
+            raise DerivError("La API no devolvió cuentas de Options")
+        demo = [c for c in cuentas if str(c.get("account_type", "")).lower() == "demo"]
+        c = (demo or cuentas)[0]
+        otp = await asyncio.to_thread(self._rest, "POST", f"/accounts/{c['account_id']}/otp")
+        url = (otp.get("data") or {}).get("url") or otp.get("url")
+        if not url:
+            raise DerivError(f"Respuesta OTP sin url: {str(otp)[:200]}")
+        self.ws = await websockets.connect(url, ping_interval=30, open_timeout=30)
+        self.cuenta = {"loginid": c.get("account_id"), "currency": c.get("currency", "USD"),
+                       "balance": c.get("balance"), "is_virtual": str(c.get("account_type", "")).lower() == "demo",
+                       "cuentas_disponibles": [(x.get("account_id"), x.get("account_type")) for x in cuentas]}
+        return self.cuenta
 
     async def conectar(self):
         import websockets
-        self.ws = await websockets.connect(self.url, ping_interval=30, open_timeout=30)
+        if self.nueva:
+            return await self._conectar_nueva()
+        self.ws = await websockets.connect(WS_URL.format(app_id=self.app_id or "1089"),
+                                           ping_interval=30, open_timeout=30)
         self.cuenta = (await self._call({"authorize": self.token}))["authorize"]
         return self.cuenta
 
@@ -173,7 +222,14 @@ class Deriv:
                 await self.conectar()
 
     async def saldo(self):
-        return float((await self.call({"balance": 1}))["balance"]["balance"])
+        try:
+            return float((await self.call({"balance": 1}))["balance"]["balance"])
+        except DerivError:
+            if not self.nueva:
+                raise
+            cuentas = self._lista(await asyncio.to_thread(self._rest, "GET", "/accounts"))
+            c = next(x for x in cuentas if x.get("account_id") == self.cuenta["loginid"])
+            return float(c["balance"])
 
     async def multiplicadores(self, simbolo, tipo):
         r = await self.call({"contracts_for": simbolo, "currency": self.cuenta["currency"]})
@@ -297,8 +353,14 @@ async def ejecutar(plan, modo, cfg):
     if not token:
         reg.evento("Falta el secreto DERIV_TOKEN; no se puede operar")
         return 1
-    api = Deriv(token, os.environ.get("DERIV_APP_ID", "1089").strip() or "1089")
-    cuenta = await api.conectar()
+    api = Deriv(token, os.environ.get("DERIV_APP_ID", "").strip())
+    reg.evento(f"API de Deriv: {'nueva (api.derivws.com, token pat_)' if api.nueva else 'antigua (ws.derivws.com)'}"
+               f", App ID {'configurado' if api.app_id else 'NO configurado'}")
+    try:
+        cuenta = await api.conectar()
+    except Exception as e:
+        reg.evento(f"No se pudo conectar a Deriv: {type(e).__name__}: {e}")
+        return 1
     es_demo = bool(cuenta.get("is_virtual"))
     reg.evento(f"Conectado a Deriv: cuenta {'DEMO' if es_demo else 'REAL'} {cuenta.get('loginid')}, "
                f"saldo {cuenta.get('balance')} {cuenta.get('currency')}")

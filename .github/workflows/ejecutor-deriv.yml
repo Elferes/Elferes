@@ -45,7 +45,7 @@ jobs:
       - name: Ejecutar plan en Deriv
         env:
           DERIV_TOKEN: ${{ secrets.DERIV_TOKEN }}
-          DERIV_APP_ID: ${{ vars.DERIV_APP_ID }}
+          DERIV_APP_ID: ${{ vars.DERIV_APP_ID || secrets.DERIV_APP_ID }}
           MODO: ${{ inputs.modo || 'ejecutar' }}
           FECHA: ${{ inputs.fecha }}
         run: python trading/ejecutor/deriv_ejecutor.py --modo "$MODO" --fecha "$FECHA"
