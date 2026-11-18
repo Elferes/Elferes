@@ -23,7 +23,7 @@ ACTIVOS = {
     "XAU/USD": "frxXAUUSD", "BTC/USD": "cryBTCUSD", "ETH/USD": "cryETHUSD",
     "US 500": "OTC_SPC", "US Tech 100": "OTC_NDX", "Wall Street 30": "OTC_DJI",
 }
-TEMPORALIDADES = {"15m": (900, 400), "1h": (3600, 500), "diario": (86400, 3000)}
+TEMPORALIDADES = {"15m": (900, 400), "1h": (3600, 500), "diario": (86400, 3650)}
 ULTIMAS_VELAS = {"15m": 40, "1h": 48, "diario": 60, "semanal": 52, "mensual": 36, "anual": 15}
 
 
@@ -84,6 +84,20 @@ def resumen(velas):
     }
 
 
+async def historico(api, sym, granularidad, n, paginas=12):
+    """Pide velas hacia atrás por páginas (Deriv limita cuántas devuelve por consulta)."""
+    velas = await api.velas(sym, granularidad, n)
+    for _ in range(paginas):
+        if len(velas) >= n or not velas:
+            break
+        antes = await api.velas(sym, granularidad, n - len(velas), end=velas[0]["epoch"] - 1)
+        antes = [v for v in antes if v["epoch"] < velas[0]["epoch"]]
+        if not antes:
+            break
+        velas = antes + velas
+    return velas
+
+
 async def exportar(api, fecha, carpeta):
     indice = {"generado_utc": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"), "fecha": fecha,
               "activos": {}, "errores": {}}
@@ -91,7 +105,7 @@ async def exportar(api, fecha, carpeta):
         try:
             series = {}
             for tf, (g, n) in TEMPORALIDADES.items():
-                series[tf] = await api.velas(sym, g, n)
+                series[tf] = await historico(api, sym, g, n)
             for tf in ("semanal", "mensual", "anual"):
                 series[tf] = agregar(series["diario"], tf)
         except Exception as e:  # símbolo no disponible, etc.

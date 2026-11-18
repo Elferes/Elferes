@@ -257,9 +257,9 @@ class Deriv:
                 return [int(m) for m in c["multiplier_range"]]
         return []
 
-    async def velas(self, simbolo, granularidad, n=6):
+    async def velas(self, simbolo, granularidad, n=6, end="latest"):
         r = await self.call({"ticks_history": simbolo, "style": "candles", "granularity": granularidad,
-                             "count": n, "end": "latest"})
+                             "count": n, "end": end})
         ahora = time.time()
         return [{k: float(v[k]) for k in ("open", "high", "low", "close")} | {"epoch": int(v["epoch"])}
                 for v in r["candles"] if int(v["epoch"]) + granularidad <= ahora]
