@@ -1,5 +1,5 @@
 {
- "generado_utc": "2026-11-18T18:12:07+00:00",
+ "generado_utc": "2026-11-18T18:13:09+00:00",
  "fecha": "2026-11-18",
  "activos": {
   "EUR/USD": {
@@ -11,8 +11,8 @@
     "1h": "bajista",
     "diario": "bajista",
     "semanal": "bajista",
-    "mensual": "bajista",
-    "anual": null
+    "mensual": "lateral",
+    "anual": "bajista"
    }
   },
   "GBP/USD": {
@@ -24,8 +24,8 @@
     "1h": "bajista",
     "diario": "bajista",
     "semanal": "bajista",
-    "mensual": "bajista",
-    "anual": null
+    "mensual": "lateral",
+    "anual": "bajista"
    }
   },
   "USD/JPY": {
@@ -38,7 +38,7 @@
     "diario": "alcista",
     "semanal": "alcista",
     "mensual": "alcista",
-    "anual": null
+    "anual": "alcista"
    }
   },
   "AUD/USD": {
@@ -50,8 +50,8 @@
     "1h": "bajista",
     "diario": "bajista",
     "semanal": "lateral",
-    "mensual": "alcista",
-    "anual": null
+    "mensual": "lateral",
+    "anual": "bajista"
    }
   },
   "XAU/USD": {
@@ -63,8 +63,8 @@
     "1h": "bajista",
     "diario": "bajista",
     "semanal": "bajista",
-    "mensual": "bajista",
-    "anual": null
+    "mensual": "lateral",
+    "anual": "alcista"
    }
   },
   "BTC/USD": {
@@ -76,8 +76,8 @@
     "1h": "bajista",
     "diario": "bajista",
     "semanal": "bajista",
-    "mensual": "bajista",
-    "anual": null
+    "mensual": "lateral",
+    "anual": "alcista"
    }
   },
   "ETH/USD": {
@@ -90,7 +90,7 @@
     "diario": "bajista",
     "semanal": "bajista",
     "mensual": "bajista",
-    "anual": null
+    "anual": "alcista"
    }
   },
   "US 500": {
@@ -103,7 +103,7 @@
     "diario": "bajista",
     "semanal": "lateral",
     "mensual": "alcista",
-    "anual": null
+    "anual": "alcista"
    }
   },
   "US Tech 100": {
@@ -116,7 +116,7 @@
     "diario": "bajista",
     "semanal": "lateral",
     "mensual": "alcista",
-    "anual": null
+    "anual": "alcista"
    }
   },
   "Wall Street 30": {
@@ -129,7 +129,7 @@
     "diario": "bajista",
     "semanal": "lateral",
     "mensual": "alcista",
-    "anual": null
+    "anual": "alcista"
    }
   }
  },
