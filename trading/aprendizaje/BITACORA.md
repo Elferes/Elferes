@@ -18,6 +18,11 @@ _(Reglas con al menos 5 casos de evidencia. Máximo 10.)_
 - **Patrones más fiables:** doble techo en EUR/USD 15m (60.8 %, 296 casos), divergencia bajista en BTC 15m (60.0 %),
   doble techo en US 500 5m y 15m (58 %).
 
+- **Intradía (15m–4h) no muestra ventaja significativa** con 14 estrategias y 11664 variantes: ni por activo ni agrupado.
+- **En diario sí:** RSI(2) y giro del MACD a favor de la SMA200 en US 500 y US Tech 100 pasan la prueba ciega
+  (+0.25 a +0.29 R por operación, t > 2, 0 aprobadas por azar). Las 5 combinaciones v2 del scalper no tienen
+  significancia estadística: se mantienen solo como prueba en demo con 1 % de riesgo.
+
 ## Hipótesis por comprobar
 - Las operaciones rápidas funcionan mejor en el solapamiento Londres–Nueva York (12:00–16:00 UTC).
 - Operar a favor de la tendencia diaria y de fondo da mejor % de acierto que operar solo con la de 15 min.

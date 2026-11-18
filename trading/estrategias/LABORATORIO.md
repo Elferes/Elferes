@@ -30,3 +30,21 @@ conclusión y por qué funcionó o falló. Ranking actual: [RANKING.md](RANKING.
   operaciones en prueba): hay que confirmarlo en vivo antes de subir el riesgo.
 - **Idea para la próxima semana:** filtro por sesión (Londres/NY) para la ruptura de rango, y probar la reversión en
   Bollinger en AUD/USD y USD/JPY 1h.
+
+### 2026-11-18 — Búsqueda sistemática (14 estrategias × filtros × salidas, prueba ciega + t ≥ 2 + azar)
+- **Por activo (15m, 1h, 4h, 1d):** 0 aprobadas de 11664 variantes. 0 falsos positivos con precios desordenados.
+  Con 1–2 años de intradía no hay operaciones suficientes para separar ventaja de suerte.
+- **Agrupado en 8 activos, 1h y 4h:** 0 aprobadas. La mejor (`rsi2_reversion|sesion_ny|obj2r` en 4h, +0.13 R en 457
+  operaciones) gana casi todo en los últimos meses y apenas en el entrenamiento: racha, no ventaja.
+- **Agrupado en diario (~20 años, 6000 velas por activo): 2 APROBADAS, 0 por azar.**
+  - `macd_giro|tendencia200,sesion_lny|obj2r`: entreno +0.14 R (260 ops), prueba **+0.29 R** (127 ops, t 2.47, PF 1.61), ambas mitades positivas.
+  - `rsi2_reversion|tendencia200,sesion_lny|obj2r`: entreno +0.22 R (364 ops, t 2.96), prueba **+0.25 R** (163 ops, t 2.18, PF 1.44).
+- **Por qué funcionan:** en diario el coste es una parte mínima del stop y los índices de EE.UU. tienen sesgo alcista de
+  largo plazo; comprar retrocesos (RSI2) o giros del MACD por encima de la SMA200 aprovecha ese sesgo. La RSI(2) en el
+  S&P 500 sobre la SMA200 es una estrategia conocida (Connors), lo que da credibilidad al resultado.
+- **Ojo:** en velas diarias el filtro `sesion_lny` solo deja pasar las velas cuya hora de apertura cae en 12–16 UTC, que
+  son los índices (US 500 y US Tech 100). En la práctica, las dos reglas son **para índices de EE.UU.**, no para divisas.
+- **Casi aprobada:** `tendencia_retroceso|tendencia200,vol_baja|obj2r` en diario, positiva en los 8 activos (+0.26 R,
+  243 ops, t 3.1) pero con un tramo débil. A favor de la tendencia y en diario sí funciona; en intradía pierde.
+- **Pendiente:** son operaciones de varios días; el scalper intradía no las puede ejecutar. Hace falta un ejecutor diario
+  y confirmar qué índices tienen Multipliers en Deriv (US 500 no los tiene).
