@@ -14,21 +14,21 @@ from test_scalper import serie_alcista_con_retroceso  # noqa: E402
 CFG = S.preparar_config(S.CONFIG, capital=100.0)
 
 
-def aleatoria(n=3000, semilla=1):
+def aleatoria(n=3000, semilla=1, paso=300):
     random.seed(semilla)
     p, v = 100.0, []
     for i in range(n):
         o = p
         p *= 1 + random.gauss(0, 0.002)
-        v.append({"epoch": 1700000000 + i * 300, "open": o, "high": max(o, p) * 1.0007,
-                  "low": min(o, p) * 0.9993, "close": p})
+        v.append({"epoch": 1700000000 + i * paso, "open": o, "high": max(o, p) * (1 + abs(random.gauss(0, 0.0008))),
+                  "low": min(o, p) * (1 - abs(random.gauss(0, 0.0008))), "close": p})
     return v
 
 
 class Estrategias(unittest.TestCase):
     def test_senales_coherentes(self):
-        v = aleatoria()
         for nombre, f in E.ESTRATEGIAS.items():
+            v = aleatoria(paso=3600 if nombre == "ruptura_asiatica" else 300)
             n = 0
             for i in range(60, len(v)):
                 s = f(v[i - 119 if i >= 119 else 0:i + 1], CFG)
@@ -40,6 +40,20 @@ class Estrategias(unittest.TestCase):
                 self.assertGreaterEqual(abs(s["tp"] - s["entrada"]) + 1e-12, abs(s["entrada"] - s["stop"]) * 0.99, nombre)
                 self.assertEqual(s["estrategia"], nombre)
             self.assertGreater(n, 0, f"{nombre} nunca dio señal")
+
+    def test_variantes(self):
+        f = E.obtener("rsi2_reversion|tendencia200,vol_alta|obj2r")
+        self.assertIsNotNone(f)
+        self.assertIsNone(E.obtener("rsi2_reversion|inventado|base"))
+        v, n = aleatoria(), 0
+        for i in range(250, len(v)):
+            s = f(v[i - 249:i + 1], CFG)
+            if s:
+                n += 1
+                riesgo = abs(s["entrada"] - s["stop"])
+                self.assertAlmostEqual(abs(s["tp"] - s["entrada"]), 2 * riesgo)
+                self.assertEqual(s["estrategia"], "rsi2_reversion|tendencia200,vol_alta|obj2r")
+        self.assertGreater(n, 0)
 
     def test_sesgo(self):
         v = serie_alcista_con_retroceso()

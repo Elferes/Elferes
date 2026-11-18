@@ -64,8 +64,9 @@ TODOS_LOS_SIMBOLOS = {
     "XAU/USD": "frxXAUUSD", "BTC/USD": "cryBTCUSD", "ETH/USD": "cryETHUSD",
     "US 500": "OTC_SPC", "US Tech 100": "OTC_NDX", "Wall Street 30": "OTC_DJI",
 }
-GRANULARIDAD = {"5m": 300, "15m": 900, "1h": 3600}
-MAX_VELAS_TF = {"15m": 8, "1h": 12}  # mismo límite de tiempo que usa backtest.py
+GRANULARIDAD = {"5m": 300, "15m": 900, "1h": 3600, "4h": 14400}
+MAX_VELAS_TF = {"15m": 8, "1h": 12, "4h": 10}  # mismo límite de tiempo que usan backtest.py y busqueda.py
+VELAS_VENTANA = 250  # misma ventana que busqueda.py
 
 # Límites de seguridad para lo que el agente de aprendizaje puede cambiar.
 LIMITES = {
@@ -102,7 +103,7 @@ def cargar_parametros(cfg, ruta=None):
         import estrategias as E
         cfg["combinaciones"] = [c for c in p["combinaciones"] if isinstance(c, dict)
                                 and c.get("activo") in TODOS_LOS_SIMBOLOS and c.get("tf") in GRANULARIDAD
-                                and c.get("estrategia") in E.ESTRATEGIAS]
+                                and E.obtener(str(c.get("estrategia"))) is not None]
         if len(cfg["combinaciones"]) != len(p["combinaciones"]):
             notas.append("algunas combinaciones no son válidas y se ignoran")
     if isinstance(p.get("activos"), list):
@@ -280,7 +281,7 @@ async def correr(plan, modo, cfg):
 
     if modo == "verificar":
         for c in combos:
-            v = await api.velas(c["simbolo"], GRANULARIDAD[c["tf"]], 120)
+            v = await api.velas(c["simbolo"], GRANULARIDAD[c["tf"]], VELAS_VENTANA)
             s = E.buscar_senal(v, cfg, sesgos.get(c["simbolo"]), [c["estrategia"]])
             reg.evento(f"{c['activo']} {c['tf']} {c['estrategia']}: {len(v)} velas, señal ahora: "
                        f"{s['direccion'] if s else 'ninguna'}")
@@ -324,7 +325,7 @@ async def correr(plan, modo, cfg):
                 if len(abiertas) >= cfg["max_abiertas"] or any(t["simbolo"] == sym for t in abiertas):
                     continue
                 clave = (sym, c["tf"], c["estrategia"])
-                v = await api.velas(sym, g, 120)
+                v = await api.velas(sym, g, VELAS_VENTANA)
                 if not v or v[-1]["epoch"] == ultima.get(clave):
                     continue
                 ultima[clave] = v[-1]["epoch"]

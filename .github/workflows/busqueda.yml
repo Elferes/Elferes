@@ -1,0 +1,72 @@
+name: Búsqueda de estrategias
+
+# Se lanza al subir trading/solicitudes/busqueda.txt o a mano. Prueba 14 estrategias × filtros × salidas
+# en 8 activos y 3 temporalidades con protocolo de prueba ciega y comparación contra el azar.
+on:
+  push:
+    paths:
+      - "trading/solicitudes/busqueda.txt"
+      - "trading/solicitudes/busqueda-agrupada.txt"
+  workflow_dispatch:
+    inputs:
+      activos:
+        description: "Activos separados por coma (vacío = todos)"
+        required: false
+        default: ""
+      temporalidades:
+        description: "15m,1h,4h,1d (vacío = todas)"
+        required: false
+        default: ""
+      agrupado:
+        description: "Probar cada regla en todos los activos a la vez"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: busqueda
+  cancel-in-progress: false
+
+jobs:
+  busqueda:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Pruebas
+        run: python -m unittest trading/ejecutor/test_estrategias.py
+
+      - name: Búsqueda
+        env:
+          ACTIVOS: ${{ inputs.activos }}
+          TFS: ${{ inputs.temporalidades }}
+          AGRUPADO: ${{ inputs.agrupado }}
+          CAMBIOS: ${{ toJSON(github.event.head_commit.modified) }}
+        run: |
+          args=""
+          if [ "$AGRUPADO" = "true" ] || echo "$CAMBIOS" | grep -q "busqueda-agrupada"; then
+            args="--agrupado --temporalidades ${TFS:-1h,4h,1d}"; TFS=""
+          fi
+          if [ -n "$ACTIVOS" ]; then args="$args --activos $ACTIVOS"; fi
+          if [ -n "$TFS" ]; then args="$args --temporalidades $TFS"; fi
+          python trading/ejecutor/busqueda.py $args
+
+      - name: Guardar en el repositorio
+        if: always()
+        run: |
+          git config user.name "busqueda"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add trading/estrategias || true
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Búsqueda de estrategias $(TZ=America/Bogota date +%F_%H:%M)"
+          for i in 1 2 3 4; do
+            git pull --no-rebase --no-edit origin "$GITHUB_REF_NAME" && git push origin "HEAD:$GITHUB_REF_NAME" && break
+            sleep $((i * 5))
+          done

@@ -34,10 +34,16 @@ COSTE_PCT = {"EUR/USD": 0.00012, "GBP/USD": 0.00015, "USD/JPY": 0.00012, "XAU/US
 VENTANA = 120
 
 
-def simular(velas, estrategia, cfg, coste_pct, max_velas):
-    ops, i, n = [], 60, len(velas)
+def simular(velas, estrategia, cfg, coste_pct, max_velas, ventana=None):
+    w = ventana or VENTANA
+    return simular_fn(velas, lambda i: estrategia(velas[max(0, i + 1 - w):i + 1], cfg), coste_pct, max_velas)
+
+
+def simular_fn(velas, senal_en, coste_pct, max_velas, inicio=60):
+    """Simula operando la señal senal_en(i) al cierre de la vela i (una operación a la vez)."""
+    ops, i, n = [], inicio, len(velas)
     while i < n - 1:
-        s = estrategia(velas[max(0, i + 1 - VENTANA):i + 1], cfg)
+        s = senal_en(i)
         if not s:
             i += 1
             continue
@@ -78,7 +84,10 @@ def metricas(ops):
         eq += r
         pico = max(pico, eq)
         dd = max(dd, pico - eq)
-    return {"operaciones": len(rs), "acierto_pct": round(100 * len(gan) / len(rs), 1),
+    media = sum(rs) / len(rs)
+    desv = (sum((r - media) ** 2 for r in rs) / max(1, len(rs) - 1)) ** 0.5
+    t = media / (desv / len(rs) ** 0.5) if desv > 0 else 0.0
+    return {"operaciones": len(rs), "acierto_pct": round(100 * len(gan) / len(rs), 1), "t_stat": round(t, 2),
             "esperanza_r": round(sum(rs) / len(rs), 3), "total_r": round(sum(rs), 2),
             "profit_factor": round(sum(gan) / sum(per), 2) if per and sum(per) > 0 else None,
             "max_drawdown_r": round(dd, 2)}
