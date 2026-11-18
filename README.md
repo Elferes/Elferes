@@ -1,6 +1,6 @@
 # Elferes — Agente de apuestas deportivas
 
-Agente que investiga partidos de fútbol, NBA y tenis cada día (incluidos los jugadores) y propone una combinada de cuota ≥ 10 con selecciones de valor.
+Agente que investiga partidos de fútbol, básquet (NBA, Euroliga, NCAA y más) y tenis cada día (incluidos los jugadores) y propone una combinada de cuota ≥ 10 con selecciones de valor.
 
 - Instrucciones del agente: [AGENTE.md](AGENTE.md)
 - Reportes diarios: [reportes/](reportes/)

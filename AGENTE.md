@@ -1,4 +1,4 @@
-# Agente diario de apuestas deportivas: fútbol, NBA y tenis (combinada cuota ≥ 10)
+# Agente diario de apuestas deportivas: fútbol, básquet y tenis (combinada cuota ≥ 10)
 
 Este archivo es la "mente" del agente. La tarea programada diaria lo lee y sigue estas instrucciones.
 
@@ -17,7 +17,7 @@ Este archivo es la "mente" del agente. La tarea programada diaria lo lee y sigue
 ### 2. Encontrar eventos de hoy
 Busca con WebSearch los eventos de HOY (zona horaria America/Bogota). Solo eventos que empiecen al menos 2 horas después de generar el reporte.
 - **Fútbol:** Premier League, LaLiga, Serie A, Bundesliga, Ligue 1, Champions/Europa/Conference League. Si faltan: Eredivisie, Primeira Liga, Championship, Liga MX, Brasileirão, Argentina, MLS, Turquía, Bélgica.
-- **NBA:** todos los partidos de la jornada (en temporada regular, playoffs o Copa NBA).
+- **Básquet (todo, no solo NBA):** NBA, Euroliga, Eurocup, Basketball Champions League, NCAA, WNBA, ligas nacionales (ACB, Turquía, Italia, Francia, Alemania, Argentina, Brasil, Colombia) y ventanas FIBA. En ligas menores y NCAA solo picks con cuotas y datos verificables; ojo con el inicio de temporada NCAA (más impredecible).
 - **Tenis:** ATP, WTA, Grand Slams, Masters 1000, ATP/WTA 500 y 250, Copa Davis y Billie Jean King Cup. Challengers solo si hay datos fiables. Si es pretemporada y no hay torneos, dilo.
 
 ### 3. Investigar (mínimo 10 eventos entre los tres deportes)
@@ -28,7 +28,7 @@ Busca con WebSearch los eventos de HOY (zona horaria America/Bogota). Solo event
 - **Jugadores clave:** goleadores y asistentes en forma, portero titular, bajas de titulares importantes y cómo afectan (p. ej. sin su 9 baja el over).
 - Motivación (título, descenso, derbi, partido intrascendente) y cuotas actuales.
 
-**NBA (por partido):**
+**Básquet (por partido; NBA con más detalle):**
 - Récord y forma últimos 10, local/visitante, back-to-back y descanso (días entre partidos, viajes).
 - Ritmo (pace), rating ofensivo/defensivo, puntos totales promedio de ambos equipos, H2H de la temporada.
 - **Reporte de lesiones oficial** (out / doubtful / questionable) y estrellas en "load management". Si una estrella es duda, NO apuestes en ese partido hasta que se confirme.
@@ -45,7 +45,7 @@ Busca con WebSearch los eventos de HOY (zona horaria America/Bogota). Solo event
 
 ### 4. Mercados permitidos
 - **Fútbol:** 1X2, doble oportunidad, empate no apuesta, hándicap asiático, over/under goles (total y por equipo), ambos marcan sí/no, córners, tarjetas, resultado al descanso, gana y over 1.5, goleador (solo con datos muy sólidos).
-- **NBA:** moneyline, hándicap (spread), total de puntos (partido, equipo, mitad o cuarto) y **props de jugador**: puntos, rebotes, asistencias, triples, PRA (puntos+rebotes+asistencias), doble-doble.
+- **Básquet:** moneyline, hándicap (spread), total de puntos (partido, equipo, mitad o cuarto) y **props de jugador**: puntos, rebotes, asistencias, triples, PRA (puntos+rebotes+asistencias), doble-doble.
 - **Tenis:** ganador del partido, hándicap de juegos, total de juegos over/under, gana al menos un set, resultado exacto en sets, over/under de sets.
 
 ### 5. Selección de picks
