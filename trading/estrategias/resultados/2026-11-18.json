@@ -1,0 +1,4312 @@
+{
+ "generado_utc": "2026-11-18T18:49:53+00:00",
+ "fecha": "2026-11-18",
+ "parametros_version": 1,
+ "resultados": [
+  {
+   "activo": "EUR/USD",
+   "temporalidad": "5m",
+   "estrategia": "tendencia_retroceso",
+   "velas": 16988,
+   "desde": "2026-08-26",
+   "entrenamiento": {
+    "operaciones": 817,
+    "acierto_pct": 28.6,
+    "esperanza_r": -0.738,
+    "total_r": -602.77,
+    "profit_factor": 0.24,
+    "max_drawdown_r": 602.85
+   },
+   "prueba": {
+    "operaciones": 332,
+    "acierto_pct": 34.0,
+    "esperanza_r": -0.549,
+    "total_r": -182.32,
+    "profit_factor": 0.35,
+    "max_drawdown_r": 187.03
+   },
+   "total": {
+    "operaciones": 1149,
+    "acierto_pct": 30.2,
+    "esperanza_r": -0.683,
+    "total_r": -785.08,
+    "profit_factor": 0.27,
+    "max_drawdown_r": 789.8
+   },
+   "segundos": 2.3,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "EUR/USD",
+   "temporalidad": "5m",
+   "estrategia": "ruptura_rango",
+   "velas": 16988,
+   "desde": "2026-08-26",
+   "entrenamiento": {
+    "operaciones": 168,
+    "acierto_pct": 29.8,
+    "esperanza_r": -0.331,
+    "total_r": -55.64,
+    "profit_factor": 0.43,
+    "max_drawdown_r": 55.64
+   },
+   "prueba": {
+    "operaciones": 76,
+    "acierto_pct": 31.6,
+    "esperanza_r": -0.401,
+    "total_r": -30.47,
+    "profit_factor": 0.35,
+    "max_drawdown_r": 30.47
+   },
+   "total": {
+    "operaciones": 244,
+    "acierto_pct": 30.3,
+    "esperanza_r": -0.353,
+    "total_r": -86.11,
+    "profit_factor": 0.41,
+    "max_drawdown_r": 86.11
+   },
+   "segundos": 2.8,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "EUR/USD",
+   "temporalidad": "5m",
+   "estrategia": "reversion_bollinger",
+   "velas": 16988,
+   "desde": "2026-08-26",
+   "entrenamiento": {
+    "operaciones": 25,
+    "acierto_pct": 28.0,
+    "esperanza_r": -0.173,
+    "total_r": -4.33,
+    "profit_factor": 0.7,
+    "max_drawdown_r": 7.97
+   },
+   "prueba": {
+    "operaciones": 14,
+    "acierto_pct": 35.7,
+    "esperanza_r": -0.238,
+    "total_r": -3.33,
+    "profit_factor": 0.6,
+    "max_drawdown_r": 7.8
+   },
+   "total": {
+    "operaciones": 39,
+    "acierto_pct": 30.8,
+    "esperanza_r": -0.197,
+    "total_r": -7.67,
+    "profit_factor": 0.66,
+    "max_drawdown_r": 11.27
+   },
+   "segundos": 3.7,
+   "veredicto": "pocos datos"
+  },
+  {
+   "activo": "EUR/USD",
+   "temporalidad": "5m",
+   "estrategia": "cruce_ema",
+   "velas": 16988,
+   "desde": "2026-08-26",
+   "entrenamiento": {
+    "operaciones": 428,
+    "acierto_pct": 29.0,
+    "esperanza_r": -0.713,
+    "total_r": -305.08,
+    "profit_factor": 0.25,
+    "max_drawdown_r": 305.43
+   },
+   "prueba": {
+    "operaciones": 158,
+    "acierto_pct": 35.4,
+    "esperanza_r": -0.507,
+    "total_r": -80.05,
+    "profit_factor": 0.39,
+    "max_drawdown_r": 80.93
+   },
+   "total": {
+    "operaciones": 586,
+    "acierto_pct": 30.7,
+    "esperanza_r": -0.657,
+    "total_r": -385.13,
+    "profit_factor": 0.28,
+    "max_drawdown_r": 386.01
+   },
+   "segundos": 2.6,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "EUR/USD",
+   "temporalidad": "5m",
+   "estrategia": "envolvente_nivel",
+   "velas": 16988,
+   "desde": "2026-08-26",
+   "entrenamiento": {
+    "operaciones": 257,
+    "acierto_pct": 32.3,
+    "esperanza_r": -0.552,
+    "total_r": -141.94,
+    "profit_factor": 0.31,
+    "max_drawdown_r": 142.14
+   },
+   "prueba": {
+    "operaciones": 101,
+    "acierto_pct": 29.7,
+    "esperanza_r": -0.595,
+    "total_r": -60.15,
+    "profit_factor": 0.29,
+    "max_drawdown_r": 61.31
+   },
+   "total": {
+    "operaciones": 358,
+    "acierto_pct": 31.6,
+    "esperanza_r": -0.564,
+    "total_r": -202.09,
+    "profit_factor": 0.3,
+    "max_drawdown_r": 202.77
+   },
+   "segundos": 2.8,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "EUR/USD",
+   "temporalidad": "15m",
+   "estrategia": "tendencia_retroceso",
+   "velas": 5664,
+   "desde": "2026-08-26",
+   "entrenamiento": {
+    "operaciones": 301,
+    "acierto_pct": 33.2,
+    "esperanza_r": -0.383,
+    "total_r": -115.15,
+    "profit_factor": 0.48,
+    "max_drawdown_r": 115.15
+   },
+   "prueba": {
+    "operaciones": 113,
+    "acierto_pct": 40.7,
+    "esperanza_r": -0.234,
+    "total_r": -26.41,
+    "profit_factor": 0.63,
+    "max_drawdown_r": 36.73
+   },
+   "total": {
+    "operaciones": 414,
+    "acierto_pct": 35.3,
+    "esperanza_r": -0.342,
+    "total_r": -141.56,
+    "profit_factor": 0.52,
+    "max_drawdown_r": 144.1
+   },
+   "segundos": 0.7,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "EUR/USD",
+   "temporalidad": "15m",
+   "estrategia": "ruptura_rango",
+   "velas": 5664,
+   "desde": "2026-08-26",
+   "entrenamiento": {
+    "operaciones": 63,
+    "acierto_pct": 41.3,
+    "esperanza_r": -0.103,
+    "total_r": -6.5,
+    "profit_factor": 0.79,
+    "max_drawdown_r": 7.15
+   },
+   "prueba": {
+    "operaciones": 27,
+    "acierto_pct": 48.1,
+    "esperanza_r": -0.074,
+    "total_r": -2.01,
+    "profit_factor": 0.87,
+    "max_drawdown_r": 5.53
+   },
+   "total": {
+    "operaciones": 90,
+    "acierto_pct": 43.3,
+    "esperanza_r": -0.095,
+    "total_r": -8.51,
+    "profit_factor": 0.82,
+    "max_drawdown_r": 9.16
+   },
+   "segundos": 0.9,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "EUR/USD",
+   "temporalidad": "15m",
+   "estrategia": "reversion_bollinger",
+   "velas": 5664,
+   "desde": "2026-08-26",
+   "entrenamiento": {
+    "operaciones": 21,
+    "acierto_pct": 47.6,
+    "esperanza_r": 0.018,
+    "total_r": 0.38,
+    "profit_factor": 1.05,
+    "max_drawdown_r": 3.72
+   },
+   "prueba": {
+    "operaciones": 4,
+    "acierto_pct": 0.0,
+    "esperanza_r": -0.963,
+    "total_r": -3.85,
+    "profit_factor": 0.0,
+    "max_drawdown_r": 3.85
+   },
+   "total": {
+    "operaciones": 25,
+    "acierto_pct": 40.0,
+    "esperanza_r": -0.139,
+    "total_r": -3.47,
+    "profit_factor": 0.7,
+    "max_drawdown_r": 5.33
+   },
+   "segundos": 1.2,
+   "veredicto": "pocos datos"
+  },
+  {
+   "activo": "EUR/USD",
+   "temporalidad": "15m",
+   "estrategia": "cruce_ema",
+   "velas": 5664,
+   "desde": "2026-08-26",
+   "entrenamiento": {
+    "operaciones": 128,
+    "acierto_pct": 28.9,
+    "esperanza_r": -0.487,
+    "total_r": -62.37,
+    "profit_factor": 0.38,
+    "max_drawdown_r": 62.37
+   },
+   "prueba": {
+    "operaciones": 41,
+    "acierto_pct": 36.6,
+    "esperanza_r": -0.278,
+    "total_r": -11.39,
+    "profit_factor": 0.61,
+    "max_drawdown_r": 15.01
+   },
+   "total": {
+    "operaciones": 169,
+    "acierto_pct": 30.8,
+    "esperanza_r": -0.436,
+    "total_r": -73.76,
+    "profit_factor": 0.43,
+    "max_drawdown_r": 73.76
+   },
+   "segundos": 0.8,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "EUR/USD",
+   "temporalidad": "15m",
+   "estrategia": "envolvente_nivel",
+   "velas": 5664,
+   "desde": "2026-08-26",
+   "entrenamiento": {
+    "operaciones": 95,
+    "acierto_pct": 38.9,
+    "esperanza_r": -0.321,
+    "total_r": -30.45,
+    "profit_factor": 0.51,
+    "max_drawdown_r": 30.47
+   },
+   "prueba": {
+    "operaciones": 33,
+    "acierto_pct": 27.3,
+    "esperanza_r": -0.345,
+    "total_r": -11.38,
+    "profit_factor": 0.43,
+    "max_drawdown_r": 12.37
+   },
+   "total": {
+    "operaciones": 128,
+    "acierto_pct": 35.9,
+    "esperanza_r": -0.327,
+    "total_r": -41.83,
+    "profit_factor": 0.49,
+    "max_drawdown_r": 42.82
+   },
+   "segundos": 0.9,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "EUR/USD",
+   "temporalidad": "1h",
+   "estrategia": "tendencia_retroceso",
+   "velas": 17260,
+   "desde": "2024-02-01",
+   "entrenamiento": {
+    "operaciones": 876,
+    "acierto_pct": 41.8,
+    "esperanza_r": -0.087,
+    "total_r": -76.29,
+    "profit_factor": 0.86,
+    "max_drawdown_r": 83.04
+   },
+   "prueba": {
+    "operaciones": 366,
+    "acierto_pct": 41.8,
+    "esperanza_r": -0.091,
+    "total_r": -33.48,
+    "profit_factor": 0.85,
+    "max_drawdown_r": 46.53
+   },
+   "total": {
+    "operaciones": 1242,
+    "acierto_pct": 41.8,
+    "esperanza_r": -0.088,
+    "total_r": -109.77,
+    "profit_factor": 0.85,
+    "max_drawdown_r": 121.75
+   },
+   "segundos": 1.9,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "EUR/USD",
+   "temporalidad": "1h",
+   "estrategia": "ruptura_rango",
+   "velas": 17260,
+   "desde": "2024-02-01",
+   "entrenamiento": {
+    "operaciones": 326,
+    "acierto_pct": 43.9,
+    "esperanza_r": -0.077,
+    "total_r": -24.98,
+    "profit_factor": 0.86,
+    "max_drawdown_r": 26.82
+   },
+   "prueba": {
+    "operaciones": 129,
+    "acierto_pct": 49.6,
+    "esperanza_r": 0.055,
+    "total_r": 7.15,
+    "profit_factor": 1.12,
+    "max_drawdown_r": 12.58
+   },
+   "total": {
+    "operaciones": 455,
+    "acierto_pct": 45.5,
+    "esperanza_r": -0.039,
+    "total_r": -17.83,
+    "profit_factor": 0.93,
+    "max_drawdown_r": 28.86
+   },
+   "segundos": 2.6,
+   "veredicto": "marginal"
+  },
+  {
+   "activo": "EUR/USD",
+   "temporalidad": "1h",
+   "estrategia": "reversion_bollinger",
+   "velas": 17260,
+   "desde": "2024-02-01",
+   "entrenamiento": {
+    "operaciones": 56,
+    "acierto_pct": 48.2,
+    "esperanza_r": -0.003,
+    "total_r": -0.18,
+    "profit_factor": 0.99,
+    "max_drawdown_r": 7.96
+   },
+   "prueba": {
+    "operaciones": 23,
+    "acierto_pct": 47.8,
+    "esperanza_r": 0.181,
+    "total_r": 4.16,
+    "profit_factor": 1.31,
+    "max_drawdown_r": 4.57
+   },
+   "total": {
+    "operaciones": 79,
+    "acierto_pct": 48.1,
+    "esperanza_r": 0.05,
+    "total_r": 3.98,
+    "profit_factor": 1.1,
+    "max_drawdown_r": 7.96
+   },
+   "segundos": 3.8,
+   "veredicto": "APTA"
+  },
+  {
+   "activo": "EUR/USD",
+   "temporalidad": "1h",
+   "estrategia": "cruce_ema",
+   "velas": 17260,
+   "desde": "2024-02-01",
+   "entrenamiento": {
+    "operaciones": 354,
+    "acierto_pct": 40.4,
+    "esperanza_r": -0.123,
+    "total_r": -43.65,
+    "profit_factor": 0.8,
+    "max_drawdown_r": 55.38
+   },
+   "prueba": {
+    "operaciones": 165,
+    "acierto_pct": 42.4,
+    "esperanza_r": -0.086,
+    "total_r": -14.16,
+    "profit_factor": 0.86,
+    "max_drawdown_r": 18.47
+   },
+   "total": {
+    "operaciones": 519,
+    "acierto_pct": 41.0,
+    "esperanza_r": -0.111,
+    "total_r": -57.8,
+    "profit_factor": 0.82,
+    "max_drawdown_r": 61.2
+   },
+   "segundos": 2.5,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "EUR/USD",
+   "temporalidad": "1h",
+   "estrategia": "envolvente_nivel",
+   "velas": 17260,
+   "desde": "2024-02-01",
+   "entrenamiento": {
+    "operaciones": 281,
+    "acierto_pct": 42.7,
+    "esperanza_r": -0.131,
+    "total_r": -36.79,
+    "profit_factor": 0.76,
+    "max_drawdown_r": 42.03
+   },
+   "prueba": {
+    "operaciones": 115,
+    "acierto_pct": 41.7,
+    "esperanza_r": -0.186,
+    "total_r": -21.34,
+    "profit_factor": 0.7,
+    "max_drawdown_r": 24.91
+   },
+   "total": {
+    "operaciones": 396,
+    "acierto_pct": 42.4,
+    "esperanza_r": -0.147,
+    "total_r": -58.13,
+    "profit_factor": 0.74,
+    "max_drawdown_r": 62.38
+   },
+   "segundos": 2.6,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "GBP/USD",
+   "temporalidad": "5m",
+   "estrategia": "tendencia_retroceso",
+   "velas": 16991,
+   "desde": "2026-08-26",
+   "entrenamiento": {
+    "operaciones": 970,
+    "acierto_pct": 27.1,
+    "esperanza_r": -0.896,
+    "total_r": -869.53,
+    "profit_factor": 0.18,
+    "max_drawdown_r": 871.51
+   },
+   "prueba": {
+    "operaciones": 395,
+    "acierto_pct": 35.9,
+    "esperanza_r": -0.624,
+    "total_r": -246.49,
+    "profit_factor": 0.3,
+    "max_drawdown_r": 246.49
+   },
+   "total": {
+    "operaciones": 1365,
+    "acierto_pct": 29.7,
+    "esperanza_r": -0.818,
+    "total_r": -1116.02,
+    "profit_factor": 0.21,
+    "max_drawdown_r": 1116.02
+   },
+   "segundos": 2.1,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "GBP/USD",
+   "temporalidad": "5m",
+   "estrategia": "ruptura_rango",
+   "velas": 16991,
+   "desde": "2026-08-26",
+   "entrenamiento": {
+    "operaciones": 204,
+    "acierto_pct": 31.4,
+    "esperanza_r": -0.665,
+    "total_r": -135.72,
+    "profit_factor": 0.21,
+    "max_drawdown_r": 135.72
+   },
+   "prueba": {
+    "operaciones": 57,
+    "acierto_pct": 35.1,
+    "esperanza_r": -0.531,
+    "total_r": -30.24,
+    "profit_factor": 0.28,
+    "max_drawdown_r": 32.22
+   },
+   "total": {
+    "operaciones": 261,
+    "acierto_pct": 32.2,
+    "esperanza_r": -0.636,
+    "total_r": -165.97,
+    "profit_factor": 0.22,
+    "max_drawdown_r": 166.88
+   },
+   "segundos": 2.8,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "GBP/USD",
+   "temporalidad": "5m",
+   "estrategia": "reversion_bollinger",
+   "velas": 16991,
+   "desde": "2026-08-26",
+   "entrenamiento": {
+    "operaciones": 45,
+    "acierto_pct": 37.8,
+    "esperanza_r": -0.332,
+    "total_r": -14.95,
+    "profit_factor": 0.51,
+    "max_drawdown_r": 17.8
+   },
+   "prueba": {
+    "operaciones": 14,
+    "acierto_pct": 28.6,
+    "esperanza_r": -0.617,
+    "total_r": -8.64,
+    "profit_factor": 0.25,
+    "max_drawdown_r": 8.86
+   },
+   "total": {
+    "operaciones": 59,
+    "acierto_pct": 35.6,
+    "esperanza_r": -0.4,
+    "total_r": -23.58,
+    "profit_factor": 0.44,
+    "max_drawdown_r": 25.42
+   },
+   "segundos": 3.8,
+   "veredicto": "pocos datos"
+  },
+  {
+   "activo": "GBP/USD",
+   "temporalidad": "5m",
+   "estrategia": "cruce_ema",
+   "velas": 16991,
+   "desde": "2026-08-26",
+   "entrenamiento": {
+    "operaciones": 439,
+    "acierto_pct": 26.4,
+    "esperanza_r": -0.899,
+    "total_r": -394.47,
+    "profit_factor": 0.17,
+    "max_drawdown_r": 394.7
+   },
+   "prueba": {
+    "operaciones": 188,
+    "acierto_pct": 41.5,
+    "esperanza_r": -0.512,
+    "total_r": -96.23,
+    "profit_factor": 0.37,
+    "max_drawdown_r": 98.31
+   },
+   "total": {
+    "operaciones": 627,
+    "acierto_pct": 30.9,
+    "esperanza_r": -0.783,
+    "total_r": -490.69,
+    "profit_factor": 0.22,
+    "max_drawdown_r": 491.71
+   },
+   "segundos": 2.6,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "GBP/USD",
+   "temporalidad": "5m",
+   "estrategia": "envolvente_nivel",
+   "velas": 16991,
+   "desde": "2026-08-26",
+   "entrenamiento": {
+    "operaciones": 198,
+    "acierto_pct": 29.3,
+    "esperanza_r": -0.775,
+    "total_r": -153.42,
+    "profit_factor": 0.2,
+    "max_drawdown_r": 154.21
+   },
+   "prueba": {
+    "operaciones": 80,
+    "acierto_pct": 43.8,
+    "esperanza_r": -0.439,
+    "total_r": -35.15,
+    "profit_factor": 0.42,
+    "max_drawdown_r": 36.32
+   },
+   "total": {
+    "operaciones": 278,
+    "acierto_pct": 33.5,
+    "esperanza_r": -0.678,
+    "total_r": -188.57,
+    "profit_factor": 0.25,
+    "max_drawdown_r": 189.73
+   },
+   "segundos": 2.9,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "GBP/USD",
+   "temporalidad": "15m",
+   "estrategia": "tendencia_retroceso",
+   "velas": 5665,
+   "desde": "2026-08-26",
+   "entrenamiento": {
+    "operaciones": 334,
+    "acierto_pct": 33.5,
+    "esperanza_r": -0.517,
+    "total_r": -172.83,
+    "profit_factor": 0.37,
+    "max_drawdown_r": 175.3
+   },
+   "prueba": {
+    "operaciones": 128,
+    "acierto_pct": 41.4,
+    "esperanza_r": -0.226,
+    "total_r": -28.88,
+    "profit_factor": 0.66,
+    "max_drawdown_r": 30.14
+   },
+   "total": {
+    "operaciones": 462,
+    "acierto_pct": 35.7,
+    "esperanza_r": -0.437,
+    "total_r": -201.71,
+    "profit_factor": 0.44,
+    "max_drawdown_r": 204.21
+   },
+   "segundos": 0.6,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "GBP/USD",
+   "temporalidad": "15m",
+   "estrategia": "ruptura_rango",
+   "velas": 5665,
+   "desde": "2026-08-26",
+   "entrenamiento": {
+    "operaciones": 79,
+    "acierto_pct": 27.8,
+    "esperanza_r": -0.484,
+    "total_r": -38.22,
+    "profit_factor": 0.33,
+    "max_drawdown_r": 39.13
+   },
+   "prueba": {
+    "operaciones": 32,
+    "acierto_pct": 50.0,
+    "esperanza_r": -0.104,
+    "total_r": -3.31,
+    "profit_factor": 0.8,
+    "max_drawdown_r": 8.36
+   },
+   "total": {
+    "operaciones": 111,
+    "acierto_pct": 34.2,
+    "esperanza_r": -0.374,
+    "total_r": -41.53,
+    "profit_factor": 0.44,
+    "max_drawdown_r": 43.18
+   },
+   "segundos": 0.9,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "GBP/USD",
+   "temporalidad": "15m",
+   "estrategia": "reversion_bollinger",
+   "velas": 5665,
+   "desde": "2026-08-26",
+   "entrenamiento": {
+    "operaciones": 15,
+    "acierto_pct": 46.7,
+    "esperanza_r": -0.032,
+    "total_r": -0.48,
+    "profit_factor": 0.94,
+    "max_drawdown_r": 3.97
+   },
+   "prueba": {
+    "operaciones": 8,
+    "acierto_pct": 25.0,
+    "esperanza_r": -0.504,
+    "total_r": -4.03,
+    "profit_factor": 0.39,
+    "max_drawdown_r": 6.61
+   },
+   "total": {
+    "operaciones": 23,
+    "acierto_pct": 39.1,
+    "esperanza_r": -0.196,
+    "total_r": -4.51,
+    "profit_factor": 0.68,
+    "max_drawdown_r": 6.61
+   },
+   "segundos": 1.2,
+   "veredicto": "pocos datos"
+  },
+  {
+   "activo": "GBP/USD",
+   "temporalidad": "15m",
+   "estrategia": "cruce_ema",
+   "velas": 5665,
+   "desde": "2026-08-26",
+   "entrenamiento": {
+    "operaciones": 131,
+    "acierto_pct": 32.8,
+    "esperanza_r": -0.509,
+    "total_r": -66.65,
+    "profit_factor": 0.38,
+    "max_drawdown_r": 67.88
+   },
+   "prueba": {
+    "operaciones": 46,
+    "acierto_pct": 52.2,
+    "esperanza_r": -0.069,
+    "total_r": -3.19,
+    "profit_factor": 0.88,
+    "max_drawdown_r": 8.82
+   },
+   "total": {
+    "operaciones": 177,
+    "acierto_pct": 37.9,
+    "esperanza_r": -0.395,
+    "total_r": -69.83,
+    "profit_factor": 0.48,
+    "max_drawdown_r": 71.1
+   },
+   "segundos": 0.8,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "GBP/USD",
+   "temporalidad": "15m",
+   "estrategia": "envolvente_nivel",
+   "velas": 5665,
+   "desde": "2026-08-26",
+   "entrenamiento": {
+    "operaciones": 61,
+    "acierto_pct": 42.6,
+    "esperanza_r": -0.219,
+    "total_r": -13.38,
+    "profit_factor": 0.66,
+    "max_drawdown_r": 18.26
+   },
+   "prueba": {
+    "operaciones": 49,
+    "acierto_pct": 38.8,
+    "esperanza_r": -0.388,
+    "total_r": -19.03,
+    "profit_factor": 0.46,
+    "max_drawdown_r": 20.41
+   },
+   "total": {
+    "operaciones": 110,
+    "acierto_pct": 40.9,
+    "esperanza_r": -0.295,
+    "total_r": -32.41,
+    "profit_factor": 0.57,
+    "max_drawdown_r": 33.89
+   },
+   "segundos": 0.9,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "GBP/USD",
+   "temporalidad": "1h",
+   "estrategia": "tendencia_retroceso",
+   "velas": 17263,
+   "desde": "2024-02-01",
+   "entrenamiento": {
+    "operaciones": 896,
+    "acierto_pct": 39.6,
+    "esperanza_r": -0.162,
+    "total_r": -145.46,
+    "profit_factor": 0.75,
+    "max_drawdown_r": 148.65
+   },
+   "prueba": {
+    "operaciones": 391,
+    "acierto_pct": 38.9,
+    "esperanza_r": -0.155,
+    "total_r": -60.69,
+    "profit_factor": 0.75,
+    "max_drawdown_r": 66.36
+   },
+   "total": {
+    "operaciones": 1287,
+    "acierto_pct": 39.4,
+    "esperanza_r": -0.16,
+    "total_r": -206.15,
+    "profit_factor": 0.75,
+    "max_drawdown_r": 211.82
+   },
+   "segundos": 1.9,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "GBP/USD",
+   "temporalidad": "1h",
+   "estrategia": "ruptura_rango",
+   "velas": 17263,
+   "desde": "2024-02-01",
+   "entrenamiento": {
+    "operaciones": 368,
+    "acierto_pct": 43.5,
+    "esperanza_r": -0.092,
+    "total_r": -33.71,
+    "profit_factor": 0.84,
+    "max_drawdown_r": 38.08
+   },
+   "prueba": {
+    "operaciones": 138,
+    "acierto_pct": 44.9,
+    "esperanza_r": -0.067,
+    "total_r": -9.29,
+    "profit_factor": 0.88,
+    "max_drawdown_r": 17.24
+   },
+   "total": {
+    "operaciones": 506,
+    "acierto_pct": 43.9,
+    "esperanza_r": -0.085,
+    "total_r": -43.01,
+    "profit_factor": 0.85,
+    "max_drawdown_r": 47.22
+   },
+   "segundos": 2.5,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "GBP/USD",
+   "temporalidad": "1h",
+   "estrategia": "reversion_bollinger",
+   "velas": 17263,
+   "desde": "2024-02-01",
+   "entrenamiento": {
+    "operaciones": 48,
+    "acierto_pct": 43.8,
+    "esperanza_r": -0.018,
+    "total_r": -0.86,
+    "profit_factor": 0.96,
+    "max_drawdown_r": 7.95
+   },
+   "prueba": {
+    "operaciones": 23,
+    "acierto_pct": 69.6,
+    "esperanza_r": 0.446,
+    "total_r": 10.26,
+    "profit_factor": 2.83,
+    "max_drawdown_r": 2.57
+   },
+   "total": {
+    "operaciones": 71,
+    "acierto_pct": 52.1,
+    "esperanza_r": 0.132,
+    "total_r": 9.4,
+    "profit_factor": 1.33,
+    "max_drawdown_r": 7.95
+   },
+   "segundos": 3.8,
+   "veredicto": "APTA"
+  },
+  {
+   "activo": "GBP/USD",
+   "temporalidad": "1h",
+   "estrategia": "cruce_ema",
+   "velas": 17263,
+   "desde": "2024-02-01",
+   "entrenamiento": {
+    "operaciones": 369,
+    "acierto_pct": 39.3,
+    "esperanza_r": -0.159,
+    "total_r": -58.56,
+    "profit_factor": 0.75,
+    "max_drawdown_r": 62.31
+   },
+   "prueba": {
+    "operaciones": 157,
+    "acierto_pct": 40.1,
+    "esperanza_r": -0.11,
+    "total_r": -17.34,
+    "profit_factor": 0.82,
+    "max_drawdown_r": 21.32
+   },
+   "total": {
+    "operaciones": 526,
+    "acierto_pct": 39.5,
+    "esperanza_r": -0.144,
+    "total_r": -75.9,
+    "profit_factor": 0.77,
+    "max_drawdown_r": 81.24
+   },
+   "segundos": 2.5,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "GBP/USD",
+   "temporalidad": "1h",
+   "estrategia": "envolvente_nivel",
+   "velas": 17263,
+   "desde": "2024-02-01",
+   "entrenamiento": {
+    "operaciones": 204,
+    "acierto_pct": 49.0,
+    "esperanza_r": -0.015,
+    "total_r": -3.13,
+    "profit_factor": 0.97,
+    "max_drawdown_r": 13.78
+   },
+   "prueba": {
+    "operaciones": 88,
+    "acierto_pct": 46.6,
+    "esperanza_r": 0.003,
+    "total_r": 0.22,
+    "profit_factor": 1.0,
+    "max_drawdown_r": 19.7
+   },
+   "total": {
+    "operaciones": 292,
+    "acierto_pct": 48.3,
+    "esperanza_r": -0.01,
+    "total_r": -2.9,
+    "profit_factor": 0.98,
+    "max_drawdown_r": 19.7
+   },
+   "segundos": 2.7,
+   "veredicto": "marginal"
+  },
+  {
+   "activo": "USD/JPY",
+   "temporalidad": "5m",
+   "estrategia": "tendencia_retroceso",
+   "velas": 16922,
+   "desde": "2026-08-26",
+   "entrenamiento": {
+    "operaciones": 1005,
+    "acierto_pct": 36.6,
+    "esperanza_r": -0.307,
+    "total_r": -308.4,
+    "profit_factor": 0.51,
+    "max_drawdown_r": 317.2
+   },
+   "prueba": {
+    "operaciones": 469,
+    "acierto_pct": 31.1,
+    "esperanza_r": -0.451,
+    "total_r": -211.49,
+    "profit_factor": 0.36,
+    "max_drawdown_r": 211.68
+   },
+   "total": {
+    "operaciones": 1474,
+    "acierto_pct": 34.9,
+    "esperanza_r": -0.353,
+    "total_r": -519.88,
+    "profit_factor": 0.46,
+    "max_drawdown_r": 520.08
+   },
+   "segundos": 1.9,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "USD/JPY",
+   "temporalidad": "5m",
+   "estrategia": "ruptura_rango",
+   "velas": 16922,
+   "desde": "2026-08-26",
+   "entrenamiento": {
+    "operaciones": 331,
+    "acierto_pct": 38.1,
+    "esperanza_r": -0.241,
+    "total_r": -79.88,
+    "profit_factor": 0.54,
+    "max_drawdown_r": 87.37
+   },
+   "prueba": {
+    "operaciones": 139,
+    "acierto_pct": 37.4,
+    "esperanza_r": -0.244,
+    "total_r": -33.98,
+    "profit_factor": 0.53,
+    "max_drawdown_r": 33.98
+   },
+   "total": {
+    "operaciones": 470,
+    "acierto_pct": 37.9,
+    "esperanza_r": -0.242,
+    "total_r": -113.86,
+    "profit_factor": 0.54,
+    "max_drawdown_r": 116.3
+   },
+   "segundos": 2.6,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "USD/JPY",
+   "temporalidad": "5m",
+   "estrategia": "reversion_bollinger",
+   "velas": 16922,
+   "desde": "2026-08-26",
+   "entrenamiento": {
+    "operaciones": 67,
+    "acierto_pct": 35.8,
+    "esperanza_r": -0.379,
+    "total_r": -25.38,
+    "profit_factor": 0.44,
+    "max_drawdown_r": 26.13
+   },
+   "prueba": {
+    "operaciones": 29,
+    "acierto_pct": 37.9,
+    "esperanza_r": -0.342,
+    "total_r": -9.92,
+    "profit_factor": 0.46,
+    "max_drawdown_r": 11.04
+   },
+   "total": {
+    "operaciones": 96,
+    "acierto_pct": 36.5,
+    "esperanza_r": -0.368,
+    "total_r": -35.29,
+    "profit_factor": 0.45,
+    "max_drawdown_r": 37.17
+   },
+   "segundos": 3.9,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "USD/JPY",
+   "temporalidad": "5m",
+   "estrategia": "cruce_ema",
+   "velas": 16922,
+   "desde": "2026-08-26",
+   "entrenamiento": {
+    "operaciones": 364,
+    "acierto_pct": 37.9,
+    "esperanza_r": -0.251,
+    "total_r": -91.4,
+    "profit_factor": 0.58,
+    "max_drawdown_r": 95.56
+   },
+   "prueba": {
+    "operaciones": 188,
+    "acierto_pct": 34.0,
+    "esperanza_r": -0.376,
+    "total_r": -70.78,
+    "profit_factor": 0.46,
+    "max_drawdown_r": 70.78
+   },
+   "total": {
+    "operaciones": 552,
+    "acierto_pct": 36.6,
+    "esperanza_r": -0.294,
+    "total_r": -162.18,
+    "profit_factor": 0.53,
+    "max_drawdown_r": 162.27
+   },
+   "segundos": 2.5,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "USD/JPY",
+   "temporalidad": "5m",
+   "estrategia": "envolvente_nivel",
+   "velas": 16922,
+   "desde": "2026-08-26",
+   "entrenamiento": {
+    "operaciones": 293,
+    "acierto_pct": 37.2,
+    "esperanza_r": -0.329,
+    "total_r": -96.4,
+    "profit_factor": 0.45,
+    "max_drawdown_r": 103.39
+   },
+   "prueba": {
+    "operaciones": 131,
+    "acierto_pct": 36.6,
+    "esperanza_r": -0.336,
+    "total_r": -44.05,
+    "profit_factor": 0.45,
+    "max_drawdown_r": 46.74
+   },
+   "total": {
+    "operaciones": 424,
+    "acierto_pct": 37.0,
+    "esperanza_r": -0.331,
+    "total_r": -140.44,
+    "profit_factor": 0.45,
+    "max_drawdown_r": 143.23
+   },
+   "segundos": 2.7,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "USD/JPY",
+   "temporalidad": "15m",
+   "estrategia": "tendencia_retroceso",
+   "velas": 5645,
+   "desde": "2026-08-26",
+   "entrenamiento": {
+    "operaciones": 313,
+    "acierto_pct": 41.2,
+    "esperanza_r": -0.156,
+    "total_r": -48.95,
+    "profit_factor": 0.73,
+    "max_drawdown_r": 51.63
+   },
+   "prueba": {
+    "operaciones": 154,
+    "acierto_pct": 33.1,
+    "esperanza_r": -0.382,
+    "total_r": -58.78,
+    "profit_factor": 0.45,
+    "max_drawdown_r": 61.76
+   },
+   "total": {
+    "operaciones": 467,
+    "acierto_pct": 38.5,
+    "esperanza_r": -0.231,
+    "total_r": -107.72,
+    "profit_factor": 0.62,
+    "max_drawdown_r": 110.15
+   },
+   "segundos": 0.6,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "USD/JPY",
+   "temporalidad": "15m",
+   "estrategia": "ruptura_rango",
+   "velas": 5645,
+   "desde": "2026-08-26",
+   "entrenamiento": {
+    "operaciones": 120,
+    "acierto_pct": 42.5,
+    "esperanza_r": -0.13,
+    "total_r": -15.58,
+    "profit_factor": 0.75,
+    "max_drawdown_r": 16.77
+   },
+   "prueba": {
+    "operaciones": 48,
+    "acierto_pct": 39.6,
+    "esperanza_r": -0.202,
+    "total_r": -9.7,
+    "profit_factor": 0.64,
+    "max_drawdown_r": 10.6
+   },
+   "total": {
+    "operaciones": 168,
+    "acierto_pct": 41.7,
+    "esperanza_r": -0.15,
+    "total_r": -25.28,
+    "profit_factor": 0.72,
+    "max_drawdown_r": 27.02
+   },
+   "segundos": 0.8,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "USD/JPY",
+   "temporalidad": "15m",
+   "estrategia": "reversion_bollinger",
+   "velas": 5645,
+   "desde": "2026-08-26",
+   "entrenamiento": {
+    "operaciones": 20,
+    "acierto_pct": 50.0,
+    "esperanza_r": -0.056,
+    "total_r": -1.13,
+    "profit_factor": 0.9,
+    "max_drawdown_r": 5.49
+   },
+   "prueba": {
+    "operaciones": 7,
+    "acierto_pct": 57.1,
+    "esperanza_r": 0.017,
+    "total_r": 0.12,
+    "profit_factor": 1.03,
+    "max_drawdown_r": 2.98
+   },
+   "total": {
+    "operaciones": 27,
+    "acierto_pct": 51.9,
+    "esperanza_r": -0.038,
+    "total_r": -1.01,
+    "profit_factor": 0.93,
+    "max_drawdown_r": 7.24
+   },
+   "segundos": 1.3,
+   "veredicto": "pocos datos"
+  },
+  {
+   "activo": "USD/JPY",
+   "temporalidad": "15m",
+   "estrategia": "cruce_ema",
+   "velas": 5645,
+   "desde": "2026-08-26",
+   "entrenamiento": {
+    "operaciones": 129,
+    "acierto_pct": 41.1,
+    "esperanza_r": -0.175,
+    "total_r": -22.62,
+    "profit_factor": 0.71,
+    "max_drawdown_r": 24.08
+   },
+   "prueba": {
+    "operaciones": 68,
+    "acierto_pct": 36.8,
+    "esperanza_r": -0.309,
+    "total_r": -21.03,
+    "profit_factor": 0.52,
+    "max_drawdown_r": 24.58
+   },
+   "total": {
+    "operaciones": 197,
+    "acierto_pct": 39.6,
+    "esperanza_r": -0.222,
+    "total_r": -43.65,
+    "profit_factor": 0.64,
+    "max_drawdown_r": 46.04
+   },
+   "segundos": 0.8,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "USD/JPY",
+   "temporalidad": "15m",
+   "estrategia": "envolvente_nivel",
+   "velas": 5645,
+   "desde": "2026-08-26",
+   "entrenamiento": {
+    "operaciones": 94,
+    "acierto_pct": 52.1,
+    "esperanza_r": -0.028,
+    "total_r": -2.62,
+    "profit_factor": 0.94,
+    "max_drawdown_r": 14.51
+   },
+   "prueba": {
+    "operaciones": 49,
+    "acierto_pct": 63.3,
+    "esperanza_r": 0.064,
+    "total_r": 3.16,
+    "profit_factor": 1.17,
+    "max_drawdown_r": 3.25
+   },
+   "total": {
+    "operaciones": 143,
+    "acierto_pct": 55.9,
+    "esperanza_r": 0.004,
+    "total_r": 0.53,
+    "profit_factor": 1.01,
+    "max_drawdown_r": 14.51
+   },
+   "segundos": 0.9,
+   "veredicto": "marginal"
+  },
+  {
+   "activo": "USD/JPY",
+   "temporalidad": "1h",
+   "estrategia": "tendencia_retroceso",
+   "velas": 17164,
+   "desde": "2024-02-01",
+   "entrenamiento": {
+    "operaciones": 849,
+    "acierto_pct": 43.1,
+    "esperanza_r": -0.031,
+    "total_r": -25.9,
+    "profit_factor": 0.95,
+    "max_drawdown_r": 31.22
+   },
+   "prueba": {
+    "operaciones": 384,
+    "acierto_pct": 40.4,
+    "esperanza_r": -0.115,
+    "total_r": -44.0,
+    "profit_factor": 0.81,
+    "max_drawdown_r": 49.73
+   },
+   "total": {
+    "operaciones": 1233,
+    "acierto_pct": 42.3,
+    "esperanza_r": -0.057,
+    "total_r": -69.9,
+    "profit_factor": 0.9,
+    "max_drawdown_r": 69.9
+   },
+   "segundos": 1.8,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "USD/JPY",
+   "temporalidad": "1h",
+   "estrategia": "ruptura_rango",
+   "velas": 17164,
+   "desde": "2024-02-01",
+   "entrenamiento": {
+    "operaciones": 278,
+    "acierto_pct": 43.9,
+    "esperanza_r": -0.027,
+    "total_r": -7.57,
+    "profit_factor": 0.95,
+    "max_drawdown_r": 17.1
+   },
+   "prueba": {
+    "operaciones": 138,
+    "acierto_pct": 45.7,
+    "esperanza_r": -0.068,
+    "total_r": -9.43,
+    "profit_factor": 0.87,
+    "max_drawdown_r": 19.42
+   },
+   "total": {
+    "operaciones": 416,
+    "acierto_pct": 44.5,
+    "esperanza_r": -0.041,
+    "total_r": -17.0,
+    "profit_factor": 0.92,
+    "max_drawdown_r": 33.71
+   },
+   "segundos": 2.5,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "USD/JPY",
+   "temporalidad": "1h",
+   "estrategia": "reversion_bollinger",
+   "velas": 17164,
+   "desde": "2024-02-01",
+   "entrenamiento": {
+    "operaciones": 77,
+    "acierto_pct": 41.6,
+    "esperanza_r": -0.026,
+    "total_r": -2.01,
+    "profit_factor": 0.95,
+    "max_drawdown_r": 13.93
+   },
+   "prueba": {
+    "operaciones": 16,
+    "acierto_pct": 37.5,
+    "esperanza_r": -0.1,
+    "total_r": -1.6,
+    "profit_factor": 0.84,
+    "max_drawdown_r": 8.76
+   },
+   "total": {
+    "operaciones": 93,
+    "acierto_pct": 40.9,
+    "esperanza_r": -0.039,
+    "total_r": -3.62,
+    "profit_factor": 0.93,
+    "max_drawdown_r": 15.76
+   },
+   "segundos": 3.8,
+   "veredicto": "pocos datos"
+  },
+  {
+   "activo": "USD/JPY",
+   "temporalidad": "1h",
+   "estrategia": "cruce_ema",
+   "velas": 17164,
+   "desde": "2024-02-01",
+   "entrenamiento": {
+    "operaciones": 327,
+    "acierto_pct": 43.4,
+    "esperanza_r": -0.0,
+    "total_r": -0.09,
+    "profit_factor": 1.0,
+    "max_drawdown_r": 19.41
+   },
+   "prueba": {
+    "operaciones": 153,
+    "acierto_pct": 38.6,
+    "esperanza_r": -0.159,
+    "total_r": -24.38,
+    "profit_factor": 0.75,
+    "max_drawdown_r": 26.81
+   },
+   "total": {
+    "operaciones": 480,
+    "acierto_pct": 41.9,
+    "esperanza_r": -0.051,
+    "total_r": -24.47,
+    "profit_factor": 0.91,
+    "max_drawdown_r": 33.28
+   },
+   "segundos": 2.5,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "USD/JPY",
+   "temporalidad": "1h",
+   "estrategia": "envolvente_nivel",
+   "velas": 17164,
+   "desde": "2024-02-01",
+   "entrenamiento": {
+    "operaciones": 243,
+    "acierto_pct": 39.1,
+    "esperanza_r": -0.148,
+    "total_r": -35.97,
+    "profit_factor": 0.75,
+    "max_drawdown_r": 37.93
+   },
+   "prueba": {
+    "operaciones": 110,
+    "acierto_pct": 49.1,
+    "esperanza_r": -0.018,
+    "total_r": -1.93,
+    "profit_factor": 0.96,
+    "max_drawdown_r": 15.22
+   },
+   "total": {
+    "operaciones": 353,
+    "acierto_pct": 42.2,
+    "esperanza_r": -0.107,
+    "total_r": -37.9,
+    "profit_factor": 0.81,
+    "max_drawdown_r": 44.64
+   },
+   "segundos": 2.7,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "XAU/USD",
+   "temporalidad": "5m",
+   "estrategia": "tendencia_retroceso",
+   "velas": 13663,
+   "desde": "2026-09-10",
+   "entrenamiento": {
+    "operaciones": 802,
+    "acierto_pct": 39.9,
+    "esperanza_r": -0.217,
+    "total_r": -174.02,
+    "profit_factor": 0.63,
+    "max_drawdown_r": 178.69
+   },
+   "prueba": {
+    "operaciones": 350,
+    "acierto_pct": 38.9,
+    "esperanza_r": -0.28,
+    "total_r": -97.93,
+    "profit_factor": 0.57,
+    "max_drawdown_r": 104.43
+   },
+   "total": {
+    "operaciones": 1152,
+    "acierto_pct": 39.6,
+    "esperanza_r": -0.236,
+    "total_r": -271.94,
+    "profit_factor": 0.61,
+    "max_drawdown_r": 280.8
+   },
+   "segundos": 1.6,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "XAU/USD",
+   "temporalidad": "5m",
+   "estrategia": "ruptura_rango",
+   "velas": 13663,
+   "desde": "2026-09-10",
+   "entrenamiento": {
+    "operaciones": 231,
+    "acierto_pct": 41.1,
+    "esperanza_r": -0.218,
+    "total_r": -50.3,
+    "profit_factor": 0.57,
+    "max_drawdown_r": 51.72
+   },
+   "prueba": {
+    "operaciones": 91,
+    "acierto_pct": 31.9,
+    "esperanza_r": -0.262,
+    "total_r": -23.84,
+    "profit_factor": 0.5,
+    "max_drawdown_r": 25.12
+   },
+   "total": {
+    "operaciones": 322,
+    "acierto_pct": 38.5,
+    "esperanza_r": -0.23,
+    "total_r": -74.15,
+    "profit_factor": 0.55,
+    "max_drawdown_r": 75.56
+   },
+   "segundos": 2.1,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "XAU/USD",
+   "temporalidad": "5m",
+   "estrategia": "reversion_bollinger",
+   "velas": 13663,
+   "desde": "2026-09-10",
+   "entrenamiento": {
+    "operaciones": 48,
+    "acierto_pct": 47.9,
+    "esperanza_r": -0.062,
+    "total_r": -2.96,
+    "profit_factor": 0.88,
+    "max_drawdown_r": 11.68
+   },
+   "prueba": {
+    "operaciones": 17,
+    "acierto_pct": 41.2,
+    "esperanza_r": -0.083,
+    "total_r": -1.41,
+    "profit_factor": 0.84,
+    "max_drawdown_r": 4.47
+   },
+   "total": {
+    "operaciones": 65,
+    "acierto_pct": 46.2,
+    "esperanza_r": -0.067,
+    "total_r": -4.37,
+    "profit_factor": 0.87,
+    "max_drawdown_r": 11.68
+   },
+   "segundos": 3.1,
+   "veredicto": "pocos datos"
+  },
+  {
+   "activo": "XAU/USD",
+   "temporalidad": "5m",
+   "estrategia": "cruce_ema",
+   "velas": 13663,
+   "desde": "2026-09-10",
+   "entrenamiento": {
+    "operaciones": 324,
+    "acierto_pct": 38.3,
+    "esperanza_r": -0.217,
+    "total_r": -70.4,
+    "profit_factor": 0.63,
+    "max_drawdown_r": 72.91
+   },
+   "prueba": {
+    "operaciones": 146,
+    "acierto_pct": 41.1,
+    "esperanza_r": -0.241,
+    "total_r": -35.26,
+    "profit_factor": 0.6,
+    "max_drawdown_r": 39.37
+   },
+   "total": {
+    "operaciones": 470,
+    "acierto_pct": 39.1,
+    "esperanza_r": -0.225,
+    "total_r": -105.65,
+    "profit_factor": 0.62,
+    "max_drawdown_r": 109.48
+   },
+   "segundos": 2.0,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "XAU/USD",
+   "temporalidad": "5m",
+   "estrategia": "envolvente_nivel",
+   "velas": 13663,
+   "desde": "2026-09-10",
+   "entrenamiento": {
+    "operaciones": 260,
+    "acierto_pct": 38.5,
+    "esperanza_r": -0.285,
+    "total_r": -74.06,
+    "profit_factor": 0.53,
+    "max_drawdown_r": 74.28
+   },
+   "prueba": {
+    "operaciones": 108,
+    "acierto_pct": 40.7,
+    "esperanza_r": -0.231,
+    "total_r": -24.96,
+    "profit_factor": 0.59,
+    "max_drawdown_r": 29.09
+   },
+   "total": {
+    "operaciones": 368,
+    "acierto_pct": 39.1,
+    "esperanza_r": -0.269,
+    "total_r": -99.02,
+    "profit_factor": 0.55,
+    "max_drawdown_r": 101.72
+   },
+   "segundos": 2.2,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "XAU/USD",
+   "temporalidad": "15m",
+   "estrategia": "tendencia_retroceso",
+   "velas": 4568,
+   "desde": "2026-09-10",
+   "entrenamiento": {
+    "operaciones": 275,
+    "acierto_pct": 41.5,
+    "esperanza_r": -0.125,
+    "total_r": -34.51,
+    "profit_factor": 0.78,
+    "max_drawdown_r": 40.81
+   },
+   "prueba": {
+    "operaciones": 106,
+    "acierto_pct": 45.3,
+    "esperanza_r": 0.023,
+    "total_r": 2.39,
+    "profit_factor": 1.05,
+    "max_drawdown_r": 9.73
+   },
+   "total": {
+    "operaciones": 381,
+    "acierto_pct": 42.5,
+    "esperanza_r": -0.084,
+    "total_r": -32.11,
+    "profit_factor": 0.85,
+    "max_drawdown_r": 45.94
+   },
+   "segundos": 0.5,
+   "veredicto": "marginal"
+  },
+  {
+   "activo": "XAU/USD",
+   "temporalidad": "15m",
+   "estrategia": "ruptura_rango",
+   "velas": 4568,
+   "desde": "2026-09-10",
+   "entrenamiento": {
+    "operaciones": 80,
+    "acierto_pct": 31.2,
+    "esperanza_r": -0.377,
+    "total_r": -30.19,
+    "profit_factor": 0.44,
+    "max_drawdown_r": 30.19
+   },
+   "prueba": {
+    "operaciones": 41,
+    "acierto_pct": 56.1,
+    "esperanza_r": 0.202,
+    "total_r": 8.28,
+    "profit_factor": 1.59,
+    "max_drawdown_r": 3.64
+   },
+   "total": {
+    "operaciones": 121,
+    "acierto_pct": 39.7,
+    "esperanza_r": -0.181,
+    "total_r": -21.91,
+    "profit_factor": 0.68,
+    "max_drawdown_r": 30.19
+   },
+   "segundos": 0.7,
+   "veredicto": "APTA"
+  },
+  {
+   "activo": "XAU/USD",
+   "temporalidad": "15m",
+   "estrategia": "reversion_bollinger",
+   "velas": 4568,
+   "desde": "2026-09-10",
+   "entrenamiento": {
+    "operaciones": 25,
+    "acierto_pct": 52.0,
+    "esperanza_r": 0.181,
+    "total_r": 4.51,
+    "profit_factor": 1.49,
+    "max_drawdown_r": 5.8
+   },
+   "prueba": {
+    "operaciones": 7,
+    "acierto_pct": 28.6,
+    "esperanza_r": -0.329,
+    "total_r": -2.3,
+    "profit_factor": 0.41,
+    "max_drawdown_r": 2.81
+   },
+   "total": {
+    "operaciones": 32,
+    "acierto_pct": 46.9,
+    "esperanza_r": 0.069,
+    "total_r": 2.21,
+    "profit_factor": 1.17,
+    "max_drawdown_r": 5.8
+   },
+   "segundos": 1.0,
+   "veredicto": "pocos datos"
+  },
+  {
+   "activo": "XAU/USD",
+   "temporalidad": "15m",
+   "estrategia": "cruce_ema",
+   "velas": 4568,
+   "desde": "2026-09-10",
+   "entrenamiento": {
+    "operaciones": 109,
+    "acierto_pct": 44.0,
+    "esperanza_r": -0.052,
+    "total_r": -5.62,
+    "profit_factor": 0.91,
+    "max_drawdown_r": 18.2
+   },
+   "prueba": {
+    "operaciones": 27,
+    "acierto_pct": 44.4,
+    "esperanza_r": -0.031,
+    "total_r": -0.84,
+    "profit_factor": 0.94,
+    "max_drawdown_r": 5.91
+   },
+   "total": {
+    "operaciones": 136,
+    "acierto_pct": 44.1,
+    "esperanza_r": -0.048,
+    "total_r": -6.46,
+    "profit_factor": 0.91,
+    "max_drawdown_r": 20.76
+   },
+   "segundos": 0.7,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "XAU/USD",
+   "temporalidad": "15m",
+   "estrategia": "envolvente_nivel",
+   "velas": 4568,
+   "desde": "2026-09-10",
+   "entrenamiento": {
+    "operaciones": 83,
+    "acierto_pct": 44.6,
+    "esperanza_r": -0.08,
+    "total_r": -6.66,
+    "profit_factor": 0.84,
+    "max_drawdown_r": 18.11
+   },
+   "prueba": {
+    "operaciones": 37,
+    "acierto_pct": 43.2,
+    "esperanza_r": -0.141,
+    "total_r": -5.23,
+    "profit_factor": 0.73,
+    "max_drawdown_r": 8.63
+   },
+   "total": {
+    "operaciones": 120,
+    "acierto_pct": 44.2,
+    "esperanza_r": -0.099,
+    "total_r": -11.89,
+    "profit_factor": 0.81,
+    "max_drawdown_r": 19.59
+   },
+   "segundos": 0.7,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "XAU/USD",
+   "temporalidad": "1h",
+   "estrategia": "tendencia_retroceso",
+   "velas": 13736,
+   "desde": "2024-06-28",
+   "entrenamiento": {
+    "operaciones": 687,
+    "acierto_pct": 40.2,
+    "esperanza_r": -0.069,
+    "total_r": -47.3,
+    "profit_factor": 0.88,
+    "max_drawdown_r": 64.09
+   },
+   "prueba": {
+    "operaciones": 303,
+    "acierto_pct": 39.3,
+    "esperanza_r": -0.095,
+    "total_r": -28.75,
+    "profit_factor": 0.84,
+    "max_drawdown_r": 41.29
+   },
+   "total": {
+    "operaciones": 990,
+    "acierto_pct": 39.9,
+    "esperanza_r": -0.077,
+    "total_r": -76.05,
+    "profit_factor": 0.87,
+    "max_drawdown_r": 88.14
+   },
+   "segundos": 1.4,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "XAU/USD",
+   "temporalidad": "1h",
+   "estrategia": "ruptura_rango",
+   "velas": 13736,
+   "desde": "2024-06-28",
+   "entrenamiento": {
+    "operaciones": 210,
+    "acierto_pct": 43.8,
+    "esperanza_r": -0.033,
+    "total_r": -7.03,
+    "profit_factor": 0.94,
+    "max_drawdown_r": 24.81
+   },
+   "prueba": {
+    "operaciones": 86,
+    "acierto_pct": 51.2,
+    "esperanza_r": 0.088,
+    "total_r": 7.54,
+    "profit_factor": 1.2,
+    "max_drawdown_r": 8.87
+   },
+   "total": {
+    "operaciones": 296,
+    "acierto_pct": 45.9,
+    "esperanza_r": 0.002,
+    "total_r": 0.51,
+    "profit_factor": 1.0,
+    "max_drawdown_r": 24.81
+   },
+   "segundos": 2.0,
+   "veredicto": "marginal"
+  },
+  {
+   "activo": "XAU/USD",
+   "temporalidad": "1h",
+   "estrategia": "reversion_bollinger",
+   "velas": 13736,
+   "desde": "2024-06-28",
+   "entrenamiento": {
+    "operaciones": 47,
+    "acierto_pct": 51.1,
+    "esperanza_r": 0.045,
+    "total_r": 2.12,
+    "profit_factor": 1.09,
+    "max_drawdown_r": 8.26
+   },
+   "prueba": {
+    "operaciones": 18,
+    "acierto_pct": 50.0,
+    "esperanza_r": 0.118,
+    "total_r": 2.13,
+    "profit_factor": 1.25,
+    "max_drawdown_r": 2.19
+   },
+   "total": {
+    "operaciones": 65,
+    "acierto_pct": 50.8,
+    "esperanza_r": 0.066,
+    "total_r": 4.26,
+    "profit_factor": 1.13,
+    "max_drawdown_r": 9.52
+   },
+   "segundos": 3.0,
+   "veredicto": "pocos datos"
+  },
+  {
+   "activo": "XAU/USD",
+   "temporalidad": "1h",
+   "estrategia": "cruce_ema",
+   "velas": 13736,
+   "desde": "2024-06-28",
+   "entrenamiento": {
+    "operaciones": 254,
+    "acierto_pct": 35.8,
+    "esperanza_r": -0.189,
+    "total_r": -48.08,
+    "profit_factor": 0.7,
+    "max_drawdown_r": 52.53
+   },
+   "prueba": {
+    "operaciones": 128,
+    "acierto_pct": 42.2,
+    "esperanza_r": -0.014,
+    "total_r": -1.73,
+    "profit_factor": 0.98,
+    "max_drawdown_r": 12.93
+   },
+   "total": {
+    "operaciones": 382,
+    "acierto_pct": 38.0,
+    "esperanza_r": -0.13,
+    "total_r": -49.81,
+    "profit_factor": 0.79,
+    "max_drawdown_r": 56.39
+   },
+   "segundos": 2.0,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "XAU/USD",
+   "temporalidad": "1h",
+   "estrategia": "envolvente_nivel",
+   "velas": 13736,
+   "desde": "2024-06-28",
+   "entrenamiento": {
+    "operaciones": 256,
+    "acierto_pct": 36.7,
+    "esperanza_r": -0.167,
+    "total_r": -42.67,
+    "profit_factor": 0.71,
+    "max_drawdown_r": 42.67
+   },
+   "prueba": {
+    "operaciones": 93,
+    "acierto_pct": 40.9,
+    "esperanza_r": -0.102,
+    "total_r": -9.48,
+    "profit_factor": 0.81,
+    "max_drawdown_r": 15.53
+   },
+   "total": {
+    "operaciones": 349,
+    "acierto_pct": 37.8,
+    "esperanza_r": -0.149,
+    "total_r": -52.15,
+    "profit_factor": 0.74,
+    "max_drawdown_r": 53.19
+   },
+   "segundos": 2.0,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "BTC/USD",
+   "temporalidad": "5m",
+   "estrategia": "tendencia_retroceso",
+   "velas": 17220,
+   "desde": "2026-09-20",
+   "entrenamiento": {
+    "operaciones": 1060,
+    "acierto_pct": 32.9,
+    "esperanza_r": -0.594,
+    "total_r": -629.5,
+    "profit_factor": 0.3,
+    "max_drawdown_r": 629.5
+   },
+   "prueba": {
+    "operaciones": 462,
+    "acierto_pct": 34.0,
+    "esperanza_r": -0.464,
+    "total_r": -214.27,
+    "profit_factor": 0.38,
+    "max_drawdown_r": 214.79
+   },
+   "total": {
+    "operaciones": 1522,
+    "acierto_pct": 33.2,
+    "esperanza_r": -0.554,
+    "total_r": -843.76,
+    "profit_factor": 0.32,
+    "max_drawdown_r": 843.77
+   },
+   "segundos": 2.0,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "BTC/USD",
+   "temporalidad": "5m",
+   "estrategia": "ruptura_rango",
+   "velas": 17220,
+   "desde": "2026-09-20",
+   "entrenamiento": {
+    "operaciones": 268,
+    "acierto_pct": 29.1,
+    "esperanza_r": -0.468,
+    "total_r": -125.37,
+    "profit_factor": 0.32,
+    "max_drawdown_r": 125.37
+   },
+   "prueba": {
+    "operaciones": 129,
+    "acierto_pct": 31.0,
+    "esperanza_r": -0.461,
+    "total_r": -59.45,
+    "profit_factor": 0.29,
+    "max_drawdown_r": 59.45
+   },
+   "total": {
+    "operaciones": 397,
+    "acierto_pct": 29.7,
+    "esperanza_r": -0.466,
+    "total_r": -184.81,
+    "profit_factor": 0.31,
+    "max_drawdown_r": 184.81
+   },
+   "segundos": 2.7,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "BTC/USD",
+   "temporalidad": "5m",
+   "estrategia": "reversion_bollinger",
+   "velas": 17220,
+   "desde": "2026-09-20",
+   "entrenamiento": {
+    "operaciones": 48,
+    "acierto_pct": 47.9,
+    "esperanza_r": -0.114,
+    "total_r": -5.46,
+    "profit_factor": 0.78,
+    "max_drawdown_r": 10.9
+   },
+   "prueba": {
+    "operaciones": 29,
+    "acierto_pct": 37.9,
+    "esperanza_r": -0.34,
+    "total_r": -9.87,
+    "profit_factor": 0.47,
+    "max_drawdown_r": 10.33
+   },
+   "total": {
+    "operaciones": 77,
+    "acierto_pct": 44.2,
+    "esperanza_r": -0.199,
+    "total_r": -15.33,
+    "profit_factor": 0.65,
+    "max_drawdown_r": 19.1
+   },
+   "segundos": 4.0,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "BTC/USD",
+   "temporalidad": "5m",
+   "estrategia": "cruce_ema",
+   "velas": 17220,
+   "desde": "2026-09-20",
+   "entrenamiento": {
+    "operaciones": 436,
+    "acierto_pct": 33.9,
+    "esperanza_r": -0.59,
+    "total_r": -257.13,
+    "profit_factor": 0.33,
+    "max_drawdown_r": 257.63
+   },
+   "prueba": {
+    "operaciones": 184,
+    "acierto_pct": 35.3,
+    "esperanza_r": -0.418,
+    "total_r": -76.9,
+    "profit_factor": 0.4,
+    "max_drawdown_r": 77.42
+   },
+   "total": {
+    "operaciones": 620,
+    "acierto_pct": 34.4,
+    "esperanza_r": -0.539,
+    "total_r": -334.03,
+    "profit_factor": 0.35,
+    "max_drawdown_r": 334.53
+   },
+   "segundos": 2.6,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "BTC/USD",
+   "temporalidad": "5m",
+   "estrategia": "envolvente_nivel",
+   "velas": 17220,
+   "desde": "2026-09-20",
+   "entrenamiento": {
+    "operaciones": 254,
+    "acierto_pct": 37.4,
+    "esperanza_r": -0.428,
+    "total_r": -108.75,
+    "profit_factor": 0.37,
+    "max_drawdown_r": 108.75
+   },
+   "prueba": {
+    "operaciones": 108,
+    "acierto_pct": 33.3,
+    "esperanza_r": -0.46,
+    "total_r": -49.66,
+    "profit_factor": 0.33,
+    "max_drawdown_r": 50.93
+   },
+   "total": {
+    "operaciones": 362,
+    "acierto_pct": 36.2,
+    "esperanza_r": -0.438,
+    "total_r": -158.41,
+    "profit_factor": 0.36,
+    "max_drawdown_r": 159.1
+   },
+   "segundos": 2.8,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "BTC/USD",
+   "temporalidad": "15m",
+   "estrategia": "tendencia_retroceso",
+   "velas": 5741,
+   "desde": "2026-09-20",
+   "entrenamiento": {
+    "operaciones": 312,
+    "acierto_pct": 38.5,
+    "esperanza_r": -0.304,
+    "total_r": -94.73,
+    "profit_factor": 0.56,
+    "max_drawdown_r": 105.87
+   },
+   "prueba": {
+    "operaciones": 146,
+    "acierto_pct": 40.4,
+    "esperanza_r": -0.219,
+    "total_r": -31.94,
+    "profit_factor": 0.65,
+    "max_drawdown_r": 32.04
+   },
+   "total": {
+    "operaciones": 458,
+    "acierto_pct": 39.1,
+    "esperanza_r": -0.277,
+    "total_r": -126.67,
+    "profit_factor": 0.59,
+    "max_drawdown_r": 130.13
+   },
+   "segundos": 0.6,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "BTC/USD",
+   "temporalidad": "15m",
+   "estrategia": "ruptura_rango",
+   "velas": 5741,
+   "desde": "2026-09-20",
+   "entrenamiento": {
+    "operaciones": 96,
+    "acierto_pct": 41.7,
+    "esperanza_r": -0.116,
+    "total_r": -11.13,
+    "profit_factor": 0.78,
+    "max_drawdown_r": 15.2
+   },
+   "prueba": {
+    "operaciones": 44,
+    "acierto_pct": 40.9,
+    "esperanza_r": -0.159,
+    "total_r": -6.99,
+    "profit_factor": 0.69,
+    "max_drawdown_r": 11.28
+   },
+   "total": {
+    "operaciones": 140,
+    "acierto_pct": 41.4,
+    "esperanza_r": -0.129,
+    "total_r": -18.12,
+    "profit_factor": 0.76,
+    "max_drawdown_r": 23.68
+   },
+   "segundos": 0.9,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "BTC/USD",
+   "temporalidad": "15m",
+   "estrategia": "reversion_bollinger",
+   "velas": 5741,
+   "desde": "2026-09-20",
+   "entrenamiento": {
+    "operaciones": 16,
+    "acierto_pct": 56.2,
+    "esperanza_r": 0.132,
+    "total_r": 2.12,
+    "profit_factor": 1.29,
+    "max_drawdown_r": 5.23
+   },
+   "prueba": {
+    "operaciones": 7,
+    "acierto_pct": 42.9,
+    "esperanza_r": -0.312,
+    "total_r": -2.18,
+    "profit_factor": 0.38,
+    "max_drawdown_r": 3.17
+   },
+   "total": {
+    "operaciones": 23,
+    "acierto_pct": 52.2,
+    "esperanza_r": -0.003,
+    "total_r": -0.06,
+    "profit_factor": 0.99,
+    "max_drawdown_r": 5.5
+   },
+   "segundos": 1.3,
+   "veredicto": "pocos datos"
+  },
+  {
+   "activo": "BTC/USD",
+   "temporalidad": "15m",
+   "estrategia": "cruce_ema",
+   "velas": 5741,
+   "desde": "2026-09-20",
+   "entrenamiento": {
+    "operaciones": 128,
+    "acierto_pct": 43.8,
+    "esperanza_r": -0.191,
+    "total_r": -24.49,
+    "profit_factor": 0.7,
+    "max_drawdown_r": 35.24
+   },
+   "prueba": {
+    "operaciones": 57,
+    "acierto_pct": 45.6,
+    "esperanza_r": -0.142,
+    "total_r": -8.08,
+    "profit_factor": 0.75,
+    "max_drawdown_r": 14.15
+   },
+   "total": {
+    "operaciones": 185,
+    "acierto_pct": 44.3,
+    "esperanza_r": -0.176,
+    "total_r": -32.57,
+    "profit_factor": 0.72,
+    "max_drawdown_r": 41.99
+   },
+   "segundos": 0.8,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "BTC/USD",
+   "temporalidad": "15m",
+   "estrategia": "envolvente_nivel",
+   "velas": 5741,
+   "desde": "2026-09-20",
+   "entrenamiento": {
+    "operaciones": 87,
+    "acierto_pct": 36.8,
+    "esperanza_r": -0.234,
+    "total_r": -20.39,
+    "profit_factor": 0.61,
+    "max_drawdown_r": 24.87
+   },
+   "prueba": {
+    "operaciones": 44,
+    "acierto_pct": 29.5,
+    "esperanza_r": -0.395,
+    "total_r": -17.39,
+    "profit_factor": 0.43,
+    "max_drawdown_r": 17.39
+   },
+   "total": {
+    "operaciones": 131,
+    "acierto_pct": 34.4,
+    "esperanza_r": -0.288,
+    "total_r": -37.78,
+    "profit_factor": 0.54,
+    "max_drawdown_r": 38.07
+   },
+   "segundos": 0.9,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "BTC/USD",
+   "temporalidad": "1h",
+   "estrategia": "tendencia_retroceso",
+   "velas": 17483,
+   "desde": "2024-11-19",
+   "entrenamiento": {
+    "operaciones": 865,
+    "acierto_pct": 42.0,
+    "esperanza_r": -0.059,
+    "total_r": -51.04,
+    "profit_factor": 0.9,
+    "max_drawdown_r": 72.6
+   },
+   "prueba": {
+    "operaciones": 386,
+    "acierto_pct": 36.5,
+    "esperanza_r": -0.221,
+    "total_r": -85.43,
+    "profit_factor": 0.66,
+    "max_drawdown_r": 87.2
+   },
+   "total": {
+    "operaciones": 1251,
+    "acierto_pct": 40.3,
+    "esperanza_r": -0.109,
+    "total_r": -136.47,
+    "profit_factor": 0.82,
+    "max_drawdown_r": 152.65
+   },
+   "segundos": 1.9,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "BTC/USD",
+   "temporalidad": "1h",
+   "estrategia": "ruptura_rango",
+   "velas": 17483,
+   "desde": "2024-11-19",
+   "entrenamiento": {
+    "operaciones": 296,
+    "acierto_pct": 40.9,
+    "esperanza_r": -0.079,
+    "total_r": -23.43,
+    "profit_factor": 0.85,
+    "max_drawdown_r": 43.71
+   },
+   "prueba": {
+    "operaciones": 135,
+    "acierto_pct": 38.5,
+    "esperanza_r": -0.173,
+    "total_r": -23.32,
+    "profit_factor": 0.7,
+    "max_drawdown_r": 28.75
+   },
+   "total": {
+    "operaciones": 431,
+    "acierto_pct": 40.1,
+    "esperanza_r": -0.108,
+    "total_r": -46.75,
+    "profit_factor": 0.8,
+    "max_drawdown_r": 49.65
+   },
+   "segundos": 2.6,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "BTC/USD",
+   "temporalidad": "1h",
+   "estrategia": "reversion_bollinger",
+   "velas": 17483,
+   "desde": "2024-11-19",
+   "entrenamiento": {
+    "operaciones": 61,
+    "acierto_pct": 24.6,
+    "esperanza_r": -0.468,
+    "total_r": -28.55,
+    "profit_factor": 0.38,
+    "max_drawdown_r": 29.68
+   },
+   "prueba": {
+    "operaciones": 40,
+    "acierto_pct": 40.0,
+    "esperanza_r": -0.151,
+    "total_r": -6.05,
+    "profit_factor": 0.72,
+    "max_drawdown_r": 9.89
+   },
+   "total": {
+    "operaciones": 101,
+    "acierto_pct": 30.7,
+    "esperanza_r": -0.343,
+    "total_r": -34.6,
+    "profit_factor": 0.49,
+    "max_drawdown_r": 35.73
+   },
+   "segundos": 3.9,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "BTC/USD",
+   "temporalidad": "1h",
+   "estrategia": "cruce_ema",
+   "velas": 17483,
+   "desde": "2024-11-19",
+   "entrenamiento": {
+    "operaciones": 374,
+    "acierto_pct": 42.2,
+    "esperanza_r": -0.057,
+    "total_r": -21.19,
+    "profit_factor": 0.91,
+    "max_drawdown_r": 33.84
+   },
+   "prueba": {
+    "operaciones": 152,
+    "acierto_pct": 32.2,
+    "esperanza_r": -0.288,
+    "total_r": -43.74,
+    "profit_factor": 0.59,
+    "max_drawdown_r": 45.23
+   },
+   "total": {
+    "operaciones": 526,
+    "acierto_pct": 39.4,
+    "esperanza_r": -0.123,
+    "total_r": -64.93,
+    "profit_factor": 0.8,
+    "max_drawdown_r": 69.8
+   },
+   "segundos": 2.6,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "BTC/USD",
+   "temporalidad": "1h",
+   "estrategia": "envolvente_nivel",
+   "velas": 17483,
+   "desde": "2024-11-19",
+   "entrenamiento": {
+    "operaciones": 207,
+    "acierto_pct": 44.4,
+    "esperanza_r": -0.033,
+    "total_r": -6.75,
+    "profit_factor": 0.94,
+    "max_drawdown_r": 23.74
+   },
+   "prueba": {
+    "operaciones": 103,
+    "acierto_pct": 40.8,
+    "esperanza_r": -0.139,
+    "total_r": -14.31,
+    "profit_factor": 0.76,
+    "max_drawdown_r": 27.22
+   },
+   "total": {
+    "operaciones": 310,
+    "acierto_pct": 43.2,
+    "esperanza_r": -0.068,
+    "total_r": -21.07,
+    "profit_factor": 0.88,
+    "max_drawdown_r": 39.9
+   },
+   "segundos": 2.8,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "US 500",
+   "temporalidad": "5m",
+   "estrategia": "tendencia_retroceso",
+   "velas": 4656,
+   "desde": "2026-08-26",
+   "entrenamiento": {
+    "operaciones": 201,
+    "acierto_pct": 41.3,
+    "esperanza_r": -0.206,
+    "total_r": -41.49,
+    "profit_factor": 0.66,
+    "max_drawdown_r": 50.98
+   },
+   "prueba": {
+    "operaciones": 87,
+    "acierto_pct": 35.6,
+    "esperanza_r": -0.283,
+    "total_r": -24.58,
+    "profit_factor": 0.54,
+    "max_drawdown_r": 28.45
+   },
+   "total": {
+    "operaciones": 288,
+    "acierto_pct": 39.6,
+    "esperanza_r": -0.229,
+    "total_r": -66.07,
+    "profit_factor": 0.62,
+    "max_drawdown_r": 78.59
+   },
+   "segundos": 0.6,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "US 500",
+   "temporalidad": "5m",
+   "estrategia": "ruptura_rango",
+   "velas": 4656,
+   "desde": "2026-08-26",
+   "entrenamiento": {
+    "operaciones": 74,
+    "acierto_pct": 40.5,
+    "esperanza_r": -0.194,
+    "total_r": -14.37,
+    "profit_factor": 0.61,
+    "max_drawdown_r": 16.65
+   },
+   "prueba": {
+    "operaciones": 30,
+    "acierto_pct": 40.0,
+    "esperanza_r": -0.142,
+    "total_r": -4.27,
+    "profit_factor": 0.71,
+    "max_drawdown_r": 4.74
+   },
+   "total": {
+    "operaciones": 104,
+    "acierto_pct": 40.4,
+    "esperanza_r": -0.179,
+    "total_r": -18.64,
+    "profit_factor": 0.64,
+    "max_drawdown_r": 21.31
+   },
+   "segundos": 0.7,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "US 500",
+   "temporalidad": "5m",
+   "estrategia": "reversion_bollinger",
+   "velas": 4656,
+   "desde": "2026-08-26",
+   "entrenamiento": {
+    "operaciones": 21,
+    "acierto_pct": 42.9,
+    "esperanza_r": -0.139,
+    "total_r": -2.93,
+    "profit_factor": 0.71,
+    "max_drawdown_r": 5.54
+   },
+   "prueba": {
+    "operaciones": 7,
+    "acierto_pct": 14.3,
+    "esperanza_r": -0.509,
+    "total_r": -3.56,
+    "profit_factor": 0.27,
+    "max_drawdown_r": 3.75
+   },
+   "total": {
+    "operaciones": 28,
+    "acierto_pct": 35.7,
+    "esperanza_r": -0.232,
+    "total_r": -6.49,
+    "profit_factor": 0.57,
+    "max_drawdown_r": 8.35
+   },
+   "segundos": 1.0,
+   "veredicto": "pocos datos"
+  },
+  {
+   "activo": "US 500",
+   "temporalidad": "5m",
+   "estrategia": "cruce_ema",
+   "velas": 4656,
+   "desde": "2026-08-26",
+   "entrenamiento": {
+    "operaciones": 72,
+    "acierto_pct": 44.4,
+    "esperanza_r": -0.093,
+    "total_r": -6.72,
+    "profit_factor": 0.84,
+    "max_drawdown_r": 16.43
+   },
+   "prueba": {
+    "operaciones": 26,
+    "acierto_pct": 26.9,
+    "esperanza_r": -0.279,
+    "total_r": -7.26,
+    "profit_factor": 0.52,
+    "max_drawdown_r": 9.01
+   },
+   "total": {
+    "operaciones": 98,
+    "acierto_pct": 39.8,
+    "esperanza_r": -0.143,
+    "total_r": -13.98,
+    "profit_factor": 0.75,
+    "max_drawdown_r": 22.69
+   },
+   "segundos": 0.7,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "US 500",
+   "temporalidad": "5m",
+   "estrategia": "envolvente_nivel",
+   "velas": 4656,
+   "desde": "2026-08-26",
+   "entrenamiento": {
+    "operaciones": 75,
+    "acierto_pct": 37.3,
+    "esperanza_r": -0.314,
+    "total_r": -23.57,
+    "profit_factor": 0.5,
+    "max_drawdown_r": 24.44
+   },
+   "prueba": {
+    "operaciones": 25,
+    "acierto_pct": 28.0,
+    "esperanza_r": -0.385,
+    "total_r": -9.62,
+    "profit_factor": 0.43,
+    "max_drawdown_r": 11.26
+   },
+   "total": {
+    "operaciones": 100,
+    "acierto_pct": 35.0,
+    "esperanza_r": -0.332,
+    "total_r": -33.19,
+    "profit_factor": 0.48,
+    "max_drawdown_r": 34.64
+   },
+   "segundos": 0.8,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "US 500",
+   "temporalidad": "15m",
+   "estrategia": "tendencia_retroceso",
+   "velas": 1553,
+   "desde": "2026-08-26",
+   "entrenamiento": {
+    "operaciones": 48,
+    "acierto_pct": 43.8,
+    "esperanza_r": 0.043,
+    "total_r": 2.05,
+    "profit_factor": 1.08,
+    "max_drawdown_r": 9.47
+   },
+   "prueba": {
+    "operaciones": 23,
+    "acierto_pct": 43.5,
+    "esperanza_r": -0.162,
+    "total_r": -3.72,
+    "profit_factor": 0.72,
+    "max_drawdown_r": 5.66
+   },
+   "total": {
+    "operaciones": 71,
+    "acierto_pct": 43.7,
+    "esperanza_r": -0.024,
+    "total_r": -1.67,
+    "profit_factor": 0.96,
+    "max_drawdown_r": 12.86
+   },
+   "segundos": 0.2,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "US 500",
+   "temporalidad": "15m",
+   "estrategia": "ruptura_rango",
+   "velas": 1553,
+   "desde": "2026-08-26",
+   "entrenamiento": {
+    "operaciones": 23,
+    "acierto_pct": 60.9,
+    "esperanza_r": 0.225,
+    "total_r": 5.19,
+    "profit_factor": 1.7,
+    "max_drawdown_r": 3.82
+   },
+   "prueba": {
+    "operaciones": 9,
+    "acierto_pct": 22.2,
+    "esperanza_r": -0.451,
+    "total_r": -4.06,
+    "profit_factor": 0.41,
+    "max_drawdown_r": 5.48
+   },
+   "total": {
+    "operaciones": 32,
+    "acierto_pct": 50.0,
+    "esperanza_r": 0.035,
+    "total_r": 1.12,
+    "profit_factor": 1.08,
+    "max_drawdown_r": 7.67
+   },
+   "segundos": 0.2,
+   "veredicto": "pocos datos"
+  },
+  {
+   "activo": "US 500",
+   "temporalidad": "15m",
+   "estrategia": "reversion_bollinger",
+   "velas": 1553,
+   "desde": "2026-08-26",
+   "entrenamiento": {
+    "operaciones": 9,
+    "acierto_pct": 11.1,
+    "esperanza_r": -0.606,
+    "total_r": -5.46,
+    "profit_factor": 0.05,
+    "max_drawdown_r": 5.72
+   },
+   "prueba": {
+    "operaciones": 3,
+    "acierto_pct": 33.3,
+    "esperanza_r": 0.52,
+    "total_r": 1.56,
+    "profit_factor": 1.74,
+    "max_drawdown_r": 1.08
+   },
+   "total": {
+    "operaciones": 12,
+    "acierto_pct": 16.7,
+    "esperanza_r": -0.325,
+    "total_r": -3.9,
+    "profit_factor": 0.5,
+    "max_drawdown_r": 6.48
+   },
+   "segundos": 0.3,
+   "veredicto": "pocos datos"
+  },
+  {
+   "activo": "US 500",
+   "temporalidad": "15m",
+   "estrategia": "cruce_ema",
+   "velas": 1553,
+   "desde": "2026-08-26",
+   "entrenamiento": {
+    "operaciones": 22,
+    "acierto_pct": 45.5,
+    "esperanza_r": 0.004,
+    "total_r": 0.09,
+    "profit_factor": 1.01,
+    "max_drawdown_r": 3.74
+   },
+   "prueba": {
+    "operaciones": 9,
+    "acierto_pct": 66.7,
+    "esperanza_r": 0.361,
+    "total_r": 3.25,
+    "profit_factor": 2.0,
+    "max_drawdown_r": 2.16
+   },
+   "total": {
+    "operaciones": 31,
+    "acierto_pct": 51.6,
+    "esperanza_r": 0.108,
+    "total_r": 3.35,
+    "profit_factor": 1.24,
+    "max_drawdown_r": 3.74
+   },
+   "segundos": 0.2,
+   "veredicto": "pocos datos"
+  },
+  {
+   "activo": "US 500",
+   "temporalidad": "15m",
+   "estrategia": "envolvente_nivel",
+   "velas": 1553,
+   "desde": "2026-08-26",
+   "entrenamiento": {
+    "operaciones": 27,
+    "acierto_pct": 37.0,
+    "esperanza_r": -0.225,
+    "total_r": -6.07,
+    "profit_factor": 0.62,
+    "max_drawdown_r": 9.3
+   },
+   "prueba": {
+    "operaciones": 10,
+    "acierto_pct": 30.0,
+    "esperanza_r": -0.468,
+    "total_r": -4.68,
+    "profit_factor": 0.33,
+    "max_drawdown_r": 4.68
+   },
+   "total": {
+    "operaciones": 37,
+    "acierto_pct": 35.1,
+    "esperanza_r": -0.291,
+    "total_r": -10.75,
+    "profit_factor": 0.53,
+    "max_drawdown_r": 13.42
+   },
+   "segundos": 0.2,
+   "veredicto": "pocos datos"
+  },
+  {
+   "activo": "US 500",
+   "temporalidad": "1h",
+   "estrategia": "tendencia_retroceso",
+   "velas": 5082,
+   "desde": "2023-12-21",
+   "entrenamiento": {
+    "operaciones": 231,
+    "acierto_pct": 41.6,
+    "esperanza_r": -0.076,
+    "total_r": -17.65,
+    "profit_factor": 0.87,
+    "max_drawdown_r": 41.33
+   },
+   "prueba": {
+    "operaciones": 96,
+    "acierto_pct": 45.8,
+    "esperanza_r": 0.054,
+    "total_r": 5.16,
+    "profit_factor": 1.1,
+    "max_drawdown_r": 9.62
+   },
+   "total": {
+    "operaciones": 327,
+    "acierto_pct": 42.8,
+    "esperanza_r": -0.038,
+    "total_r": -12.49,
+    "profit_factor": 0.94,
+    "max_drawdown_r": 41.33
+   },
+   "segundos": 0.6,
+   "veredicto": "marginal"
+  },
+  {
+   "activo": "US 500",
+   "temporalidad": "1h",
+   "estrategia": "ruptura_rango",
+   "velas": 5082,
+   "desde": "2023-12-21",
+   "entrenamiento": {
+    "operaciones": 60,
+    "acierto_pct": 46.7,
+    "esperanza_r": -0.053,
+    "total_r": -3.17,
+    "profit_factor": 0.89,
+    "max_drawdown_r": 8.07
+   },
+   "prueba": {
+    "operaciones": 24,
+    "acierto_pct": 45.8,
+    "esperanza_r": -0.049,
+    "total_r": -1.18,
+    "profit_factor": 0.9,
+    "max_drawdown_r": 4.97
+   },
+   "total": {
+    "operaciones": 84,
+    "acierto_pct": 46.4,
+    "esperanza_r": -0.052,
+    "total_r": -4.35,
+    "profit_factor": 0.9,
+    "max_drawdown_r": 10.51
+   },
+   "segundos": 0.8,
+   "veredicto": "descartar"
+  },
+  {
+   "activo": "US 500",
+   "temporalidad": "1h",
+   "estrategia": "reversion_bollinger",
+   "velas": 5082,
+   "desde": "2023-12-21",
+   "entrenamiento": {
+    "operaciones": 24,
+    "acierto_pct": 37.5,
+    "esperanza_r": -0.112,
+    "total_r": -2.69,
+    "profit_factor": 0.82,
+    "max_drawdown_r": 5.5
+   },
+   "prueba": {
+    "operaciones": 4,
+    "acierto_pct": 25.0,
+    "esperanza_r": -0.213,
+    "total_r": -0.85,
+    "profit_factor": 0.64,
+    "max_drawdown_r": 2.4
+   },
+   "total": {
+    "operaciones": 28,
+    "acierto_pct": 35.7,
+    "esperanza_r": -0.127,
+    "total_r": -3.55,
+    "profit_factor": 0.8,
+    "max_drawdown_r": 7.9
+   },
+   "segundos": 1.1,
+   "veredicto": "pocos datos"
+  },
+  {
+   "activo": "US 500",
+   "temporalidad": "1h",
+   "estrategia": "cruce_ema",
+   "velas": 5082,
+   "desde": "2023-12-21",
+   "entrenamiento": {
+    "operaciones": 111,
+    "acierto_pct": 41.4,
+    "esperanza_r": -0.056,
+    "total_r": -6.24,
+    "profit_factor": 0.91,
+    "max_drawdown_r": 31.28
+   },
+   "prueba": {
+    "operaciones": 54,
+    "acierto_pct": 53.7,
+    "esperanza_r": 0.251,
+    "total_r": 13.57,
+    "profit_factor": 1.52,
+    "max_drawdown_r": 5.27
+   },
+   "total": {
+    "operaciones": 165,
+    "acierto_pct": 45.5,
+    "esperanza_r": 0.044,
+    "total_r": 7.33,
+    "profit_factor": 1.08,
+    "max_drawdown_r": 31.28
+   },
+   "segundos": 0.7,
+   "veredicto": "APTA"
+  },
+  {
+   "activo": "US 500",
+   "temporalidad": "1h",
+   "estrategia": "envolvente_nivel",
+   "velas": 5082,
+   "desde": "2023-12-21",
+   "entrenamiento": {
+    "operaciones": 82,
+    "acierto_pct": 45.1,
+    "esperanza_r": 0.003,
+    "total_r": 0.27,
+    "profit_factor": 1.01,
+    "max_drawdown_r": 14.34
+   },
+   "prueba": {
+    "operaciones": 24,
+    "acierto_pct": 54.2,
+    "esperanza_r": 0.181,
+    "total_r": 4.35,
+    "profit_factor": 1.4,
+    "max_drawdown_r": 2.28
+   },
+   "total": {
+    "operaciones": 106,
+    "acierto_pct": 47.2,
+    "esperanza_r": 0.044,
+    "total_r": 4.63,
+    "profit_factor": 1.08,
+    "max_drawdown_r": 14.34
+   },
+   "segundos": 0.8,
+   "veredicto": "APTA"
+  }
+ ],
+ "patrones": {
+  "EUR/USD 5m": {
+   "envolvente_alcista": {
+    "casos": 881,
+    "aciertos": 345,
+    "sesgo": "compra",
+    "fiabilidad_pct": 39.2
+   },
+   "martillo": {
+    "casos": 1069,
+    "aciertos": 454,
+    "sesgo": "compra",
+    "fiabilidad_pct": 42.5
+   },
+   "estrella_fugaz": {
+    "casos": 1127,
+    "aciertos": 492,
+    "sesgo": "venta",
+    "fiabilidad_pct": 43.7
+   },
+   "doble_techo": {
+    "casos": 492,
+    "aciertos": 257,
+    "sesgo": "venta",
+    "fiabilidad_pct": 52.2
+   },
+   "doble_suelo": {
+    "casos": 453,
+    "aciertos": 169,
+    "sesgo": "compra",
+    "fiabilidad_pct": 37.3
+   },
+   "envolvente_bajista": {
+    "casos": 827,
+    "aciertos": 397,
+    "sesgo": "venta",
+    "fiabilidad_pct": 48.0
+   },
+   "divergencia_bajista": {
+    "casos": 315,
+    "aciertos": 144,
+    "sesgo": "venta",
+    "fiabilidad_pct": 45.7
+   },
+   "ruptura_minimo_20": {
+    "casos": 996,
+    "aciertos": 475,
+    "sesgo": "venta",
+    "fiabilidad_pct": 47.7
+   },
+   "ruptura_maximo_20": {
+    "casos": 817,
+    "aciertos": 367,
+    "sesgo": "compra",
+    "fiabilidad_pct": 44.9
+   },
+   "tres_soldados": {
+    "casos": 243,
+    "aciertos": 112,
+    "sesgo": "compra",
+    "fiabilidad_pct": 46.1
+   },
+   "divergencia_alcista": {
+    "casos": 352,
+    "aciertos": 171,
+    "sesgo": "compra",
+    "fiabilidad_pct": 48.6
+   },
+   "tres_cuervos": {
+    "casos": 282,
+    "aciertos": 150,
+    "sesgo": "venta",
+    "fiabilidad_pct": 53.2
+   }
+  },
+  "EUR/USD 15m": {
+   "envolvente_bajista": {
+    "casos": 373,
+    "aciertos": 186,
+    "sesgo": "venta",
+    "fiabilidad_pct": 49.9
+   },
+   "envolvente_alcista": {
+    "casos": 358,
+    "aciertos": 175,
+    "sesgo": "compra",
+    "fiabilidad_pct": 48.9
+   },
+   "martillo": {
+    "casos": 186,
+    "aciertos": 87,
+    "sesgo": "compra",
+    "fiabilidad_pct": 46.8
+   },
+   "divergencia_alcista": {
+    "casos": 242,
+    "aciertos": 90,
+    "sesgo": "compra",
+    "fiabilidad_pct": 37.2
+   },
+   "ruptura_minimo_20": {
+    "casos": 359,
+    "aciertos": 178,
+    "sesgo": "venta",
+    "fiabilidad_pct": 49.6
+   },
+   "estrella_fugaz": {
+    "casos": 227,
+    "aciertos": 110,
+    "sesgo": "venta",
+    "fiabilidad_pct": 48.5
+   },
+   "tres_soldados": {
+    "casos": 84,
+    "aciertos": 29,
+    "sesgo": "compra",
+    "fiabilidad_pct": 34.5
+   },
+   "ruptura_maximo_20": {
+    "casos": 256,
+    "aciertos": 124,
+    "sesgo": "compra",
+    "fiabilidad_pct": 48.4
+   },
+   "doble_suelo": {
+    "casos": 344,
+    "aciertos": 157,
+    "sesgo": "compra",
+    "fiabilidad_pct": 45.6
+   },
+   "doble_techo": {
+    "casos": 296,
+    "aciertos": 180,
+    "sesgo": "venta",
+    "fiabilidad_pct": 60.8
+   },
+   "tres_cuervos": {
+    "casos": 100,
+    "aciertos": 50,
+    "sesgo": "venta",
+    "fiabilidad_pct": 50.0
+   },
+   "divergencia_bajista": {
+    "casos": 151,
+    "aciertos": 68,
+    "sesgo": "venta",
+    "fiabilidad_pct": 45.0
+   }
+  },
+  "EUR/USD 1h": {
+   "ruptura_minimo_20": {
+    "casos": 881,
+    "aciertos": 385,
+    "sesgo": "venta",
+    "fiabilidad_pct": 43.7
+   },
+   "envolvente_alcista": {
+    "casos": 1236,
+    "aciertos": 583,
+    "sesgo": "compra",
+    "fiabilidad_pct": 47.2
+   },
+   "estrella_fugaz": {
+    "casos": 780,
+    "aciertos": 371,
+    "sesgo": "venta",
+    "fiabilidad_pct": 47.6
+   },
+   "martillo": {
+    "casos": 569,
+    "aciertos": 304,
+    "sesgo": "compra",
+    "fiabilidad_pct": 53.4
+   },
+   "doble_suelo": {
+    "casos": 1335,
+    "aciertos": 640,
+    "sesgo": "compra",
+    "fiabilidad_pct": 47.9
+   },
+   "envolvente_bajista": {
+    "casos": 1174,
+    "aciertos": 581,
+    "sesgo": "venta",
+    "fiabilidad_pct": 49.5
+   },
+   "tres_soldados": {
+    "casos": 185,
+    "aciertos": 84,
+    "sesgo": "compra",
+    "fiabilidad_pct": 45.4
+   },
+   "ruptura_maximo_20": {
+    "casos": 869,
+    "aciertos": 432,
+    "sesgo": "compra",
+    "fiabilidad_pct": 49.7
+   },
+   "divergencia_bajista": {
+    "casos": 691,
+    "aciertos": 327,
+    "sesgo": "venta",
+    "fiabilidad_pct": 47.3
+   },
+   "doble_techo": {
+    "casos": 1476,
+    "aciertos": 744,
+    "sesgo": "venta",
+    "fiabilidad_pct": 50.4
+   },
+   "tres_cuervos": {
+    "casos": 182,
+    "aciertos": 90,
+    "sesgo": "venta",
+    "fiabilidad_pct": 49.5
+   },
+   "divergencia_alcista": {
+    "casos": 745,
+    "aciertos": 397,
+    "sesgo": "compra",
+    "fiabilidad_pct": 53.3
+   }
+  },
+  "GBP/USD 5m": {
+   "envolvente_alcista": {
+    "casos": 705,
+    "aciertos": 329,
+    "sesgo": "compra",
+    "fiabilidad_pct": 46.7
+   },
+   "doble_techo": {
+    "casos": 1510,
+    "aciertos": 760,
+    "sesgo": "venta",
+    "fiabilidad_pct": 50.3
+   },
+   "ruptura_minimo_20": {
+    "casos": 1326,
+    "aciertos": 617,
+    "sesgo": "venta",
+    "fiabilidad_pct": 46.5
+   },
+   "divergencia_alcista": {
+    "casos": 647,
+    "aciertos": 352,
+    "sesgo": "compra",
+    "fiabilidad_pct": 54.4
+   },
+   "martillo": {
+    "casos": 661,
+    "aciertos": 295,
+    "sesgo": "compra",
+    "fiabilidad_pct": 44.6
+   },
+   "doble_suelo": {
+    "casos": 1545,
+    "aciertos": 782,
+    "sesgo": "compra",
+    "fiabilidad_pct": 50.6
+   },
+   "ruptura_maximo_20": {
+    "casos": 1175,
+    "aciertos": 551,
+    "sesgo": "compra",
+    "fiabilidad_pct": 46.9
+   },
+   "tres_cuervos": {
+    "casos": 481,
+    "aciertos": 222,
+    "sesgo": "venta",
+    "fiabilidad_pct": 46.2
+   },
+   "estrella_fugaz": {
+    "casos": 664,
+    "aciertos": 295,
+    "sesgo": "venta",
+    "fiabilidad_pct": 44.4
+   },
+   "envolvente_bajista": {
+    "casos": 733,
+    "aciertos": 342,
+    "sesgo": "venta",
+    "fiabilidad_pct": 46.7
+   },
+   "tres_soldados": {
+    "casos": 478,
+    "aciertos": 202,
+    "sesgo": "compra",
+    "fiabilidad_pct": 42.3
+   },
+   "divergencia_bajista": {
+    "casos": 744,
+    "aciertos": 393,
+    "sesgo": "venta",
+    "fiabilidad_pct": 52.8
+   }
+  },
+  "GBP/USD 15m": {
+   "envolvente_bajista": {
+    "casos": 290,
+    "aciertos": 145,
+    "sesgo": "venta",
+    "fiabilidad_pct": 50.0
+   },
+   "doble_suelo": {
+    "casos": 660,
+    "aciertos": 308,
+    "sesgo": "compra",
+    "fiabilidad_pct": 46.7
+   },
+   "doble_techo": {
+    "casos": 596,
+    "aciertos": 314,
+    "sesgo": "venta",
+    "fiabilidad_pct": 52.7
+   },
+   "tres_cuervos": {
+    "casos": 102,
+    "aciertos": 44,
+    "sesgo": "venta",
+    "fiabilidad_pct": 43.1
+   },
+   "envolvente_alcista": {
+    "casos": 268,
+    "aciertos": 109,
+    "sesgo": "compra",
+    "fiabilidad_pct": 40.7
+   },
+   "tres_soldados": {
+    "casos": 90,
+    "aciertos": 47,
+    "sesgo": "compra",
+    "fiabilidad_pct": 52.2
+   },
+   "ruptura_minimo_20": {
+    "casos": 400,
+    "aciertos": 186,
+    "sesgo": "venta",
+    "fiabilidad_pct": 46.5
+   },
+   "martillo": {
+    "casos": 238,
+    "aciertos": 107,
+    "sesgo": "compra",
+    "fiabilidad_pct": 45.0
+   },
+   "estrella_fugaz": {
+    "casos": 222,
+    "aciertos": 112,
+    "sesgo": "venta",
+    "fiabilidad_pct": 50.5
+   },
+   "divergencia_alcista": {
+    "casos": 284,
+    "aciertos": 137,
+    "sesgo": "compra",
+    "fiabilidad_pct": 48.2
+   },
+   "ruptura_maximo_20": {
+    "casos": 321,
+    "aciertos": 153,
+    "sesgo": "compra",
+    "fiabilidad_pct": 47.7
+   },
+   "divergencia_bajista": {
+    "casos": 254,
+    "aciertos": 144,
+    "sesgo": "venta",
+    "fiabilidad_pct": 56.7
+   }
+  },
+  "GBP/USD 1h": {
+   "tres_cuervos": {
+    "casos": 215,
+    "aciertos": 99,
+    "sesgo": "venta",
+    "fiabilidad_pct": 46.0
+   },
+   "ruptura_minimo_20": {
+    "casos": 987,
+    "aciertos": 468,
+    "sesgo": "venta",
+    "fiabilidad_pct": 47.4
+   },
+   "envolvente_alcista": {
+    "casos": 934,
+    "aciertos": 443,
+    "sesgo": "compra",
+    "fiabilidad_pct": 47.4
+   },
+   "ruptura_maximo_20": {
+    "casos": 1053,
+    "aciertos": 511,
+    "sesgo": "compra",
+    "fiabilidad_pct": 48.5
+   },
+   "envolvente_bajista": {
+    "casos": 919,
+    "aciertos": 424,
+    "sesgo": "venta",
+    "fiabilidad_pct": 46.1
+   },
+   "martillo": {
+    "casos": 645,
+    "aciertos": 334,
+    "sesgo": "compra",
+    "fiabilidad_pct": 51.8
+   },
+   "divergencia_bajista": {
+    "casos": 832,
+    "aciertos": 416,
+    "sesgo": "venta",
+    "fiabilidad_pct": 50.0
+   },
+   "estrella_fugaz": {
+    "casos": 701,
+    "aciertos": 333,
+    "sesgo": "venta",
+    "fiabilidad_pct": 47.5
+   },
+   "doble_techo": {
+    "casos": 1941,
+    "aciertos": 937,
+    "sesgo": "venta",
+    "fiabilidad_pct": 48.3
+   },
+   "doble_suelo": {
+    "casos": 1717,
+    "aciertos": 927,
+    "sesgo": "compra",
+    "fiabilidad_pct": 54.0
+   },
+   "tres_soldados": {
+    "casos": 222,
+    "aciertos": 116,
+    "sesgo": "compra",
+    "fiabilidad_pct": 52.3
+   },
+   "divergencia_alcista": {
+    "casos": 780,
+    "aciertos": 417,
+    "sesgo": "compra",
+    "fiabilidad_pct": 53.5
+   }
+  },
+  "USD/JPY 5m": {
+   "martillo": {
+    "casos": 543,
+    "aciertos": 240,
+    "sesgo": "compra",
+    "fiabilidad_pct": 44.2
+   },
+   "estrella_fugaz": {
+    "casos": 762,
+    "aciertos": 340,
+    "sesgo": "venta",
+    "fiabilidad_pct": 44.6
+   },
+   "doble_techo": {
+    "casos": 3004,
+    "aciertos": 1372,
+    "sesgo": "venta",
+    "fiabilidad_pct": 45.7
+   },
+   "divergencia_bajista": {
+    "casos": 799,
+    "aciertos": 409,
+    "sesgo": "venta",
+    "fiabilidad_pct": 51.2
+   },
+   "ruptura_minimo_20": {
+    "casos": 808,
+    "aciertos": 379,
+    "sesgo": "venta",
+    "fiabilidad_pct": 46.9
+   },
+   "envolvente_alcista": {
+    "casos": 1154,
+    "aciertos": 544,
+    "sesgo": "compra",
+    "fiabilidad_pct": 47.1
+   },
+   "envolvente_bajista": {
+    "casos": 1041,
+    "aciertos": 488,
+    "sesgo": "venta",
+    "fiabilidad_pct": 46.9
+   },
+   "doble_suelo": {
+    "casos": 2673,
+    "aciertos": 1339,
+    "sesgo": "compra",
+    "fiabilidad_pct": 50.1
+   },
+   "ruptura_maximo_20": {
+    "casos": 900,
+    "aciertos": 443,
+    "sesgo": "compra",
+    "fiabilidad_pct": 49.2
+   },
+   "tres_soldados": {
+    "casos": 167,
+    "aciertos": 91,
+    "sesgo": "compra",
+    "fiabilidad_pct": 54.5
+   },
+   "divergencia_alcista": {
+    "casos": 811,
+    "aciertos": 400,
+    "sesgo": "compra",
+    "fiabilidad_pct": 49.3
+   },
+   "tres_cuervos": {
+    "casos": 102,
+    "aciertos": 36,
+    "sesgo": "venta",
+    "fiabilidad_pct": 35.3
+   }
+  },
+  "USD/JPY 15m": {
+   "martillo": {
+    "casos": 203,
+    "aciertos": 90,
+    "sesgo": "compra",
+    "fiabilidad_pct": 44.3
+   },
+   "ruptura_minimo_20": {
+    "casos": 252,
+    "aciertos": 114,
+    "sesgo": "venta",
+    "fiabilidad_pct": 45.2
+   },
+   "envolvente_bajista": {
+    "casos": 336,
+    "aciertos": 170,
+    "sesgo": "venta",
+    "fiabilidad_pct": 50.6
+   },
+   "envolvente_alcista": {
+    "casos": 431,
+    "aciertos": 216,
+    "sesgo": "compra",
+    "fiabilidad_pct": 50.1
+   },
+   "estrella_fugaz": {
+    "casos": 207,
+    "aciertos": 93,
+    "sesgo": "venta",
+    "fiabilidad_pct": 44.9
+   },
+   "doble_techo": {
+    "casos": 977,
+    "aciertos": 479,
+    "sesgo": "venta",
+    "fiabilidad_pct": 49.0
+   },
+   "tres_soldados": {
+    "casos": 50,
+    "aciertos": 26,
+    "sesgo": "compra",
+    "fiabilidad_pct": 52.0
+   },
+   "ruptura_maximo_20": {
+    "casos": 302,
+    "aciertos": 147,
+    "sesgo": "compra",
+    "fiabilidad_pct": 48.7
+   },
+   "divergencia_alcista": {
+    "casos": 207,
+    "aciertos": 120,
+    "sesgo": "compra",
+    "fiabilidad_pct": 58.0
+   },
+   "doble_suelo": {
+    "casos": 796,
+    "aciertos": 404,
+    "sesgo": "compra",
+    "fiabilidad_pct": 50.8
+   },
+   "tres_cuervos": {
+    "casos": 34,
+    "aciertos": 14,
+    "sesgo": "venta",
+    "fiabilidad_pct": 41.2
+   },
+   "divergencia_bajista": {
+    "casos": 293,
+    "aciertos": 142,
+    "sesgo": "venta",
+    "fiabilidad_pct": 48.5
+   }
+  },
+  "USD/JPY 1h": {
+   "doble_suelo": {
+    "casos": 1871,
+    "aciertos": 916,
+    "sesgo": "compra",
+    "fiabilidad_pct": 49.0
+   },
+   "ruptura_maximo_20": {
+    "casos": 1141,
+    "aciertos": 555,
+    "sesgo": "compra",
+    "fiabilidad_pct": 48.6
+   },
+   "envolvente_alcista": {
+    "casos": 1267,
+    "aciertos": 607,
+    "sesgo": "compra",
+    "fiabilidad_pct": 47.9
+   },
+   "envolvente_bajista": {
+    "casos": 1057,
+    "aciertos": 518,
+    "sesgo": "venta",
+    "fiabilidad_pct": 49.0
+   },
+   "martillo": {
+    "casos": 777,
+    "aciertos": 383,
+    "sesgo": "compra",
+    "fiabilidad_pct": 49.3
+   },
+   "ruptura_minimo_20": {
+    "casos": 715,
+    "aciertos": 352,
+    "sesgo": "venta",
+    "fiabilidad_pct": 49.2
+   },
+   "estrella_fugaz": {
+    "casos": 534,
+    "aciertos": 260,
+    "sesgo": "venta",
+    "fiabilidad_pct": 48.7
+   },
+   "divergencia_alcista": {
+    "casos": 857,
+    "aciertos": 450,
+    "sesgo": "compra",
+    "fiabilidad_pct": 52.5
+   },
+   "doble_techo": {
+    "casos": 2523,
+    "aciertos": 1164,
+    "sesgo": "venta",
+    "fiabilidad_pct": 46.1
+   },
+   "tres_soldados": {
+    "casos": 164,
+    "aciertos": 70,
+    "sesgo": "compra",
+    "fiabilidad_pct": 42.7
+   },
+   "divergencia_bajista": {
+    "casos": 1135,
+    "aciertos": 571,
+    "sesgo": "venta",
+    "fiabilidad_pct": 50.3
+   },
+   "tres_cuervos": {
+    "casos": 88,
+    "aciertos": 37,
+    "sesgo": "venta",
+    "fiabilidad_pct": 42.0
+   }
+  },
+  "XAU/USD 5m": {
+   "envolvente_bajista": {
+    "casos": 857,
+    "aciertos": 433,
+    "sesgo": "venta",
+    "fiabilidad_pct": 50.5
+   },
+   "ruptura_minimo_20": {
+    "casos": 884,
+    "aciertos": 425,
+    "sesgo": "venta",
+    "fiabilidad_pct": 48.1
+   },
+   "divergencia_alcista": {
+    "casos": 748,
+    "aciertos": 337,
+    "sesgo": "compra",
+    "fiabilidad_pct": 45.1
+   },
+   "martillo": {
+    "casos": 557,
+    "aciertos": 240,
+    "sesgo": "compra",
+    "fiabilidad_pct": 43.1
+   },
+   "envolvente_alcista": {
+    "casos": 865,
+    "aciertos": 424,
+    "sesgo": "compra",
+    "fiabilidad_pct": 49.0
+   },
+   "doble_suelo": {
+    "casos": 1602,
+    "aciertos": 719,
+    "sesgo": "compra",
+    "fiabilidad_pct": 44.9
+   },
+   "estrella_fugaz": {
+    "casos": 525,
+    "aciertos": 266,
+    "sesgo": "venta",
+    "fiabilidad_pct": 50.7
+   },
+   "doble_techo": {
+    "casos": 1610,
+    "aciertos": 802,
+    "sesgo": "venta",
+    "fiabilidad_pct": 49.8
+   },
+   "divergencia_bajista": {
+    "casos": 430,
+    "aciertos": 228,
+    "sesgo": "venta",
+    "fiabilidad_pct": 53.0
+   },
+   "ruptura_maximo_20": {
+    "casos": 660,
+    "aciertos": 320,
+    "sesgo": "compra",
+    "fiabilidad_pct": 48.5
+   },
+   "tres_cuervos": {
+    "casos": 149,
+    "aciertos": 71,
+    "sesgo": "venta",
+    "fiabilidad_pct": 47.7
+   },
+   "tres_soldados": {
+    "casos": 120,
+    "aciertos": 49,
+    "sesgo": "compra",
+    "fiabilidad_pct": 40.8
+   }
+  },
+  "XAU/USD 15m": {
+   "envolvente_bajista": {
+    "casos": 321,
+    "aciertos": 159,
+    "sesgo": "venta",
+    "fiabilidad_pct": 49.5
+   },
+   "doble_suelo": {
+    "casos": 531,
+    "aciertos": 244,
+    "sesgo": "compra",
+    "fiabilidad_pct": 46.0
+   },
+   "divergencia_alcista": {
+    "casos": 248,
+    "aciertos": 131,
+    "sesgo": "compra",
+    "fiabilidad_pct": 52.8
+   },
+   "ruptura_minimo_20": {
+    "casos": 302,
+    "aciertos": 160,
+    "sesgo": "venta",
+    "fiabilidad_pct": 53.0
+   },
+   "envolvente_alcista": {
+    "casos": 293,
+    "aciertos": 146,
+    "sesgo": "compra",
+    "fiabilidad_pct": 49.8
+   },
+   "ruptura_maximo_20": {
+    "casos": 202,
+    "aciertos": 108,
+    "sesgo": "compra",
+    "fiabilidad_pct": 53.5
+   },
+   "estrella_fugaz": {
+    "casos": 183,
+    "aciertos": 89,
+    "sesgo": "venta",
+    "fiabilidad_pct": 48.6
+   },
+   "doble_techo": {
+    "casos": 662,
+    "aciertos": 296,
+    "sesgo": "venta",
+    "fiabilidad_pct": 44.7
+   },
+   "martillo": {
+    "casos": 174,
+    "aciertos": 80,
+    "sesgo": "compra",
+    "fiabilidad_pct": 46.0
+   },
+   "tres_cuervos": {
+    "casos": 48,
+    "aciertos": 25,
+    "sesgo": "venta",
+    "fiabilidad_pct": 52.1
+   },
+   "divergencia_bajista": {
+    "casos": 165,
+    "aciertos": 78,
+    "sesgo": "venta",
+    "fiabilidad_pct": 47.3
+   },
+   "tres_soldados": {
+    "casos": 32,
+    "aciertos": 18,
+    "sesgo": "compra",
+    "fiabilidad_pct": 56.2
+   }
+  },
+  "XAU/USD 1h": {
+   "doble_suelo": {
+    "casos": 1789,
+    "aciertos": 788,
+    "sesgo": "compra",
+    "fiabilidad_pct": 44.0
+   },
+   "tres_soldados": {
+    "casos": 152,
+    "aciertos": 76,
+    "sesgo": "compra",
+    "fiabilidad_pct": 50.0
+   },
+   "envolvente_alcista": {
+    "casos": 949,
+    "aciertos": 479,
+    "sesgo": "compra",
+    "fiabilidad_pct": 50.5
+   },
+   "ruptura_maximo_20": {
+    "casos": 963,
+    "aciertos": 503,
+    "sesgo": "compra",
+    "fiabilidad_pct": 52.2
+   },
+   "envolvente_bajista": {
+    "casos": 940,
+    "aciertos": 484,
+    "sesgo": "venta",
+    "fiabilidad_pct": 51.5
+   },
+   "martillo": {
+    "casos": 847,
+    "aciertos": 291,
+    "sesgo": "compra",
+    "fiabilidad_pct": 34.4
+   },
+   "doble_techo": {
+    "casos": 1876,
+    "aciertos": 1054,
+    "sesgo": "venta",
+    "fiabilidad_pct": 56.2
+   },
+   "divergencia_bajista": {
+    "casos": 828,
+    "aciertos": 434,
+    "sesgo": "venta",
+    "fiabilidad_pct": 52.4
+   },
+   "divergencia_alcista": {
+    "casos": 528,
+    "aciertos": 272,
+    "sesgo": "compra",
+    "fiabilidad_pct": 51.5
+   },
+   "estrella_fugaz": {
+    "casos": 447,
+    "aciertos": 229,
+    "sesgo": "venta",
+    "fiabilidad_pct": 51.2
+   },
+   "ruptura_minimo_20": {
+    "casos": 528,
+    "aciertos": 262,
+    "sesgo": "venta",
+    "fiabilidad_pct": 49.6
+   },
+   "tres_cuervos": {
+    "casos": 73,
+    "aciertos": 32,
+    "sesgo": "venta",
+    "fiabilidad_pct": 43.8
+   }
+  },
+  "BTC/USD 5m": {
+   "doble_techo": {
+    "casos": 2219,
+    "aciertos": 1125,
+    "sesgo": "venta",
+    "fiabilidad_pct": 50.7
+   },
+   "doble_suelo": {
+    "casos": 2170,
+    "aciertos": 1003,
+    "sesgo": "compra",
+    "fiabilidad_pct": 46.2
+   },
+   "ruptura_maximo_20": {
+    "casos": 919,
+    "aciertos": 415,
+    "sesgo": "compra",
+    "fiabilidad_pct": 45.2
+   },
+   "envolvente_bajista": {
+    "casos": 1081,
+    "aciertos": 528,
+    "sesgo": "venta",
+    "fiabilidad_pct": 48.8
+   },
+   "martillo": {
+    "casos": 768,
+    "aciertos": 374,
+    "sesgo": "compra",
+    "fiabilidad_pct": 48.7
+   },
+   "divergencia_alcista": {
+    "casos": 828,
+    "aciertos": 410,
+    "sesgo": "compra",
+    "fiabilidad_pct": 49.5
+   },
+   "ruptura_minimo_20": {
+    "casos": 1017,
+    "aciertos": 449,
+    "sesgo": "venta",
+    "fiabilidad_pct": 44.1
+   },
+   "envolvente_alcista": {
+    "casos": 1131,
+    "aciertos": 534,
+    "sesgo": "compra",
+    "fiabilidad_pct": 47.2
+   },
+   "estrella_fugaz": {
+    "casos": 813,
+    "aciertos": 406,
+    "sesgo": "venta",
+    "fiabilidad_pct": 49.9
+   },
+   "tres_soldados": {
+    "casos": 303,
+    "aciertos": 155,
+    "sesgo": "compra",
+    "fiabilidad_pct": 51.2
+   },
+   "tres_cuervos": {
+    "casos": 305,
+    "aciertos": 145,
+    "sesgo": "venta",
+    "fiabilidad_pct": 47.5
+   },
+   "divergencia_bajista": {
+    "casos": 746,
+    "aciertos": 357,
+    "sesgo": "venta",
+    "fiabilidad_pct": 47.9
+   }
+  },
+  "BTC/USD 15m": {
+   "envolvente_alcista": {
+    "casos": 389,
+    "aciertos": 177,
+    "sesgo": "compra",
+    "fiabilidad_pct": 45.5
+   },
+   "ruptura_maximo_20": {
+    "casos": 244,
+    "aciertos": 99,
+    "sesgo": "compra",
+    "fiabilidad_pct": 40.6
+   },
+   "tres_soldados": {
+    "casos": 50,
+    "aciertos": 19,
+    "sesgo": "compra",
+    "fiabilidad_pct": 38.0
+   },
+   "ruptura_minimo_20": {
+    "casos": 286,
+    "aciertos": 145,
+    "sesgo": "venta",
+    "fiabilidad_pct": 50.7
+   },
+   "doble_techo": {
+    "casos": 862,
+    "aciertos": 442,
+    "sesgo": "venta",
+    "fiabilidad_pct": 51.3
+   },
+   "estrella_fugaz": {
+    "casos": 259,
+    "aciertos": 126,
+    "sesgo": "venta",
+    "fiabilidad_pct": 48.6
+   },
+   "envolvente_bajista": {
+    "casos": 367,
+    "aciertos": 186,
+    "sesgo": "venta",
+    "fiabilidad_pct": 50.7
+   },
+   "divergencia_bajista": {
+    "casos": 240,
+    "aciertos": 144,
+    "sesgo": "venta",
+    "fiabilidad_pct": 60.0
+   },
+   "martillo": {
+    "casos": 257,
+    "aciertos": 114,
+    "sesgo": "compra",
+    "fiabilidad_pct": 44.4
+   },
+   "doble_suelo": {
+    "casos": 775,
+    "aciertos": 386,
+    "sesgo": "compra",
+    "fiabilidad_pct": 49.8
+   },
+   "divergencia_alcista": {
+    "casos": 250,
+    "aciertos": 120,
+    "sesgo": "compra",
+    "fiabilidad_pct": 48.0
+   },
+   "tres_cuervos": {
+    "casos": 61,
+    "aciertos": 19,
+    "sesgo": "venta",
+    "fiabilidad_pct": 31.1
+   }
+  },
+  "BTC/USD 1h": {
+   "envolvente_bajista": {
+    "casos": 972,
+    "aciertos": 481,
+    "sesgo": "venta",
+    "fiabilidad_pct": 49.5
+   },
+   "martillo": {
+    "casos": 658,
+    "aciertos": 304,
+    "sesgo": "compra",
+    "fiabilidad_pct": 46.2
+   },
+   "envolvente_alcista": {
+    "casos": 972,
+    "aciertos": 470,
+    "sesgo": "compra",
+    "fiabilidad_pct": 48.4
+   },
+   "ruptura_maximo_20": {
+    "casos": 908,
+    "aciertos": 407,
+    "sesgo": "compra",
+    "fiabilidad_pct": 44.8
+   },
+   "estrella_fugaz": {
+    "casos": 605,
+    "aciertos": 294,
+    "sesgo": "venta",
+    "fiabilidad_pct": 48.6
+   },
+   "divergencia_bajista": {
+    "casos": 905,
+    "aciertos": 492,
+    "sesgo": "venta",
+    "fiabilidad_pct": 54.4
+   },
+   "tres_cuervos": {
+    "casos": 204,
+    "aciertos": 100,
+    "sesgo": "venta",
+    "fiabilidad_pct": 49.0
+   },
+   "ruptura_minimo_20": {
+    "casos": 928,
+    "aciertos": 460,
+    "sesgo": "venta",
+    "fiabilidad_pct": 49.6
+   },
+   "doble_suelo": {
+    "casos": 1921,
+    "aciertos": 942,
+    "sesgo": "compra",
+    "fiabilidad_pct": 49.0
+   },
+   "tres_soldados": {
+    "casos": 197,
+    "aciertos": 93,
+    "sesgo": "compra",
+    "fiabilidad_pct": 47.2
+   },
+   "doble_techo": {
+    "casos": 2017,
+    "aciertos": 1006,
+    "sesgo": "venta",
+    "fiabilidad_pct": 49.9
+   },
+   "divergencia_alcista": {
+    "casos": 815,
+    "aciertos": 409,
+    "sesgo": "compra",
+    "fiabilidad_pct": 50.2
+   }
+  },
+  "US 500 5m": {
+   "doble_suelo": {
+    "casos": 558,
+    "aciertos": 262,
+    "sesgo": "compra",
+    "fiabilidad_pct": 47.0
+   },
+   "divergencia_bajista": {
+    "casos": 199,
+    "aciertos": 95,
+    "sesgo": "venta",
+    "fiabilidad_pct": 47.7
+   },
+   "envolvente_alcista": {
+    "casos": 249,
+    "aciertos": 110,
+    "sesgo": "compra",
+    "fiabilidad_pct": 44.2
+   },
+   "ruptura_maximo_20": {
+    "casos": 315,
+    "aciertos": 162,
+    "sesgo": "compra",
+    "fiabilidad_pct": 51.4
+   },
+   "estrella_fugaz": {
+    "casos": 141,
+    "aciertos": 70,
+    "sesgo": "venta",
+    "fiabilidad_pct": 49.6
+   },
+   "envolvente_bajista": {
+    "casos": 285,
+    "aciertos": 139,
+    "sesgo": "venta",
+    "fiabilidad_pct": 48.8
+   },
+   "martillo": {
+    "casos": 204,
+    "aciertos": 87,
+    "sesgo": "compra",
+    "fiabilidad_pct": 42.6
+   },
+   "doble_techo": {
+    "casos": 491,
+    "aciertos": 285,
+    "sesgo": "venta",
+    "fiabilidad_pct": 58.0
+   },
+   "tres_soldados": {
+    "casos": 64,
+    "aciertos": 33,
+    "sesgo": "compra",
+    "fiabilidad_pct": 51.6
+   },
+   "ruptura_minimo_20": {
+    "casos": 299,
+    "aciertos": 168,
+    "sesgo": "venta",
+    "fiabilidad_pct": 56.2
+   },
+   "divergencia_alcista": {
+    "casos": 279,
+    "aciertos": 137,
+    "sesgo": "compra",
+    "fiabilidad_pct": 49.1
+   },
+   "tres_cuervos": {
+    "casos": 76,
+    "aciertos": 41,
+    "sesgo": "venta",
+    "fiabilidad_pct": 53.9
+   }
+  },
+  "US 500 15m": {
+   "envolvente_bajista": {
+    "casos": 98,
+    "aciertos": 46,
+    "sesgo": "venta",
+    "fiabilidad_pct": 46.9
+   },
+   "doble_suelo": {
+    "casos": 158,
+    "aciertos": 80,
+    "sesgo": "compra",
+    "fiabilidad_pct": 50.6
+   },
+   "divergencia_bajista": {
+    "casos": 74,
+    "aciertos": 44,
+    "sesgo": "venta",
+    "fiabilidad_pct": 59.5
+   },
+   "estrella_fugaz": {
+    "casos": 38,
+    "aciertos": 18,
+    "sesgo": "venta",
+    "fiabilidad_pct": 47.4
+   },
+   "martillo": {
+    "casos": 71,
+    "aciertos": 27,
+    "sesgo": "compra",
+    "fiabilidad_pct": 38.0
+   },
+   "ruptura_minimo_20": {
+    "casos": 95,
+    "aciertos": 53,
+    "sesgo": "venta",
+    "fiabilidad_pct": 55.8
+   },
+   "envolvente_alcista": {
+    "casos": 76,
+    "aciertos": 32,
+    "sesgo": "compra",
+    "fiabilidad_pct": 42.1
+   },
+   "doble_techo": {
+    "casos": 166,
+    "aciertos": 96,
+    "sesgo": "venta",
+    "fiabilidad_pct": 57.8
+   },
+   "ruptura_maximo_20": {
+    "casos": 97,
+    "aciertos": 56,
+    "sesgo": "compra",
+    "fiabilidad_pct": 57.7
+   },
+   "tres_cuervos": {
+    "casos": 15,
+    "aciertos": 6,
+    "sesgo": "venta",
+    "fiabilidad_pct": 40.0
+   },
+   "tres_soldados": {
+    "casos": 19,
+    "aciertos": 9,
+    "sesgo": "compra",
+    "fiabilidad_pct": 47.4
+   },
+   "divergencia_alcista": {
+    "casos": 74,
+    "aciertos": 39,
+    "sesgo": "compra",
+    "fiabilidad_pct": 52.7
+   }
+  },
+  "US 500 1h": {
+   "divergencia_alcista": {
+    "casos": 159,
+    "aciertos": 84,
+    "sesgo": "compra",
+    "fiabilidad_pct": 52.8
+   },
+   "ruptura_minimo_20": {
+    "casos": 256,
+    "aciertos": 122,
+    "sesgo": "venta",
+    "fiabilidad_pct": 47.7
+   },
+   "estrella_fugaz": {
+    "casos": 140,
+    "aciertos": 55,
+    "sesgo": "venta",
+    "fiabilidad_pct": 39.3
+   },
+   "envolvente_bajista": {
+    "casos": 277,
+    "aciertos": 125,
+    "sesgo": "venta",
+    "fiabilidad_pct": 45.1
+   },
+   "doble_techo": {
+    "casos": 595,
+    "aciertos": 299,
+    "sesgo": "venta",
+    "fiabilidad_pct": 50.3
+   },
+   "tres_soldados": {
+    "casos": 83,
+    "aciertos": 39,
+    "sesgo": "compra",
+    "fiabilidad_pct": 47.0
+   },
+   "doble_suelo": {
+    "casos": 414,
+    "aciertos": 210,
+    "sesgo": "compra",
+    "fiabilidad_pct": 50.7
+   },
+   "ruptura_maximo_20": {
+    "casos": 503,
+    "aciertos": 282,
+    "sesgo": "compra",
+    "fiabilidad_pct": 56.1
+   },
+   "divergencia_bajista": {
+    "casos": 350,
+    "aciertos": 187,
+    "sesgo": "venta",
+    "fiabilidad_pct": 53.4
+   },
+   "martillo": {
+    "casos": 226,
+    "aciertos": 103,
+    "sesgo": "compra",
+    "fiabilidad_pct": 45.6
+   },
+   "envolvente_alcista": {
+    "casos": 274,
+    "aciertos": 148,
+    "sesgo": "compra",
+    "fiabilidad_pct": 54.0
+   },
+   "tres_cuervos": {
+    "casos": 39,
+    "aciertos": 13,
+    "sesgo": "venta",
+    "fiabilidad_pct": 33.3
+   }
+  }
+ },
+ "errores": {}
+}
