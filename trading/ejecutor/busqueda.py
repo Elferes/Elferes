@@ -31,7 +31,7 @@ VENTANA = 250
 ACTIVOS = {"EUR/USD": "EURUSD=X", "GBP/USD": "GBPUSD=X", "USD/JPY": "JPY=X", "AUD/USD": "AUDUSD=X",
            "XAU/USD": "GC=F", "BTC/USD": "BTC-USD", "US 500": "^GSPC", "US Tech 100": "^NDX"}
 COSTE_PCT = dict(B.COSTE_PCT, **{"AUD/USD": 0.00015, "US Tech 100": 0.0002})
-MAX_VELAS = {"15m": 8, "1h": 12, "4h": 10}
+MAX_VELAS = {"15m": 8, "1h": 12, "4h": 10, "1d": 10}
 FILTROS_COMBOS = [(), ("tendencia200",), ("sesion_lny",), ("sesion_ny",), ("vol_alta",), ("vol_baja",),
                   ("tendencia200", "sesion_lny"), ("tendencia200", "vol_alta"), ("tendencia200", "vol_baja")]
 CRITERIO = {"min_ops_prueba": 30, "min_esperanza": 0.10, "min_pf": 1.2, "min_ops_entreno": 50, "min_esp_entreno": 0.05,
@@ -39,6 +39,8 @@ CRITERIO = {"min_ops_prueba": 30, "min_esperanza": 0.10, "min_pf": 1.2, "min_ops
 
 
 def velas_tf(activo, tf):
+    if tf == "1d":
+        return X.yahoo(ACTIVOS[activo], "1d", "max")[-6000:]
     if tf == "15m":
         return X.yahoo(ACTIVOS[activo], "15m", "60d")
     h = X.yahoo(ACTIVOS[activo], "1h", "730d")
@@ -113,6 +115,65 @@ def evaluar_serie(velas, activo, tf, cfg, registrar_variantes=False):
     return elegidas, probadas, round(time.time() - t0, 1)
 
 
+def senales_serie(velas, cfg):
+    """Señales base de todas las estrategias y rasgos, vela a vela (lo caro, se calcula una vez)."""
+    n = len(velas)
+    ventanas = lambda i: velas[max(0, i + 1 - VENTANA):i + 1]  # noqa: E731
+    feats = [None] * n
+    for i in range(60, n):
+        feats[i] = E.rasgos(ventanas(i))
+    sigs = {}
+    for base, fbase in E.ESTRATEGIAS.items():
+        sigs[base] = [None] * n
+        for i in range(60, n):
+            sigs[base][i] = fbase(ventanas(i), cfg, None)
+    return feats, sigs
+
+
+def evaluar_agrupado(series, tf):
+    """Una misma regla en TODOS los activos a la vez. series: {activo: (velas, feats, sigs)}.
+
+    Elige la variante con el entrenamiento conjunto y la juzga con la prueba conjunta. Así una regla tiene
+    que funcionar en muchos mercados (más creíble) y acumula muchas más operaciones (más poder estadístico).
+    """
+    elegidas, probadas = [], 0
+    for base in E.ESTRATEGIAS:
+        mejor = None
+        for filtros, salida in itertools.product(FILTROS_COMBOS, E.SALIDAS):
+            probadas += 1
+            ent, pru, m1, m2, por_activo = [], [], [], [], {}
+            for activo, (velas, feats, sigs) in series.items():
+                n = len(velas)
+                corte, mitad = int(n * 0.7), int(n * 0.7) + (n - int(n * 0.7)) // 2
+                sg = sigs[base]
+                ops = B.simular_fn(velas, lambda i: E.aplicar(sg[i], filtros, salida, feats[i]),
+                                   COSTE_PCT[activo], MAX_VELAS[tf])
+                for o in ops:
+                    (ent if o["i"] < corte else pru).append(o)
+                    if o["i"] >= corte:
+                        (m1 if o["i"] < mitad else m2).append(o)
+                        por_activo.setdefault(activo, []).append(o)
+            me = B.metricas(ent)
+            if me.get("operaciones", 0) >= 100 and (mejor is None or me["esperanza_r"] > mejor["ent"]["esperanza_r"]):
+                mejor = {"filtros": filtros, "salida": salida, "ent": me, "pru": pru, "m1": m1, "m2": m2,
+                         "por_activo": por_activo}
+        if not mejor:
+            continue
+        pru = B.metricas(mejor["pru"])
+        m1, m2 = B.metricas(mejor["m1"]), B.metricas(mejor["m2"])
+        ok = (pru.get("operaciones", 0) >= CRITERIO["min_ops_prueba"]
+              and pru["esperanza_r"] >= CRITERIO["min_esperanza"] and (pru.get("profit_factor") or 0) >= CRITERIO["min_pf"]
+              and mejor["ent"]["esperanza_r"] >= CRITERIO["min_esp_entreno"]
+              and pru.get("t_stat", 0) >= CRITERIO["min_t_prueba"] and mejor["ent"].get("t_stat", 0) >= CRITERIO["min_t_entreno"]
+              and m1.get("total_r", 0) > 0 and m2.get("total_r", 0) > 0)
+        elegidas.append({"activo": "TODOS", "tf": tf, "base": base,
+                         "variante": E.nombre_variante(base, mejor["filtros"], mejor["salida"]),
+                         "entrenamiento": mejor["ent"], "prueba": pru, "prueba_mitad1": m1, "prueba_mitad2": m2,
+                         "prueba_por_activo": {a: B.metricas(o) for a, o in mejor["por_activo"].items()},
+                         "aprobada": ok, "ops_prueba": []})
+    return elegidas, probadas
+
+
 def cartera(aprobadas):
     ops = sorted((t, r) for a in aprobadas for t, r in a["ops_prueba"])
     if not ops:
@@ -149,6 +210,12 @@ def informe(res):
         l.append(f"| {a['activo']} | {a['tf']} | `{a['variante']}` | {e['operaciones']}, {e['esperanza_r']:+}, {e['t_stat']} | "
                  f"{p['operaciones']} | {p['acierto_pct']} % | **{p['esperanza_r']:+}** | {p['t_stat']} | {p['profit_factor']} | "
                  f"{p['max_drawdown_r']} | {a['prueba_mitad1'].get('total_r')}, {a['prueba_mitad2'].get('total_r')} |")
+    if res.get("modo") == "agrupado":
+        l += ["", "## Desglose por activo en la prueba (agrupado)", ""]
+        for a in sorted(res["candidatas"], key=lambda x: x["prueba"].get("esperanza_r", -9), reverse=True)[:8]:
+            pa = a.get("prueba_por_activo", {})
+            l.append(f"- `{a['variante']}` ({a['tf']}, {'APROBADA' if a['aprobada'] else 'no aprobada'}): " + ", ".join(
+                f"{k} {v.get('operaciones', 0)} ops {v.get('esperanza_r', 0):+}R" for k, v in pa.items()))
     cart = res["cartera"]
     if cart:
         l += ["", "## Cartera de todas las aprobadas (prueba ciega)", "",
@@ -175,12 +242,41 @@ def main():
     ap.add_argument("--activos", default=",".join(ACTIVOS))
     ap.add_argument("--temporalidades", default="15m,1h,4h")
     ap.add_argument("--sin-permutacion", action="store_true")
+    ap.add_argument("--agrupado", action="store_true", help="una regla en todos los activos a la vez")
     a = ap.parse_args()
     cfg = S.preparar_config(S.CONFIG, capital=100.0)
     res = {"fecha": dt.datetime.now(D.ZONA).date().isoformat(), "criterio": CRITERIO, "series": [],
            "candidatas": [], "aprobadas": [], "variantes_probadas": 0, "falsos_positivos": 0,
            "candidatas_permutadas": 0, "errores": {}}
-    for activo in [x for x in a.activos.split(",") if x in ACTIVOS]:
+    if a.agrupado:
+        res["modo"] = "agrupado"
+        for tf in [x for x in a.temporalidades.split(",") if x in MAX_VELAS]:
+            reales, azar = {}, {}
+            for activo in [x for x in a.activos.split(",") if x in ACTIVOS]:
+                try:
+                    velas = velas_tf(activo, tf)
+                except Exception as e:
+                    res["errores"][f"{activo} {tf}"] = f"{type(e).__name__}: {e}"
+                    continue
+                t0 = time.time()
+                reales[activo] = (velas, *senales_serie(velas, cfg))
+                if not a.sin_permutacion:
+                    pv = permutar(velas, hash((activo, tf)) & 0xffff)
+                    azar[activo] = (pv, *senales_serie(pv, cfg))
+                res["series"].append({"activo": activo, "tf": tf, "velas": len(velas), "segundos": round(time.time() - t0, 1)})
+                print(f"{activo:11} {tf:3} {len(velas):6} velas listas", flush=True)
+            el, n = evaluar_agrupado(reales, tf)
+            res["variantes_probadas"] += n
+            res["candidatas"] += el
+            res["aprobadas"] += [x for x in el if x["aprobada"]]
+            msg = f"== {tf}: aprobadas={[x['variante'] for x in el if x['aprobada']]}"
+            if azar:
+                elp, _ = evaluar_agrupado(azar, tf)
+                res["candidatas_permutadas"] += len(elp)
+                res["falsos_positivos"] += sum(x["aprobada"] for x in elp)
+                msg += f" | azar aprobadas={sum(x['aprobada'] for x in elp)}/{len(elp)}"
+            print(msg, flush=True)
+    for activo in ([] if a.agrupado else [x for x in a.activos.split(",") if x in ACTIVOS]):
         for tf in [x for x in a.temporalidades.split(",") if x in MAX_VELAS]:
             try:
                 velas = velas_tf(activo, tf)
@@ -203,8 +299,9 @@ def main():
     res["cartera"] = cartera(res["aprobadas"])
     carpeta = D.RAIZ / "estrategias" / "busqueda"
     carpeta.mkdir(parents=True, exist_ok=True)
-    (carpeta / f"{res['fecha']}.json").write_text(json.dumps(res, ensure_ascii=False, indent=1))
-    (D.RAIZ / "estrategias" / "BUSQUEDA.md").write_text(informe(res))
+    sufijo = "-agrupado" if a.agrupado else ""
+    (carpeta / f"{res['fecha']}{sufijo}.json").write_text(json.dumps(res, ensure_ascii=False, indent=1))
+    (D.RAIZ / "estrategias" / f"BUSQUEDA{sufijo.upper()}.md").write_text(informe(res))
     print(informe(res))
     return 0
 

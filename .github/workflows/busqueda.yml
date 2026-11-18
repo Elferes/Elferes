@@ -6,6 +6,7 @@ on:
   push:
     paths:
       - "trading/solicitudes/busqueda.txt"
+      - "trading/solicitudes/busqueda-agrupada.txt"
   workflow_dispatch:
     inputs:
       activos:
@@ -13,9 +14,13 @@ on:
         required: false
         default: ""
       temporalidades:
-        description: "15m,1h,4h (vacío = todas)"
+        description: "15m,1h,4h,1d (vacío = todas)"
         required: false
         default: ""
+      agrupado:
+        description: "Probar cada regla en todos los activos a la vez"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -42,8 +47,13 @@ jobs:
         env:
           ACTIVOS: ${{ inputs.activos }}
           TFS: ${{ inputs.temporalidades }}
+          AGRUPADO: ${{ inputs.agrupado }}
+          CAMBIOS: ${{ toJSON(github.event.head_commit.modified) }}
         run: |
           args=""
+          if [ "$AGRUPADO" = "true" ] || echo "$CAMBIOS" | grep -q "busqueda-agrupada"; then
+            args="--agrupado --temporalidades ${TFS:-1h,4h,1d}"; TFS=""
+          fi
           if [ -n "$ACTIVOS" ]; then args="$args --activos $ACTIVOS"; fi
           if [ -n "$TFS" ]; then args="$args --temporalidades $TFS"; fi
           python trading/ejecutor/busqueda.py $args
