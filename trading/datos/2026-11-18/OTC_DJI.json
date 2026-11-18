@@ -1,31 +1,31 @@
 {
  "activo": "Wall Street 30",
  "simbolo_deriv": "OTC_DJI",
- "generado_utc": "2026-11-18T18:49:50+00:00",
+ "generado_utc": "2026-11-18T19:12:34+00:00",
  "fuente_semanal_mensual_anual": "yahoo ^DJI",
  "temporalidades": {
   "15m": {
    "resumen": {
-    "precio": 50419.6,
-    "tendencia": "lateral",
+    "precio": 50356.1,
+    "tendencia": "bajista",
     "ema": {
-     "ema20": 50381.255763,
-     "ema50": 50583.808532,
-     "ema200": 51306.897769
+     "ema20": 50378.859976,
+     "ema50": 50574.874474,
+     "ema200": 51297.103464
     },
     "precio_vs_ema200": "debajo",
-    "rsi14": 49.3,
-    "macd_hist": 28.623931,
+    "rsi14": 45.8,
+    "macd_hist": 29.901643,
     "macd_sesgo": "alcista",
-    "atr14": 122.763416,
-    "atr14_pct": 0.243,
-    "max_20": 50800.15,
+    "atr14": 119.208885,
+    "atr14_pct": 0.237,
+    "max_20": 50769.15,
     "min_20": 50031.1,
     "vela_anterior": {
-     "open": 50231.1,
-     "high": 50349.1,
-     "low": 50231.1,
-     "close": 50334.6
+     "open": 50334.6,
+     "high": 50431.6,
+     "low": 50333.6,
+     "close": 50419.6
     },
     "resistencias_recientes": [
      50906.15,
@@ -38,21 +38,29 @@
      50222.1
     ],
     "variacion_pct": {
-     "1": 0.17,
-     "5": 0.02,
-     "20": -0.69
+     "1": -0.13,
+     "5": 0.03,
+     "20": -0.79
     },
-    "velas": 392
+    "velas": 393
    },
-   "patrones": [],
-   "ultimas_velas": [
+   "patrones": [
     {
-     "t": "2026-11-18 08:45",
-     "open": 50880.15,
-     "high": 50918.15,
-     "low": 50855.15,
-     "close": 50867.15
+     "patron": "inside_bar",
+     "tipo": "vela",
+     "sesgo": "neutral",
+     "nivel": null,
+     "descripcion": "vela interior: compresión, esperar ruptura del rango de la anterior"
     },
+    {
+     "patron": "nr7",
+     "tipo": "vela",
+     "sesgo": "neutral",
+     "nivel": null,
+     "descripcion": "rango más estrecho de 7 velas: suele preceder a un movimiento fuerte"
+    }
+   ],
+   "ultimas_velas": [
     {
      "t": "2026-11-18 09:00",
      "open": 50866.65,
@@ -325,31 +333,38 @@
      "high": 50431.6,
      "low": 50333.6,
      "close": 50419.6
+    },
+    {
+     "t": "2026-11-18 18:45",
+     "open": 50420.6,
+     "high": 50424.6,
+     "low": 50351.6,
+     "close": 50356.1
     }
    ]
   },
   "1h": {
    "resumen": {
-    "precio": 50318.1,
+    "precio": 50356.1,
     "tendencia": "bajista",
     "ema": {
-     "ema20": 50782.848736,
-     "ema50": 51297.776848,
-     "ema200": 51913.132719
+     "ema20": 50742.205999,
+     "ema50": 51260.848337,
+     "ema200": 51897.602839
     },
     "precio_vs_ema200": "debajo",
-    "rsi14": 26.6,
-    "macd_hist": -18.355063,
+    "rsi14": 28.6,
+    "macd_hist": -11.204065,
     "macd_sesgo": "bajista",
-    "atr14": 217.910289,
-    "atr14_pct": 0.433,
+    "atr14": 217.309554,
+    "atr14_pct": 0.432,
     "max_20": 51459.1,
     "min_20": 50031.1,
     "vela_anterior": {
-     "open": 50221.1,
-     "high": 50257.6,
-     "low": 50031.1,
-     "close": 50252.6
+     "open": 50249.6,
+     "high": 50467.6,
+     "low": 50226.6,
+     "close": 50318.1
     },
     "resistencias_recientes": [
      51478.15,
@@ -357,34 +372,19 @@
      50930.65
     ],
     "soportes_recientes": [
-     51265.65,
      50678.6,
-     50568.1
+     50568.1,
+     50031.1
     ],
     "variacion_pct": {
-     "1": 0.13,
-     "5": -0.69,
-     "20": -1.91
+     "1": 0.08,
+     "5": -0.79,
+     "20": -1.66
     },
-    "velas": 494
+    "velas": 495
    },
-   "patrones": [
-    {
-     "patron": "estrella_fugaz",
-     "tipo": "vela",
-     "sesgo": "venta",
-     "nivel": null,
-     "descripcion": "mecha superior larga: rechazo de precios altos"
-    }
-   ],
+   "patrones": [],
    "ultimas_velas": [
-    {
-     "t": "2026-11-13 15:00",
-     "open": 52346.6,
-     "high": 52346.6,
-     "low": 52003.6,
-     "close": 52212.1
-    },
     {
      "t": "2026-11-13 16:00",
      "open": 52213.1,
@@ -713,6 +713,13 @@
      "high": 50467.6,
      "low": 50226.6,
      "close": 50318.1
+    },
+    {
+     "t": "2026-11-18 18:00",
+     "open": 50317.1,
+     "high": 50431.6,
+     "low": 50222.1,
+     "close": 50356.1
     }
    ]
   },
@@ -1190,19 +1197,19 @@
   },
   "semanal": {
    "resumen": {
-    "precio": 50404.8515625,
+    "precio": 50254.0390625,
     "tendencia": "lateral",
     "ema": {
-     "ema20": 51616.544711,
-     "ema50": 50305.518879,
-     "ema200": 43586.448968
+     "ema20": 51602.181616,
+     "ema50": 50299.604663,
+     "ema200": 43584.948347
     },
     "precio_vs_ema200": "encima",
-    "rsi14": 43.5,
-    "macd_hist": -347.867409,
+    "rsi14": 42.8,
+    "macd_hist": -357.49191,
     "macd_sesgo": "bajista",
     "atr14": 1301.151441,
-    "atr14_pct": 2.581,
+    "atr14_pct": 2.589,
     "max_20": 54744.328125,
     "min_20": 50029.3515625,
     "vela_anterior": {
@@ -1222,9 +1229,9 @@
      50546.5390625
     ],
     "variacion_pct": {
-     "1": -0.7,
-     "5": -3.47,
-     "20": -4.24
+     "1": -1.0,
+     "5": -3.76,
+     "20": -4.53
     },
     "velas": 524
    },
@@ -1603,29 +1610,29 @@
      "close": 50759.421875
     },
     {
-     "t": "2026-11-18 18:50",
+     "t": "2026-11-18 19:12",
      "open": 50627.359375,
      "high": 50637.69921875,
      "low": 50029.3515625,
-     "close": 50404.8515625
+     "close": 50254.0390625
     }
    ]
   },
   "mensual": {
    "resumen": {
-    "precio": 50404.8515625,
+    "precio": 50254.0390625,
     "tendencia": "alcista",
     "ema": {
-     "ema20": 48631.613206,
-     "ema50": 43400.320092,
-     "ema200": 29440.1541
+     "ema20": 48617.250111,
+     "ema50": 43394.405876,
+     "ema200": 29438.653478
     },
     "precio_vs_ema200": "encima",
-    "rsi14": 60.3,
-    "macd_hist": -211.676108,
+    "rsi14": 59.8,
+    "macd_hist": -221.300609,
     "macd_sesgo": "bajista",
     "atr14": 2397.91839,
-    "atr14_pct": 4.757,
+    "atr14_pct": 4.772,
     "max_20": 54744.328125,
     "min_20": 40705.62890625,
     "vela_anterior": {
@@ -1645,9 +1652,9 @@
      45057.28125
     ],
     "variacion_pct": {
-     "1": -0.7,
-     "5": -3.96,
-     "20": 23.94
+     "1": -1.0,
+     "5": -4.25,
+     "20": 23.57
     },
     "velas": 419
    },
@@ -1907,27 +1914,27 @@
      "close": 50759.421875
     },
     {
-     "t": "2026-11-18 18:50",
+     "t": "2026-11-18 19:12",
      "open": 50627.359375,
      "high": 50637.69921875,
      "low": 50029.3515625,
-     "close": 50404.8515625
+     "close": 50254.0390625
     }
    ]
   },
   "anual": {
    "resumen": {
-    "precio": 50404.8515625,
+    "precio": 50254.0390625,
     "tendencia": "alcista",
     "ema": {
-     "ema20": 28596.469575
+     "ema20": 28582.10648
     },
     "precio_vs_ema200": null,
-    "rsi14": 86.5,
-    "macd_hist": 2629.514209,
+    "rsi14": 86.4,
+    "macd_hist": 2619.889708,
     "macd_sesgo": "alcista",
     "atr14": 5587.644799,
-    "atr14_pct": 11.086,
+    "atr14_pct": 11.119,
     "max_20": 54744.328125,
     "min_20": 6469.9501953125,
     "vela_anterior": {
@@ -1946,9 +1953,9 @@
      18213.650390625
     ],
     "variacion_pct": {
-     "1": 4.87,
-     "5": 38.71,
-     "20": 304.43
+     "1": 4.56,
+     "5": 38.29,
+     "20": 303.22
     },
     "velas": 35
    },
@@ -2065,7 +2072,7 @@
      "open": 48105.98046875,
      "high": 54744.328125,
      "low": 45057.28125,
-     "close": 50404.8515625
+     "close": 50254.0390625
     }
    ]
   }
