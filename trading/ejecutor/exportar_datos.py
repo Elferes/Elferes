@@ -18,6 +18,13 @@ sys.path.insert(0, str(Path(__file__).parent))
 import deriv_ejecutor as D  # noqa: E402
 import scalper as S  # noqa: E402
 
+# Equivalentes en Yahoo Finance para el historial largo (semanal, mensual, anual): Deriv solo da ~1 año diario.
+YAHOO = {
+    "frxEURUSD": "EURUSD=X", "frxGBPUSD": "GBPUSD=X", "frxUSDJPY": "JPY=X", "frxAUDUSD": "AUDUSD=X",
+    "frxXAUUSD": "GC=F", "cryBTCUSD": "BTC-USD", "cryETHUSD": "ETH-USD",
+    "OTC_SPC": "^GSPC", "OTC_NDX": "^NDX", "OTC_DJI": "^DJI",
+}
+
 ACTIVOS = {
     "EUR/USD": "frxEURUSD", "GBP/USD": "frxGBPUSD", "USD/JPY": "frxUSDJPY", "AUD/USD": "frxAUDUSD",
     "XAU/USD": "frxXAUUSD", "BTC/USD": "cryBTCUSD", "ETH/USD": "cryETHUSD",
@@ -25,6 +32,21 @@ ACTIVOS = {
 }
 TEMPORALIDADES = {"15m": (900, 400), "1h": (3600, 500), "diario": (86400, 3650)}
 ULTIMAS_VELAS = {"15m": 40, "1h": 48, "diario": 60, "semanal": 52, "mensual": 36, "anual": 15}
+
+
+def yahoo(simbolo, intervalo, rango):
+    """Velas de Yahoo Finance (solo desde GitHub Actions, que tiene internet abierto)."""
+    import urllib.parse
+    import urllib.request
+    url = (f"https://query1.finance.yahoo.com/v8/finance/chart/{urllib.parse.quote(simbolo)}"
+           f"?interval={intervalo}&range={rango}")
+    req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        res = json.load(r)["chart"]["result"][0]
+    q = res["indicators"]["quote"][0]
+    return [{"epoch": t, "open": o, "high": h, "low": l, "close": c}
+            for t, o, h, l, c in zip(res["timestamp"], q["open"], q["high"], q["low"], q["close"])
+            if None not in (o, h, l, c)]
 
 
 def agregar(diarias, clave):
@@ -106,13 +128,22 @@ async def exportar(api, fecha, carpeta):
             series = {}
             for tf, (g, n) in TEMPORALIDADES.items():
                 series[tf] = await historico(api, sym, g, n)
-            for tf in ("semanal", "mensual", "anual"):
-                series[tf] = agregar(series["diario"], tf)
+            fuente_largo = "deriv (~1 año)"
+            try:
+                ysym = YAHOO[sym]
+                series["semanal"] = yahoo(ysym, "1wk", "10y")
+                series["mensual"] = yahoo(ysym, "1mo", "max")
+                series["anual"] = agregar(series["mensual"], "anual")
+                fuente_largo = f"yahoo {ysym}"
+            except Exception as e:  # sin Yahoo: agregamos lo que da Deriv
+                indice["errores"][f"{activo} (yahoo)"] = f"{type(e).__name__}: {e}"
+                for tf in ("semanal", "mensual", "anual"):
+                    series[tf] = agregar(series["diario"], tf)
         except Exception as e:  # símbolo no disponible, etc.
             indice["errores"][activo] = f"{type(e).__name__}: {e}"
             continue
         datos = {"activo": activo, "simbolo_deriv": sym, "generado_utc": indice["generado_utc"],
-                 "temporalidades": {}}
+                 "fuente_semanal_mensual_anual": fuente_largo, "temporalidades": {}}
         for tf, velas in series.items():
             datos["temporalidades"][tf] = {
                 "resumen": resumen(velas),
