@@ -107,6 +107,11 @@ en el formato de `trading/ejecutor/README.md`:
 - `gatillo` según la condición de entrada: `mercado`, `ruptura_arriba`, `ruptura_abajo`, `retesteo_arriba` o `retesteo_abajo`.
 - Horas en UTC (`valido_hasta_utc`, `cerrar_antes_utc`), sin superar 5 h 30 min desde la hora de subida del plan.
 - Si no hay operaciones, escribe `"operaciones": []`.
+- Añade siempre `"eventos_alto_impacto_utc": ["AAAA-MM-DDTHH:MM:00Z", ...]` con las horas UTC de los datos o discursos
+  de alto impacto de hoy (IPC, empleo, Fed/BCE/BoE, actas). El **scalper** (operaciones rápidas de 5 min, de la subida
+  del plan a 16:30 UTC en EUR/USD, GBP/USD, XAU/USD y BTC/USD) no abre 15 min antes ni después de esas horas, y usa
+  la `direccion` de las operaciones del plan como sesgo: solo opera a favor.
+- En el paso 1, suma también el resultado del scalper (`trading/ejecuciones/AAAA-MM-DD-scalping.json`) al USD del día.
 - Valida antes de subir: `python3 -c "import json,sys; sys.path.insert(0,'trading/ejecutor'); import deriv_ejecutor as E; [print(o['activo'], E.validar_operacion(o) or 'OK') for o in json.load(open('trading/planes/AAAA-MM-DD.json'))['operaciones']]"`
 - En el paso 1 (verificar ayer), usa también `trading/ejecuciones/AAAA-MM-DD.json` (lo que el ejecutor hizo de verdad en Deriv) y anota en `HISTORIAL.md` el resultado en USD.
 

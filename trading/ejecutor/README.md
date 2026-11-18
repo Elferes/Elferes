@@ -10,6 +10,18 @@ GitHub Actions (`.github/workflows/ejecutor-deriv.yml`) arranca `deriv_ejecutor.
 4. Arriesga como máximo el **1% del saldo** por operación (máximo 3 a la vez). Si en el día pierde un **3%**, cierra todo y para.
 5. Cierra todo a la hora límite del plan y guarda el resultado en `trading/ejecuciones/AAAA-MM-DD.json`.
 
+## Scalper (operaciones rápidas)
+`scalper.py` (`.github/workflows/scalper-deriv.yml`) arranca con el mismo plan y opera **velas de 5 min**
+en EUR/USD, GBP/USD, XAU/USD y BTC/USD hasta las 16:30 UTC (11:30 Bogotá).
+- **Señal:** tendencia (EMA 9/21/50) más retroceso a la EMA21 y RSI.
+- **Salidas:** stop a 1.2 × ATR, objetivo a 1.8 × ATR, y cierre a los 30 min si no toca ninguno.
+- **Límites:**
+  - Riesgo 0.25 % por operación, máximo 2 abiertas y 6 en el día.
+  - Para si pierde el 1 % del saldo o 3 operaciones seguidas.
+  - Para al ganar la meta diaria: 30 USD, o la variable de Actions `META_DIARIA_USD`.
+- Respeta el sesgo del plan y los horarios de noticias (`eventos_alto_impacto_utc`).
+- Resultado en `trading/ejecuciones/AAAA-MM-DD-scalping.json`.
+
 ## Configuración (una sola vez)
 1. En Deriv (cuenta **demo**): *Configuración de cuenta → Token de API* → crea un token con permisos **Read** y **Trade**.
 2. En GitHub: repositorio → *Settings → Secrets and variables → Actions → New repository secret*,
