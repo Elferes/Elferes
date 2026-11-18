@@ -1,11 +1,11 @@
 {
- "generado_utc": "2026-11-18T19:30:06+00:00",
+ "generado_utc": "2026-11-18T21:30:44+00:00",
  "fecha": "2026-11-18",
  "activos": {
   "EUR/USD": {
    "simbolo": "frxEURUSD",
    "archivo": "trading/datos/2026-11-18/frxEURUSD.json",
-   "precio": 1.09669,
+   "precio": 1.09717,
    "tendencias": {
     "15m": "bajista",
     "1h": "bajista",
@@ -16,12 +16,10 @@
    },
    "patrones": {
     "15m": [
-     "doble_techo"
+     "doble_techo",
+     "doble_suelo"
     ],
-    "1h": [
-     "doji",
-     "nr7"
-    ],
+    "1h": [],
     "diario": [
      "doji"
     ],
@@ -38,7 +36,7 @@
   "GBP/USD": {
    "simbolo": "frxGBPUSD",
    "archivo": "trading/datos/2026-11-18/frxGBPUSD.json",
-   "precio": 1.31414,
+   "precio": 1.31464,
    "tendencias": {
     "15m": "bajista",
     "1h": "bajista",
@@ -48,9 +46,11 @@
     "anual": "bajista"
    },
    "patrones": {
-    "15m": [],
+    "15m": [
+     "doble_suelo"
+    ],
     "1h": [
-     "nr7"
+     "inside_bar"
     ],
     "diario": [],
     "semanal": [
@@ -58,7 +58,8 @@
     ],
     "mensual": [
      "nr7",
-     "doble_techo"
+     "doble_techo",
+     "doble_suelo"
     ],
     "anual": []
    }
@@ -66,20 +67,19 @@
   "USD/JPY": {
    "simbolo": "frxUSDJPY",
    "archivo": "trading/datos/2026-11-18/frxUSDJPY.json",
-   "precio": 159.381,
+   "precio": 159.374,
    "tendencias": {
-    "15m": "lateral",
-    "1h": "lateral",
+    "15m": "alcista",
+    "1h": "bajista",
     "diario": "alcista",
     "semanal": "alcista",
     "mensual": "alcista",
     "anual": "alcista"
    },
    "patrones": {
-    "15m": [
-     "inside_bar"
-    ],
+    "15m": [],
     "1h": [
+     "envolvente_bajista",
      "doble_suelo"
     ],
     "diario": [
@@ -100,7 +100,7 @@
   "AUD/USD": {
    "simbolo": "frxAUDUSD",
    "archivo": "trading/datos/2026-11-18/frxAUDUSD.json",
-   "precio": 0.67123,
+   "precio": 0.67124,
    "tendencias": {
     "15m": "bajista",
     "1h": "bajista",
@@ -110,11 +110,11 @@
     "anual": "bajista"
    },
    "patrones": {
-    "15m": [],
+    "15m": [
+     "nr7"
+    ],
     "1h": [
-     "doji",
-     "nr7",
-     "doble_techo"
+     "inside_bar"
     ],
     "diario": [
      "nr7"
@@ -134,7 +134,7 @@
   "XAU/USD": {
    "simbolo": "frxXAUUSD",
    "archivo": "trading/datos/2026-11-18/frxXAUUSD.json",
-   "precio": 3727.89,
+   "precio": 3726.33,
    "tendencias": {
     "15m": "bajista",
     "1h": "bajista",
@@ -144,10 +144,11 @@
     "anual": "alcista"
    },
    "patrones": {
-    "15m": [],
+    "15m": [
+     "envolvente_alcista"
+    ],
     "1h": [
-     "inside_bar",
-     "nr7"
+     "inside_bar"
     ],
     "diario": [
      "inside_bar",
@@ -166,7 +167,7 @@
   "BTC/USD": {
    "simbolo": "cryBTCUSD",
    "archivo": "trading/datos/2026-11-18/cryBTCUSD.json",
-   "precio": 62833.942,
+   "precio": 62415.189,
    "tendencias": {
     "15m": "bajista",
     "1h": "bajista",
@@ -177,14 +178,9 @@
    },
    "patrones": {
     "15m": [
-     "doji",
-     "inside_bar",
-     "nr7"
+     "estrella_fugaz"
     ],
-    "1h": [
-     "inside_bar",
-     "nr7"
-    ],
+    "1h": [],
     "diario": [
      "doji"
     ],
@@ -201,7 +197,7 @@
   "ETH/USD": {
    "simbolo": "cryETHUSD",
    "archivo": "trading/datos/2026-11-18/cryETHUSD.json",
-   "precio": 1761.365,
+   "precio": 1761.065,
    "tendencias": {
     "15m": "bajista",
     "1h": "bajista",
@@ -211,14 +207,8 @@
     "anual": "alcista"
    },
    "patrones": {
-    "15m": [
-     "inside_bar",
-     "nr7"
-    ],
-    "1h": [
-     "inside_bar",
-     "nr7"
-    ],
+    "15m": [],
+    "1h": [],
     "diario": [
      "doji"
     ],
@@ -234,7 +224,7 @@
   "US 500": {
    "simbolo": "OTC_SPC",
    "archivo": "trading/datos/2026-11-18/OTC_SPC.json",
-   "precio": 7326.7,
+   "precio": 7320.4,
    "tendencias": {
     "15m": "bajista",
     "1h": "bajista",
@@ -245,11 +235,11 @@
    },
    "patrones": {
     "15m": [
-     "inside_bar",
-     "nr7"
+     "estrella_fugaz"
     ],
     "1h": [
-     "inside_bar",
+     "doji",
+     "nr7",
      "doble_suelo"
     ],
     "diario": [],
@@ -269,10 +259,10 @@
   "US Tech 100": {
    "simbolo": "OTC_NDX",
    "archivo": "trading/datos/2026-11-18/OTC_NDX.json",
-   "precio": 27116.65,
+   "precio": 27111.15,
    "tendencias": {
     "15m": "lateral",
-    "1h": "lateral",
+    "1h": "bajista",
     "diario": "bajista",
     "semanal": "lateral",
     "mensual": "alcista",
@@ -280,13 +270,11 @@
    },
    "patrones": {
     "15m": [
-     "inside_bar",
-     "nr7",
+     "estrella_fugaz",
      "doble_suelo"
     ],
     "1h": [
-     "inside_bar",
-     "doble_techo"
+     "nr7"
     ],
     "diario": [
      "martillo"
@@ -307,7 +295,7 @@
   "Wall Street 30": {
    "simbolo": "OTC_DJI",
    "archivo": "trading/datos/2026-11-18/OTC_DJI.json",
-   "precio": 50174.6,
+   "precio": 50200.1,
    "tendencias": {
     "15m": "bajista",
     "1h": "bajista",
@@ -318,10 +306,13 @@
    },
    "patrones": {
     "15m": [
-     "nr7",
-     "tres_cuervos"
+     "doji"
     ],
-    "1h": [],
+    "1h": [
+     "doji",
+     "inside_bar",
+     "nr7"
+    ],
     "diario": [
      "ruptura_minimo_20"
     ],
