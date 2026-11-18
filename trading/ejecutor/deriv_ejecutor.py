@@ -182,7 +182,9 @@ class Deriv:
         if not url:
             raise DerivError(f"Respuesta OTP sin url: {str(otp)[:200]}")
         self.ws = await websockets.connect(url, ping_interval=30, open_timeout=30)
-        self.cuenta = {"loginid": c.get("account_id"), "currency": c.get("currency", "USD"),
+        moneda = c.get("currency")
+        moneda = moneda if isinstance(moneda, str) and len(moneda) == 3 else "USD"
+        self.cuenta = {"loginid": c.get("account_id"), "currency": moneda,
                        "balance": c.get("balance"), "is_virtual": str(c.get("account_type", "")).lower() == "demo",
                        "cuentas_disponibles": [(x.get("account_id"), x.get("account_type")) for x in cuentas]}
         return self.cuenta
@@ -232,7 +234,7 @@ class Deriv:
             return float(c["balance"])
 
     async def multiplicadores(self, simbolo, tipo):
-        r = await self.call({"contracts_for": simbolo, "currency": self.cuenta["currency"]})
+        r = await self.call({"contracts_for": simbolo})
         for c in r["contracts_for"]["available"]:
             if c.get("contract_type") == tipo and c.get("multiplier_range"):
                 return [int(m) for m in c["multiplier_range"]]
@@ -375,7 +377,14 @@ async def ejecutar(plan, modo, cfg):
             reg.evento(f"{op.get('activo', '?')}: descartada del plan ({err})")
             continue
         tipo = "MULTUP" if es_largo(op["direccion"]) else "MULTDOWN"
-        mults = await api.multiplicadores(op["simbolo_deriv"], tipo)
+        try:
+            mults = await api.multiplicadores(op["simbolo_deriv"], tipo)
+            if modo == "verificar":
+                v = await api.velas(op["simbolo_deriv"], cfg["granularidad"])
+                reg.evento(f"{op['activo']}: velas de 15 min OK, último cierre {v[-1]['close'] if v else '—'}")
+        except Exception as e:
+            reg.evento(f"{op['activo']}: error consultando Deriv ({type(e).__name__}: {e})")
+            continue
         if not mults:
             reg.evento(f"{op['activo']}: Deriv no ofrece {tipo} en {op['simbolo_deriv']}, se omite")
             continue
