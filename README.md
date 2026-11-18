@@ -9,6 +9,8 @@ y un orquestador entrega el plan del día con **precio de entrada, stop loss y p
 - Indicadores técnicos: `python3 trading/indicadores.py NVDA BTC-USD EURUSD=X`
 - Equipo de agentes: aprendizaje (`revisor-aprendizaje`), gráficas (`grafico-largo-plazo`, `grafico-diario`,
   `grafico-intradia`), mercado (`analista-mercado`) y mercados (acciones, cripto, divisas)
+- Estrategias y patrones: biblioteca (`trading/ejecutor/estrategias.py`), detector de patrones (`patrones.py`),
+  backtest (`backtest.py`), ranking y laboratorio en [trading/estrategias/](trading/estrategias/)
 - Bitácora de aprendizaje y parámetros ajustables: [trading/aprendizaje/](trading/aprendizaje/)
 - Cuenta virtual: se opera como si el capital fuera de 100 USD (`CAPITAL_VIRTUAL_USD`)
 - Ejecutor automático en Deriv demo: [trading/ejecutor/README.md](trading/ejecutor/README.md)

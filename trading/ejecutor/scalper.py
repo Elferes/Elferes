@@ -34,6 +34,10 @@ import deriv_ejecutor as D  # noqa: E402
 
 CONFIG = {
     "simbolos": {"EUR/USD": "frxEURUSD", "GBP/USD": "frxGBPUSD", "XAU/USD": "frxXAUUSD", "BTC/USD": "cryBTCUSD"},
+    # combinaciones (activo, temporalidad, estrategia) validadas por backtest; si está vacío se usa
+    # simbolos × estrategias en 5m (modo antiguo)
+    "combinaciones": [],
+    "estrategias": ["tendencia_retroceso"],
     "riesgo_pct": 1.0,
     "max_abiertas": 2,
     "max_operaciones_dia": 6,
@@ -55,6 +59,14 @@ CONFIG = {
 
 
 # --------------------------------------------------------------------------- indicadores
+TODOS_LOS_SIMBOLOS = {
+    "EUR/USD": "frxEURUSD", "GBP/USD": "frxGBPUSD", "USD/JPY": "frxUSDJPY", "AUD/USD": "frxAUDUSD",
+    "XAU/USD": "frxXAUUSD", "BTC/USD": "cryBTCUSD", "ETH/USD": "cryETHUSD",
+    "US 500": "OTC_SPC", "US Tech 100": "OTC_NDX", "Wall Street 30": "OTC_DJI",
+}
+GRANULARIDAD = {"5m": 300, "15m": 900, "1h": 3600}
+MAX_VELAS_TF = {"15m": 8, "1h": 12}  # mismo límite de tiempo que usa backtest.py
+
 # Límites de seguridad para lo que el agente de aprendizaje puede cambiar.
 LIMITES = {
     "riesgo_pct": (0.25, 2.0), "atr_stop": (0.8, 2.5), "atr_objetivo": (1.0, 4.0),
@@ -80,6 +92,19 @@ def cargar_parametros(cfg, ruta=None):
     if cfg["atr_objetivo"] < 1.2 * cfg["atr_stop"]:
         cfg["atr_objetivo"] = round(1.2 * cfg["atr_stop"], 2)
         notas.append("atr_objetivo subido a 1.2 × atr_stop (R/B mínimo 1.2)")
+    if isinstance(p.get("estrategias"), list):
+        import estrategias as E
+        validas = [e for e in p["estrategias"] if e in E.ESTRATEGIAS]
+        cfg["estrategias"] = validas or ["tendencia_retroceso"]
+        if len(validas) != len(p["estrategias"]):
+            notas.append(f"estrategias desconocidas ignoradas: {set(p['estrategias']) - set(validas)}")
+    if isinstance(p.get("combinaciones"), list):
+        import estrategias as E
+        cfg["combinaciones"] = [c for c in p["combinaciones"] if isinstance(c, dict)
+                                and c.get("activo") in TODOS_LOS_SIMBOLOS and c.get("tf") in GRANULARIDAD
+                                and c.get("estrategia") in E.ESTRATEGIAS]
+        if len(cfg["combinaciones"]) != len(p["combinaciones"]):
+            notas.append("algunas combinaciones no son válidas y se ignoran")
     if isinstance(p.get("activos"), list):
         cfg["simbolos"] = {a: s for a, s in cfg["simbolos"].items() if a in p["activos"]} or cfg["simbolos"]
     cfg["version_parametros"] = p.get("version")
@@ -173,6 +198,7 @@ async def abrir(api, simbolo, activo, s, cfg, reg):
     t = {"activo": activo, "simbolo": simbolo, "tipo": tipo, "contract_id": c["contract_id"], "precio_ref": precio,
          "stop": s["stop"], "tp": s["tp"], "multiplicador": m, "stake": stake, "sl_usd": sl, "tp_usd": tp,
          "rsi": s["rsi"], "atr": s["atr"], "contexto": s["contexto"], "direccion": s["direccion"],
+         "estrategia": s.get("estrategia", "tendencia_retroceso"),
          "abierta_epoch": time.time(), "abierto": True, "profit": 0.0, "cierre": None}
     reg.datos["operaciones"].append(t)
     reg.evento(f"{activo}: ABIERTA {s['direccion'].upper()} x{m} stake {stake} | entrada ~{precio:.5g} "
@@ -182,7 +208,7 @@ async def abrir(api, simbolo, activo, s, cfg, reg):
 
 async def vigilar(api, t, cfg, reg, forzar=False):
     c = await api.contrato(t["contract_id"])
-    vencida = time.time() - t["abierta_epoch"] > cfg["max_velas_abierta"] * cfg["granularidad"]
+    vencida = time.time() - t["abierta_epoch"] > t.get("max_segundos", cfg["max_velas_abierta"] * cfg["granularidad"])
     if not c.get("is_sold") and (forzar or vencida):
         await api.vender(t["contract_id"])
         c = await api.contrato(t["contract_id"])
@@ -198,9 +224,14 @@ async def vigilar(api, t, cfg, reg, forzar=False):
 
 
 async def correr(plan, modo, cfg):
+    import estrategias as E
     fecha = plan["fecha"]
     reg = D.Registro(fecha)
     reg.ruta = D.RAIZ / "ejecuciones" / f"{fecha}-scalping.json"
+    n = 2
+    while reg.ruta.exists():  # varias sesiones el mismo día: no sobrescribir
+        reg.ruta = D.RAIZ / "ejecuciones" / f"{fecha}-scalping-{n}.json"
+        n += 1
     token = os.environ.get("DERIV_TOKEN", "").strip()
     if not token:
         reg.evento("Falta el secreto DERIV_TOKEN")
@@ -214,7 +245,7 @@ async def correr(plan, modo, cfg):
     reg.evento(f"Scalper conectado: cuenta {'DEMO' if cuenta.get('is_virtual') else 'REAL'} {cuenta.get('loginid')} | "
                f"cuenta virtual {cfg['capital']} USD, riesgo {cfg['riesgo_pct']} % = "
                f"{cfg['capital'] * cfg['riesgo_pct'] / 100:.2f} USD por operación, meta {cfg['meta_diaria_usd']:.2f} USD, "
-               f"parámetros v{cfg.get('version_parametros')}")
+               f"parámetros v{cfg.get('version_parametros')}, estrategias {cfg.get('estrategias')}")
     for n in cfg.get("notas_parametros", []):
         reg.evento(f"Parámetros: {n}")
     if cfg["capital"] <= 10:
@@ -227,22 +258,32 @@ async def correr(plan, modo, cfg):
     sesgos = {o.get("simbolo_deriv"): ("compra" if D.es_largo(o.get("direccion", "")) else "venta")
               for o in plan.get("operaciones", []) if o.get("simbolo_deriv")}
     eventos = plan.get("eventos_alto_impacto_utc", [])
-    simbolos = {}
-    for activo, sym in cfg["simbolos"].items():
-        try:
-            ok = await api.multiplicadores(sym, "MULTUP")
-        except D.DerivError as e:
-            ok, _ = [], reg.evento(f"{activo}: error al consultar ({e})")
-        if ok:
-            simbolos[activo] = sym
-    reg.evento(f"Activos: {', '.join(simbolos) or 'ninguno'} | sesgos del plan: {sesgos or 'ninguno'} | "
-               f"eventos: {eventos or 'ninguno'} | meta {cfg['meta_diaria_usd']} USD")
+    combos = cfg.get("combinaciones") or [{"activo": a, "tf": "5m", "estrategia": e}
+                                          for a in cfg["simbolos"] for e in cfg["estrategias"]]
+    disponibles, validos = {}, []
+    for c in combos:
+        sym = TODOS_LOS_SIMBOLOS.get(c["activo"]) or cfg["simbolos"].get(c["activo"])
+        if sym not in disponibles:
+            try:
+                disponibles[sym] = bool(await api.multiplicadores(sym, "MULTUP"))
+            except D.DerivError as e:
+                disponibles[sym] = False
+                reg.evento(f"{c['activo']}: error al consultar ({e})")
+        if disponibles[sym]:
+            validos.append(dict(c, simbolo=sym))
+        else:
+            reg.evento(f"{c['activo']}: sin Multipliers en Deriv, se omite {c['tf']} {c['estrategia']}")
+    combos = validos
+    reg.evento(f"Combinaciones: {[(c['activo'], c['tf'], c['estrategia']) for c in combos] or 'ninguna'} | "
+               f"sesgos del plan: {sesgos or 'ninguno'} | eventos: {eventos or 'ninguno'} | "
+               f"meta {cfg['meta_diaria_usd']} USD")
 
     if modo == "verificar":
-        for activo, sym in simbolos.items():
-            v = await api.velas(sym, cfg["granularidad"], 120)
-            s = senal(v, cfg, sesgos.get(sym))
-            reg.evento(f"{activo}: {len(v)} velas de 5 min, señal ahora: {s['direccion'] if s else 'ninguna'}")
+        for c in combos:
+            v = await api.velas(c["simbolo"], GRANULARIDAD[c["tf"]], 120)
+            s = E.buscar_senal(v, cfg, sesgos.get(c["simbolo"]), [c["estrategia"]])
+            reg.evento(f"{c['activo']} {c['tf']} {c['estrategia']}: {len(v)} velas, señal ahora: "
+                       f"{s['direccion'] if s else 'ninguna'}")
         reg.evento("Verificación del scalper terminada")
         await api.ws.close()
         return 0
@@ -278,17 +319,21 @@ async def correr(plan, modo, cfg):
             if not abiertas:
                 break
         elif not en_bloqueo(ahora, eventos, cfg["bloqueo_noticias_min"]) and len(abiertas) < cfg["max_abiertas"]:
-            for activo, sym in simbolos.items():
+            for c in combos:
+                sym, g = c["simbolo"], GRANULARIDAD[c["tf"]]
                 if len(abiertas) >= cfg["max_abiertas"] or any(t["simbolo"] == sym for t in abiertas):
                     continue
-                v = await api.velas(sym, cfg["granularidad"], 120)
-                if not v or v[-1]["epoch"] == ultima.get(sym):
+                clave = (sym, c["tf"], c["estrategia"])
+                v = await api.velas(sym, g, 120)
+                if not v or v[-1]["epoch"] == ultima.get(clave):
                     continue
-                ultima[sym] = v[-1]["epoch"]
-                s = senal(v, cfg, sesgos.get(sym))
+                ultima[clave] = v[-1]["epoch"]
+                s = E.buscar_senal(v, cfg, sesgos.get(sym), [c["estrategia"]])
                 if s:
-                    t = await abrir(api, sym, activo, s, cfg, reg)
+                    t = await abrir(api, sym, c["activo"], s, cfg, reg)
                     if t:
+                        t["tf"] = c["tf"]
+                        t["max_segundos"] = MAX_VELAS_TF.get(c["tf"], cfg["max_velas_abierta"]) * g
                         abiertas.append(t)
                         total += 1
         await asyncio.sleep(cfg["intervalo_s"])

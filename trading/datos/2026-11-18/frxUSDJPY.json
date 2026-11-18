@@ -1,31 +1,31 @@
 {
  "activo": "USD/JPY",
  "simbolo_deriv": "frxUSDJPY",
- "generado_utc": "2026-11-18T18:13:09+00:00",
+ "generado_utc": "2026-11-18T18:49:50+00:00",
  "fuente_semanal_mensual_anual": "yahoo JPY=X",
  "temporalidades": {
   "15m": {
    "resumen": {
-    "precio": 159.268,
-    "tendencia": "bajista",
+    "precio": 159.33,
+    "tendencia": "lateral",
     "ema": {
-     "ema20": 159.290591,
-     "ema50": 159.308865,
-     "ema200": 159.377947
+     "ema20": 159.29446,
+     "ema50": 159.308338,
+     "ema200": 159.375008
     },
     "precio_vs_ema200": "debajo",
-    "rsi14": 47.1,
-    "macd_hist": -0.000367,
-    "macd_sesgo": "bajista",
-    "atr14": 0.077565,
-    "atr14_pct": 0.049,
-    "max_20": 159.462,
+    "rsi14": 53.5,
+    "macd_hist": 0.005789,
+    "macd_sesgo": "alcista",
+    "atr14": 0.070555,
+    "atr14_pct": 0.044,
+    "max_20": 159.399,
     "min_20": 159.157,
     "vela_anterior": {
-     "open": 159.307,
-     "high": 159.318,
-     "low": 159.288,
-     "close": 159.298
+     "open": 159.267,
+     "high": 159.316,
+     "low": 159.266,
+     "close": 159.316
     },
     "resistencias_recientes": [
      159.323,
@@ -33,39 +33,19 @@
      159.325
     ],
     "soportes_recientes": [
-     159.37,
      159.157,
-     159.178
+     159.178,
+     159.241
     ],
     "variacion_pct": {
-     "1": -0.02,
-     "5": -0.02,
-     "20": -0.12
+     "1": 0.01,
+     "5": 0.01,
+     "20": -0.04
     },
     "velas": 400
    },
+   "patrones": [],
    "ultimas_velas": [
-    {
-     "t": "2026-11-18 08:00",
-     "open": 159.364,
-     "high": 159.364,
-     "low": 159.22,
-     "close": 159.26
-    },
-    {
-     "t": "2026-11-18 08:15",
-     "open": 159.261,
-     "high": 159.332,
-     "low": 159.22,
-     "close": 159.282
-    },
-    {
-     "t": "2026-11-18 08:30",
-     "open": 159.281,
-     "high": 159.281,
-     "low": 159.173,
-     "close": 159.215
-    },
     {
      "t": "2026-11-18 08:45",
      "open": 159.215,
@@ -324,6 +304,27 @@
      "high": 159.312,
      "low": 159.265,
      "close": 159.268
+    },
+    {
+     "t": "2026-11-18 18:00",
+     "open": 159.267,
+     "high": 159.277,
+     "low": 159.241,
+     "close": 159.264
+    },
+    {
+     "t": "2026-11-18 18:15",
+     "open": 159.267,
+     "high": 159.316,
+     "low": 159.266,
+     "close": 159.316
+    },
+    {
+     "t": "2026-11-18 18:30",
+     "open": 159.318,
+     "high": 159.344,
+     "low": 159.305,
+     "close": 159.33
     }
    ]
   },
@@ -334,7 +335,7 @@
     "ema": {
      "ema20": 159.317181,
      "ema50": 159.369462,
-     "ema200": 159.124779
+     "ema200": 159.12478
     },
     "precio_vs_ema200": "encima",
     "rsi14": 46.7,
@@ -367,6 +368,22 @@
     },
     "velas": 500
    },
+   "patrones": [
+    {
+     "patron": "nr7",
+     "tipo": "vela",
+     "sesgo": "neutral",
+     "nivel": null,
+     "descripcion": "rango más estrecho de 7 velas: suele preceder a un movimiento fuerte"
+    },
+    {
+     "patron": "doble_suelo",
+     "tipo": "figura",
+     "sesgo": "compra",
+     "nivel": 159.129,
+     "descripcion": "dos mínimos en ~159.129"
+    }
+   ],
    "ultimas_velas": [
     {
      "t": "2026-11-16 18:00",
@@ -746,6 +763,15 @@
     },
     "velas": 259
    },
+   "patrones": [
+    {
+     "patron": "doji",
+     "tipo": "vela",
+     "sesgo": "neutral",
+     "nivel": null,
+     "descripcion": "indecisión: cuerpo mínimo"
+    }
+   ],
    "ultimas_velas": [
     {
      "t": "2026-08-26 00:00",
@@ -1171,16 +1197,16 @@
   },
   "semanal": {
    "resumen": {
-    "precio": 159.2530059814453,
+    "precio": 159.32699584960938,
     "tendencia": "alcista",
     "ema": {
-     "ema20": 158.482952,
-     "ema50": 157.40765,
-     "ema200": 148.589057
+     "ema20": 158.489999,
+     "ema50": 157.410552,
+     "ema200": 148.589793
     },
     "precio_vs_ema200": "encima",
-    "rsi14": 53.1,
-    "macd_hist": 0.127312,
+    "rsi14": 53.4,
+    "macd_hist": 0.132034,
     "macd_sesgo": "alcista",
     "atr14": 2.080197,
     "atr14_pct": 1.306,
@@ -1203,12 +1229,28 @@
      156.0959930419922
     ],
     "variacion_pct": {
-     "1": -0.17,
-     "5": 1.53,
-     "20": -1.48
+     "1": -0.12,
+     "5": 1.58,
+     "20": -1.44
     },
     "velas": 524
    },
+   "patrones": [
+    {
+     "patron": "inside_bar",
+     "tipo": "vela",
+     "sesgo": "neutral",
+     "nivel": null,
+     "descripcion": "vela interior: compresión, esperar ruptura del rango de la anterior"
+    },
+    {
+     "patron": "nr7",
+     "tipo": "vela",
+     "sesgo": "neutral",
+     "nivel": null,
+     "descripcion": "rango más estrecho de 7 velas: suele preceder a un movimiento fuerte"
+    }
+   ],
    "ultimas_velas": [
     {
      "t": "2025-12-01 00:00",
@@ -1568,29 +1610,29 @@
      "close": 159.5229949951172
     },
     {
-     "t": "2026-11-18 18:13",
+     "t": "2026-11-18 18:49",
      "open": 159.38999938964844,
      "high": 159.65199279785156,
      "low": 159.11700439453125,
-     "close": 159.2530059814453
+     "close": 159.32699584960938
     }
    ]
   },
   "mensual": {
    "resumen": {
-    "precio": 159.2530059814453,
+    "precio": 159.32699584960938,
     "tendencia": "alcista",
     "ema": {
-     "ema20": 156.185187,
-     "ema50": 148.282828,
-     "ema200": 125.70717
+     "ema20": 156.192233,
+     "ema50": 148.285729,
+     "ema200": 125.707906
     },
     "precio_vs_ema200": "encima",
-    "rsi14": 58.3,
-    "macd_hist": -0.244322,
+    "rsi14": 58.4,
+    "macd_hist": -0.2396,
     "macd_sesgo": "bajista",
     "atr14": 5.316488,
-    "atr14_pct": 3.338,
+    "atr14_pct": 3.337,
     "max_20": 163.97900390625,
     "min_20": 142.13099670410156,
     "vela_anterior": {
@@ -1610,12 +1652,35 @@
      152.13999938964844
     ],
     "variacion_pct": {
-     "1": -0.17,
-     "5": -0.58,
-     "20": 11.91
+     "1": -0.12,
+     "5": -0.53,
+     "20": 11.97
     },
     "velas": 362
    },
+   "patrones": [
+    {
+     "patron": "inside_bar",
+     "tipo": "vela",
+     "sesgo": "neutral",
+     "nivel": null,
+     "descripcion": "vela interior: compresión, esperar ruptura del rango de la anterior"
+    },
+    {
+     "patron": "nr7",
+     "tipo": "vela",
+     "sesgo": "neutral",
+     "nivel": null,
+     "descripcion": "rango más estrecho de 7 velas: suele preceder a un movimiento fuerte"
+    },
+    {
+     "patron": "doble_suelo",
+     "tipo": "figura",
+     "sesgo": "compra",
+     "nivel": 152.13999938964844,
+     "descripcion": "dos mínimos en ~152.14"
+    }
+   ],
    "ultimas_velas": [
     {
      "t": "2024-01-01 00:00",
@@ -1863,27 +1928,27 @@
      "close": 159.5229949951172
     },
     {
-     "t": "2026-11-18 18:13",
+     "t": "2026-11-18 18:49",
      "open": 159.38999938964844,
      "high": 159.65199279785156,
      "low": 159.11700439453125,
-     "close": 159.2530059814453
+     "close": 159.32699584960938
     }
    ]
   },
   "anual": {
    "resumen": {
-    "precio": 159.2530059814453,
+    "precio": 159.32699584960938,
     "tendencia": "alcista",
     "ema": {
-     "ema20": 124.977043
+     "ema20": 124.98409
     },
     "precio_vs_ema200": null,
     "rsi14": 66.1,
-    "macd_hist": 6.340007,
+    "macd_hist": 6.344729,
     "macd_sesgo": "alcista",
     "atr14": 28.810184,
-    "atr14_pct": 18.091,
+    "atr14_pct": 18.082,
     "max_20": 635.030029296875,
     "min_20": 75.56999969482422,
     "vela_anterior": {
@@ -1903,12 +1968,13 @@
      101.28299713134766
     ],
     "variacion_pct": {
-     "1": 1.82,
-     "5": 38.41,
-     "20": 33.78
+     "1": 1.86,
+     "5": 38.47,
+     "20": 33.84
     },
     "velas": 31
    },
+   "patrones": [],
    "ultimas_velas": [
     {
      "t": "2012-01-01 00:00",
@@ -2013,7 +2079,7 @@
      "open": 156.73699951171875,
      "high": 163.97900390625,
      "low": 152.13999938964844,
-     "close": 159.2530059814453
+     "close": 159.32699584960938
     }
    ]
   }
