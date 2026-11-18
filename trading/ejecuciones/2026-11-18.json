@@ -2,8 +2,12 @@
   "fecha": "2026-11-18",
   "eventos": [
     {
-      "hora_utc": "2026-11-18T17:37:01+00:00",
-      "texto": "Falta el secreto DERIV_TOKEN; no se puede operar"
+      "hora_utc": "2026-11-18T17:51:45+00:00",
+      "texto": "API de Deriv: nueva (api.derivws.com, token pat_), App ID configurado"
+    },
+    {
+      "hora_utc": "2026-11-18T17:51:46+00:00",
+      "texto": "Conectado a Deriv: cuenta DEMO DOT92174619, saldo 9526.85 USD"
     }
   ],
   "operaciones": [],
