@@ -2,29 +2,32 @@
   "fecha": "2026-11-18",
   "eventos": [
     {
-      "hora_utc": "2026-11-18T17:56:17+00:00",
+      "hora_utc": "2026-11-18T18:03:35+00:00",
       "texto": "API de Deriv: nueva (api.derivws.com, token pat_), App ID configurado"
     },
     {
-      "hora_utc": "2026-11-18T17:56:17+00:00",
-      "texto": "Conectado a Deriv: cuenta DEMO DOT92174619, saldo 9524.85 USD"
+      "hora_utc": "2026-11-18T18:03:36+00:00",
+      "texto": "Conectado a Deriv: cuenta DEMO DOT92174619, saldo 9524.76 USD"
     },
     {
-      "hora_utc": "2026-11-18T17:56:18+00:00",
-      "texto": "PRUEBA abierta: COMPRA frxEURUSD x100, stake 10.0 USD, precio ~1.0975, stop loss -5.0 USD, take profit +5.0 USD, contrato 21039224519. Queda abierta para cerrarla a mano en Deriv."
-    }
-  ],
-  "operaciones": [
+      "hora_utc": "2026-11-18T18:03:36+00:00",
+      "texto": "EUR/USD: listo (retesteo_abajo en 1.1, multiplicadores [100, 200, 300, 500, 800])"
+    },
     {
-      "prueba": true,
-      "simbolo": "frxEURUSD",
-      "contract_id": 21039224519,
-      "precio_ref": 1.0975,
-      "stake": 10.0,
-      "multiplicador": 100,
-      "stop_loss_usd": 5.0,
-      "take_profit_usd": 5.0
+      "hora_utc": "2026-11-18T18:03:36+00:00",
+      "texto": "EUR/USD: no se activó antes de 2026-11-18T18:00:00Z, cancelada"
+    },
+    {
+      "hora_utc": "2026-11-18T18:03:36+00:00",
+      "texto": "Fin de la jornada: resultado +0.00"
     }
   ],
-  "resumen": {}
+  "operaciones": [],
+  "resumen": {
+    "modo": "ejecutar",
+    "saldo_inicial": 9524.76,
+    "saldo_final": 9524.76,
+    "resultado_usd": 0,
+    "operaciones_abiertas": 0
+  }
 }
