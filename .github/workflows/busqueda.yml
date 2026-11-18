@@ -48,7 +48,7 @@ jobs:
           ACTIVOS: ${{ inputs.activos }}
           TFS: ${{ inputs.temporalidades }}
           AGRUPADO: ${{ inputs.agrupado }}
-          CAMBIOS: ${{ toJSON(github.event.head_commit.modified) }}
+          CAMBIOS: ${{ toJSON(github.event.head_commit) }}
         run: |
           args=""
           if [ "$AGRUPADO" = "true" ] || echo "$CAMBIOS" | grep -q "busqueda-agrupada"; then
