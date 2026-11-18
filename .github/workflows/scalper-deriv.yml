@@ -16,6 +16,10 @@ on:
         description: "Fecha del plan AAAA-MM-DD (vacío = hoy en Bogotá)"
         required: false
         default: ""
+      fin_utc:
+        description: "Hora UTC de fin (HH:MM). Vacío = 16:30"
+        required: false
+        default: ""
 
 permissions:
   contents: write
@@ -48,6 +52,7 @@ jobs:
           META_DIARIA_USD: ${{ vars.META_DIARIA_USD }}
           MODO: ${{ inputs.modo || 'ejecutar' }}
           FECHA: ${{ inputs.fecha }}
+          FIN_UTC: ${{ inputs.fin_utc }}
         run: python trading/ejecutor/scalper.py --modo "$MODO" --fecha "$FECHA"
 
       - name: Guardar resultados en el repositorio

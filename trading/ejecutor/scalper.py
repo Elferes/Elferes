@@ -323,6 +323,9 @@ def preparar_config(cfg=None, capital=None):
     meta_env = os.environ.get("META_DIARIA_USD", "").strip()
     cfg["meta_diaria_usd"] = float(meta_env) if meta_env else round(cfg["capital"] * cfg["meta_diaria_pct"] / 100, 2)
     cfg["notas_parametros"] = notas
+    fin = os.environ.get("FIN_UTC", "").strip()
+    if re.fullmatch(r"([01]\d|2[0-3]):[0-5]\d", fin):
+        cfg["fin_utc"] = fin
     return cfg
 
 
