@@ -99,6 +99,17 @@ Tamaño de posición = (capital × 1%) / |entrada − stop|. Máximo 3 operacion
 > No es asesoría financiera. Opera con dinero que puedas permitirte perder.
 ```
 
-### 5. Guardar
+### 5. Plan para el ejecutor automático (Deriv demo)
+Escribe además `trading/planes/AAAA-MM-DD.json` con las operaciones del cuadro que tengan ✅ COMPRAR / ✅ VENDER,
+en el formato de `trading/ejecutor/README.md`:
+- `simbolo_deriv`: `frxEURUSD`, `frxGBPUSD`, `frxUSDJPY`, `frxAUDUSD`, `frxXAUUSD`, `cryBTCUSD`, `cryETHUSD`, etc.
+  Las acciones individuales normalmente no están en Multipliers de Deriv; inclúyelas solo si conoces su símbolo en Deriv.
+- `gatillo` según la condición de entrada: `mercado`, `ruptura_arriba`, `ruptura_abajo`, `retesteo_arriba` o `retesteo_abajo`.
+- Horas en UTC (`valido_hasta_utc`, `cerrar_antes_utc`), sin superar 5 h 30 min desde la hora de subida del plan.
+- Si no hay operaciones, escribe `"operaciones": []`.
+- Valida antes de subir: `python3 -c "import json,sys; sys.path.insert(0,'trading/ejecutor'); import deriv_ejecutor as E; [print(o['activo'], E.validar_operacion(o) or 'OK') for o in json.load(open('trading/planes/AAAA-MM-DD.json'))['operaciones']]"`
+- En el paso 1 (verificar ayer), usa también `trading/ejecuciones/AAAA-MM-DD.json` (lo que el ejecutor hizo de verdad en Deriv) y anota en `HISTORIAL.md` el resultado en USD.
+
+### 6. Guardar
 - `git add trading/ && git commit -m "Plan de trading AAAA-MM-DD"` y `git push` a la rama de trabajo.
 - Termina tu respuesta con la tabla del **Top 3 del día**, para que llegue en la notificación.

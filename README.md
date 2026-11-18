@@ -7,6 +7,7 @@ y un orquestador entrega el plan del día con **precio de entrada, stop loss y p
 - Instrucciones del orquestador: [trading/AGENTE_TRADING.md](trading/AGENTE_TRADING.md)
 - Agentes: [.claude/agents/](.claude/agents/) — `analista-acciones`, `analista-cripto`, `analista-divisas`
 - Indicadores técnicos: `python3 trading/indicadores.py NVDA BTC-USD EURUSD=X`
+- Ejecutor automático en Deriv demo: [trading/ejecutor/README.md](trading/ejecutor/README.md)
 - Planes diarios: [trading/reportes/](trading/reportes/) · Historial: [trading/reportes/HISTORIAL.md](trading/reportes/HISTORIAL.md)
 
 > No es asesoría financiera. Usa siempre stop loss y arriesga como máximo el 1% del capital por operación.

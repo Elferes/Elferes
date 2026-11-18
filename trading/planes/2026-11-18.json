@@ -1,0 +1,18 @@
+{
+  "fecha": "2026-11-18",
+  "operaciones": [
+    {
+      "activo": "EUR/USD",
+      "simbolo_deriv": "frxEURUSD",
+      "direccion": "venta",
+      "gatillo": "retesteo_abajo",
+      "nivel": 1.1000,
+      "stop": 1.1025,
+      "tp1": 1.0960,
+      "tp2": 1.0935,
+      "valido_hasta_utc": "2026-11-18T18:00:00Z",
+      "cerrar_antes_utc": "2026-11-18T18:30:00Z",
+      "confianza": 3
+    }
+  ]
+}

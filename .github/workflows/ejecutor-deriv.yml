@@ -1,0 +1,64 @@
+name: Ejecutor Deriv (demo)
+
+# Se lanza solo cuando el orquestador sube el plan del día (trading/planes/AAAA-MM-DD.json),
+# o a mano desde la pestaña Actions (modo "verificar" para probar la conexión sin operar).
+on:
+  push:
+    paths:
+      - "trading/planes/*.json"
+  workflow_dispatch:
+    inputs:
+      modo:
+        description: "verificar = solo comprobar conexión; ejecutar = operar el plan"
+        type: choice
+        options: [verificar, ejecutar]
+        default: verificar
+      fecha:
+        description: "Fecha del plan AAAA-MM-DD (vacío = hoy en Bogotá)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ejecutor-deriv
+  cancel-in-progress: false
+
+jobs:
+  ejecutar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 355
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar dependencias
+        run: pip install websockets==13.1
+
+      - name: Pruebas del ejecutor
+        run: python -m unittest trading/ejecutor/test_ejecutor.py
+
+      - name: Ejecutar plan en Deriv
+        env:
+          DERIV_TOKEN: ${{ secrets.DERIV_TOKEN }}
+          DERIV_APP_ID: ${{ vars.DERIV_APP_ID }}
+          MODO: ${{ inputs.modo || 'ejecutar' }}
+          FECHA: ${{ inputs.fecha }}
+        run: python trading/ejecutor/deriv_ejecutor.py --modo "$MODO" --fecha "$FECHA"
+
+      - name: Guardar resultados en el repositorio
+        if: always()
+        run: |
+          git config user.name "ejecutor-deriv"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add trading/ejecuciones || true
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Ejecución Deriv $(TZ=America/Bogota date +%F)"
+          for i in 1 2 3 4; do
+            git pull --no-rebase --no-edit origin "$GITHUB_REF_NAME" && git push origin "HEAD:$GITHUB_REF_NAME" && break
+            sleep $((i * 5))
+          done
