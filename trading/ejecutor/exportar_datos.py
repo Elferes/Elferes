@@ -10,6 +10,7 @@ Uso: python3 trading/ejecutor/exportar_datos.py            (necesita DERIV_TOKEN
 import asyncio
 import datetime as dt
 import json
+import time
 import os
 import sys
 from pathlib import Path
@@ -39,8 +40,10 @@ def yahoo(simbolo, intervalo, rango):
     """Velas de Yahoo Finance (solo desde GitHub Actions, que tiene internet abierto)."""
     import urllib.parse
     import urllib.request
+    # Con range=max Yahoo devuelve velas espaciadas (no diarias); por eso se pide por fechas.
+    periodo = (f"period1=0&period2={int(time.time())}" if rango == "max" else f"range={rango}")
     url = (f"https://query1.finance.yahoo.com/v8/finance/chart/{urllib.parse.quote(simbolo)}"
-           f"?interval={intervalo}&range={rango}")
+           f"?interval={intervalo}&{periodo}")
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
     with urllib.request.urlopen(req, timeout=30) as r:
         res = json.load(r)["chart"]["result"][0]
