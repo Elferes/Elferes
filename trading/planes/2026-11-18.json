@@ -6,13 +6,19 @@
       "simbolo_deriv": "frxEURUSD",
       "direccion": "venta",
       "gatillo": "retesteo_abajo",
-      "nivel": 1.1000,
+      "nivel": 1.1,
       "stop": 1.1025,
-      "tp1": 1.0960,
+      "tp1": 1.096,
       "tp2": 1.0935,
       "valido_hasta_utc": "2026-11-18T18:00:00Z",
       "cerrar_antes_utc": "2026-11-18T18:30:00Z",
       "confianza": 3
     }
+  ],
+  "eventos_alto_impacto_utc": [
+    "2026-11-18T13:30:00Z",
+    "2026-11-18T18:35:00Z",
+    "2026-11-18T19:00:00Z",
+    "2026-11-18T19:30:00Z"
   ]
 }
