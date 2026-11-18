@@ -1,0 +1,137 @@
+{
+ "generado_utc": "2026-11-18T18:11:10+00:00",
+ "fecha": "2026-11-18",
+ "activos": {
+  "EUR/USD": {
+   "simbolo": "frxEURUSD",
+   "archivo": "trading/datos/2026-11-18/frxEURUSD.json",
+   "precio": 1.09767,
+   "tendencias": {
+    "15m": "lateral",
+    "1h": "bajista",
+    "diario": "bajista",
+    "semanal": "bajista",
+    "mensual": "bajista",
+    "anual": null
+   }
+  },
+  "GBP/USD": {
+   "simbolo": "frxGBPUSD",
+   "archivo": "trading/datos/2026-11-18/frxGBPUSD.json",
+   "precio": 1.31515,
+   "tendencias": {
+    "15m": "bajista",
+    "1h": "bajista",
+    "diario": "bajista",
+    "semanal": "bajista",
+    "mensual": "bajista",
+    "anual": null
+   }
+  },
+  "USD/JPY": {
+   "simbolo": "frxUSDJPY",
+   "archivo": "trading/datos/2026-11-18/frxUSDJPY.json",
+   "precio": 159.268,
+   "tendencias": {
+    "15m": "bajista",
+    "1h": "bajista",
+    "diario": "alcista",
+    "semanal": "alcista",
+    "mensual": "alcista",
+    "anual": null
+   }
+  },
+  "AUD/USD": {
+   "simbolo": "frxAUDUSD",
+   "archivo": "trading/datos/2026-11-18/frxAUDUSD.json",
+   "precio": 0.67199,
+   "tendencias": {
+    "15m": "lateral",
+    "1h": "bajista",
+    "diario": "bajista",
+    "semanal": "lateral",
+    "mensual": "alcista",
+    "anual": null
+   }
+  },
+  "XAU/USD": {
+   "simbolo": "frxXAUUSD",
+   "archivo": "trading/datos/2026-11-18/frxXAUUSD.json",
+   "precio": 3735.74,
+   "tendencias": {
+    "15m": "bajista",
+    "1h": "bajista",
+    "diario": "bajista",
+    "semanal": "bajista",
+    "mensual": "bajista",
+    "anual": null
+   }
+  },
+  "BTC/USD": {
+   "simbolo": "cryBTCUSD",
+   "archivo": "trading/datos/2026-11-18/cryBTCUSD.json",
+   "precio": 63078.348,
+   "tendencias": {
+    "15m": "bajista",
+    "1h": "bajista",
+    "diario": "bajista",
+    "semanal": "bajista",
+    "mensual": "bajista",
+    "anual": null
+   }
+  },
+  "ETH/USD": {
+   "simbolo": "cryETHUSD",
+   "archivo": "trading/datos/2026-11-18/cryETHUSD.json",
+   "precio": 1767.605,
+   "tendencias": {
+    "15m": "bajista",
+    "1h": "bajista",
+    "diario": "bajista",
+    "semanal": "bajista",
+    "mensual": "bajista",
+    "anual": null
+   }
+  },
+  "US 500": {
+   "simbolo": "OTC_SPC",
+   "archivo": "trading/datos/2026-11-18/OTC_SPC.json",
+   "precio": 7331.9,
+   "tendencias": {
+    "15m": "bajista",
+    "1h": "bajista",
+    "diario": "bajista",
+    "semanal": "lateral",
+    "mensual": "alcista",
+    "anual": null
+   }
+  },
+  "US Tech 100": {
+   "simbolo": "OTC_NDX",
+   "archivo": "trading/datos/2026-11-18/OTC_NDX.json",
+   "precio": 27086.15,
+   "tendencias": {
+    "15m": "lateral",
+    "1h": "bajista",
+    "diario": "bajista",
+    "semanal": "lateral",
+    "mensual": "alcista",
+    "anual": null
+   }
+  },
+  "Wall Street 30": {
+   "simbolo": "OTC_DJI",
+   "archivo": "trading/datos/2026-11-18/OTC_DJI.json",
+   "precio": 50318.1,
+   "tendencias": {
+    "15m": "bajista",
+    "1h": "bajista",
+    "diario": "bajista",
+    "semanal": "lateral",
+    "mensual": "alcista",
+    "anual": null
+   }
+  }
+ },
+ "errores": {}
+}
