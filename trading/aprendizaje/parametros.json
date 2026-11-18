@@ -1,11 +1,12 @@
 {
   "_nota": "Parámetros del scalper que el agente revisor-aprendizaje puede ajustar. scalper.py aplica límites de seguridad (LIMITES) y ignora claves desconocidas. Cambia como máximo UN parámetro por semana y registra el experimento en BITACORA.md.",
-  "version": 1,
+  "version": 2,
   "activos": [
     "EUR/USD",
     "GBP/USD",
     "XAU/USD",
-    "BTC/USD"
+    "BTC/USD",
+    "US 500"
   ],
   "riesgo_pct": 1.0,
   "atr_stop": 1.2,
@@ -20,5 +21,38 @@
   "estrategias": [
     "tendencia_retroceso"
   ],
-  "_nota_estrategias": "Estrategias activas del scalper, en orden de prioridad. Opciones: tendencia_retroceso, ruptura_rango, reversion_bollinger, cruce_ema, envolvente_nivel. Solo activar las que salen APTA en trading/estrategias/RANKING.md."
+  "_nota_estrategias": "Estrategias activas del scalper, en orden de prioridad. Opciones: tendencia_retroceso, ruptura_rango, reversion_bollinger, cruce_ema, envolvente_nivel. Solo activar las que salen APTA en trading/estrategias/RANKING.md.",
+  "combinaciones": [
+    {
+      "activo": "GBP/USD",
+      "tf": "1h",
+      "estrategia": "reversion_bollinger",
+      "backtest": "prueba 23 ops, 69.6 %, +0.446 R, PF 2.83"
+    },
+    {
+      "activo": "US 500",
+      "tf": "1h",
+      "estrategia": "cruce_ema",
+      "backtest": "prueba 54 ops, 53.7 %, +0.251 R, PF 1.52"
+    },
+    {
+      "activo": "XAU/USD",
+      "tf": "15m",
+      "estrategia": "ruptura_rango",
+      "backtest": "prueba 41 ops, 56.1 %, +0.202 R, PF 1.59"
+    },
+    {
+      "activo": "EUR/USD",
+      "tf": "1h",
+      "estrategia": "reversion_bollinger",
+      "backtest": "prueba 23 ops, 47.8 %, +0.181 R, PF 1.31"
+    },
+    {
+      "activo": "US 500",
+      "tf": "1h",
+      "estrategia": "envolvente_nivel",
+      "backtest": "prueba 24 ops, 54.2 %, +0.181 R, PF 1.40"
+    }
+  ],
+  "_nota_combinaciones": "Solo combinaciones APTA del backtest (RANKING.md 2026-11-18). Todas las de 5m salieron negativas con costes, por eso el scalper ya no opera 5m."
 }

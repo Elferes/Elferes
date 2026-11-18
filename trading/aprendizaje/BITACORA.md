@@ -10,6 +10,14 @@ _(Reglas con al menos 5 casos de evidencia. Máximo 10.)_
 
 - Aún no hay suficientes operaciones.
 
+## Lecciones del backtest (2026-11-18, aún sin confirmar en vivo)
+- **5 minutos no es rentable con estos costes:** el spread y la comisión equivalen a una parte grande del stop.
+  Todas las estrategias en 5m salen negativas en los 6 activos.
+- **La tendencia con retroceso pierde en casi todo** (hasta −0.62 R en 5m): demasiadas entradas tardías.
+- **La reversión en Bollinger funciona en GBP/USD y EUR/USD 1h**, que pasan mucho tiempo en rango; en BTC 1h pierde, porque tiende.
+- **Patrones más fiables:** doble techo en EUR/USD 15m (60.8 %, 296 casos), divergencia bajista en BTC 15m (60.0 %),
+  doble techo en US 500 5m y 15m (58 %).
+
 ## Hipótesis por comprobar
 - Las operaciones rápidas funcionan mejor en el solapamiento Londres–Nueva York (12:00–16:00 UTC).
 - Operar a favor de la tendencia diaria y de fondo da mejor % de acierto que operar solo con la de 15 min.
@@ -19,6 +27,7 @@ _(Reglas con al menos 5 casos de evidencia. Máximo 10.)_
 | Versión | Fecha | Cambio | Motivo (datos) | Métrica a vigilar | Evaluar el | Resultado |
 |---|---|---|---|---|---|---|
 | 1 | 2026-11-18 | Parámetros iniciales | — | % acierto y R medio del scalper | tras 20 operaciones | — |
+| 2 | 2026-11-18 | El scalper deja 5m y opera solo 5 combinaciones APTA (GBP/USD 1h y EUR/USD 1h reversión Bollinger; US 500 1h cruce EMA y envolvente; oro 15m ruptura de rango) | Backtest: las 5 estrategias en 5m pierden con costes en todos los activos (−0.08 a −0.62 R); 5 combinaciones de 15m/1h dan +0.18 a +0.45 R fuera de muestra | Esperanza real por combinación frente al backtest | tras 20 operaciones | — |
 
 ## Estadísticas
 _(Se actualizan cada día.)_

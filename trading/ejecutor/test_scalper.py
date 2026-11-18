@@ -40,11 +40,22 @@ class Parametros(unittest.TestCase):
         self.assertEqual(list(cfg["simbolos"]), ["EUR/USD"])
         self.assertTrue(notas)
 
+    def test_combinaciones(self):
+        import json, tempfile
+        with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as f:
+            json.dump({"combinaciones": [{"activo": "US 500", "tf": "1h", "estrategia": "cruce_ema"},
+                                         {"activo": "X", "tf": "1h", "estrategia": "cruce_ema"},
+                                         {"activo": "EUR/USD", "tf": "2h", "estrategia": "cruce_ema"}]}, f)
+        cfg, notas = S.cargar_parametros(S.CONFIG, f.name)
+        self.assertEqual(cfg["combinaciones"], [{"activo": "US 500", "tf": "1h", "estrategia": "cruce_ema"}])
+        self.assertTrue(notas)
+
     def test_archivo_del_repo(self):
         ruta = Path(__file__).resolve().parents[1] / "aprendizaje" / "parametros.json"
         cfg, notas = S.cargar_parametros(S.CONFIG, ruta)
         self.assertEqual(notas, [])
         self.assertEqual(cfg["riesgo_pct"], 1.0)
+        self.assertEqual(len(cfg["combinaciones"]), 5)
 
 
 class Senales(unittest.TestCase):
