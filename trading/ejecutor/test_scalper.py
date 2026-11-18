@@ -29,6 +29,24 @@ def serie_alcista_con_retroceso():
     return velas
 
 
+class Parametros(unittest.TestCase):
+    def test_limites(self):
+        import json, tempfile
+        with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as f:
+            json.dump({"riesgo_pct": 50, "atr_stop": 2.0, "atr_objetivo": 1.0, "activos": ["EUR/USD"], "x": 1}, f)
+        cfg, notas = S.cargar_parametros(S.CONFIG, f.name)
+        self.assertEqual(cfg["riesgo_pct"], 2.0)            # recortado al máximo
+        self.assertGreaterEqual(cfg["atr_objetivo"], 2.4)   # R/B mínimo 1.2
+        self.assertEqual(list(cfg["simbolos"]), ["EUR/USD"])
+        self.assertTrue(notas)
+
+    def test_archivo_del_repo(self):
+        ruta = Path(__file__).resolve().parents[1] / "aprendizaje" / "parametros.json"
+        cfg, notas = S.cargar_parametros(S.CONFIG, ruta)
+        self.assertEqual(notas, [])
+        self.assertEqual(cfg["riesgo_pct"], 1.0)
+
+
 class Senales(unittest.TestCase):
     def test_compra_en_retroceso(self):
         s = S.senal(serie_alcista_con_retroceso(), S.CONFIG)
@@ -94,7 +112,7 @@ class Flujo(unittest.TestCase):
         D.Deriv = lambda *a: DerivFalso()
         D.RAIZ = Path(__file__).resolve().parents[2] / ".tmp_test_scalper"
         os.environ["DERIV_TOKEN"] = "x"
-        cfg = S.CONFIG | {"intervalo_s": 0, "fin_utc": "23:59", "meta_diaria_usd": 30.0}
+        cfg = S.preparar_config(S.CONFIG, capital=100.0) | {"intervalo_s": 0, "fin_utc": "23:59"}
         try:
             self.assertEqual(asyncio.run(S.correr({"fecha": "2099-01-01", "operaciones": []}, "ejecutar", cfg)), 0)
             import json
@@ -103,9 +121,11 @@ class Flujo(unittest.TestCase):
             shutil.rmtree(D.RAIZ, ignore_errors=True)
         r = datos["resumen"]
         self.assertIn("meta diaria", r["motivo_fin"])
-        self.assertGreaterEqual(r["resultado_usd"], 30)
+        self.assertGreaterEqual(r["resultado_usd"], 3)       # meta = 3 % de 100
+        self.assertTrue(r["capital_virtual"])
         op = datos["operaciones"][0]
-        self.assertAlmostEqual(op["sl_usd"], 25, delta=1)   # 0.25 % de 10.000
+        self.assertAlmostEqual(op["sl_usd"], 1, delta=0.05)  # 1 % de 100
+        self.assertEqual(op["cierre"], "objetivo")
         self.assertAlmostEqual(op["tp_usd"] / op["sl_usd"], 1.5, delta=0.05)
 
 

@@ -1,7 +1,18 @@
 # Agente diario de trading intradía (acciones, cripto y divisas)
 
 Este archivo es la "mente" del orquestador. La tarea diaria lo lee y sigue estas instrucciones.
-Coordina tres subagentes especialistas (definidos en `.claude/agents/`):
+Coordina un equipo de subagentes (definidos en `.claude/agents/`) en cuatro capas:
+
+| Capa | Subagente | Qué hace |
+|------|-----------|----------|
+| 1. Aprender | `revisor-aprendizaje` | Revisa las operaciones de ayer, explica por qué se ganó o se perdió, actualiza la bitácora y ajusta parámetros |
+| 2. Gráficas | `grafico-largo-plazo` | Anual, mensual y semanal: tendencia de fondo y niveles mayores |
+| 2. Gráficas | `grafico-diario` | Diario: tendencia, patrones, rango esperado del día |
+| 2. Gráficas | `grafico-intradia` | 1 h y 15 min: estructura, zonas de entrada, gatillos, aptitud para scalping |
+| 2. Mercado | `analista-mercado` | Régimen (riesgo, dólar, volatilidad), correlaciones, calendario |
+| 3. Mercados | los tres de abajo | Proponen las operaciones del día usando las capas 1 y 2 |
+
+Analistas de la capa 3:
 
 | Subagente | Mercado | Universo base |
 |-----------|---------|---------------|
@@ -32,6 +43,8 @@ Coordina tres subagentes especialistas (definidos en `.claude/agents/`):
 - **EMA 9/21/50/200** (dirección y cruces), **RSI 14** (sobrecompra >70 / sobreventa <30 / divergencias),
   **MACD** (cruce e histograma), **ATR 14** (para dimensionar stop y objetivos), **VWAP** en acciones.
 - Fuente de datos, en este orden:
+  0. **Gráficas de Deriv** ya exportadas en `trading/datos/<fecha>/` y los análisis de `trading/analisis/<fecha>/`
+     (largo plazo, diario, intradía y mercado). Son la fuente principal para divisas, oro, cripto e índices.
   1. `python3 trading/indicadores.py <SIMBOLOS> --intervalo 1h` (formato Yahoo: `NVDA`, `BTC-USD`, `EURUSD=X`, `GC=F`).
   2. Si la red lo bloquea → WebSearch: precio actual, máximo/mínimo de ayer, y resúmenes técnicos
      (Investing.com "technical analysis", TradingView, Barchart) para RSI/MACD/medias.
@@ -49,14 +62,36 @@ Coordina tres subagentes especialistas (definidos en `.claude/agents/`):
 
 ## Proceso diario del orquestador (ejecutar en orden)
 
+### 0. Pedir las gráficas de hoy (Deriv)
+- Escribe la hora UTC actual en `trading/solicitudes/datos.txt`, haz commit y push. GitHub Actions (`datos-deriv.yml`)
+  descarga las velas de Deriv (15m, 1h, diario, semanal, mensual, anual) a `trading/datos/<fecha>/` en ~1–2 minutos.
+- Espera a que llegue, como máximo 6 minutos, con este bucle:
+  `for i in $(seq 36); do git pull -q --no-rebase origin <rama>; python3 -c "import json,sys; d=json.load(open('trading/datos/ultimo.json')); sys.exit(0 if d['generado_utc']>='<HORA_SOLICITUD>' else 1)" && break; sleep 10; done`
+- Si no llega, continúa con WebSearch y dilo en el reporte.
+
+### 0b. Aprender de ayer
+- Lanza `revisor-aprendizaje` **antes** que el resto (los demás leen la bitácora actualizada).
+- Sus conclusiones van al reporte en la sección "🧠 Aprendizaje".
+
+### 0c. Gráficas y mercado (en paralelo)
+- Lanza a la vez `grafico-largo-plazo`, `grafico-diario`, `grafico-intradia` y `analista-mercado` con la fecha de hoy.
+  Cada uno escribe su archivo en `trading/analisis/<fecha>/`.
+- Cuando terminen, pasa a los analistas de mercados.
+
 ### 1. Verificar los resultados de ayer
 - Abre el reporte más reciente en `trading/reportes/`.
 - Para cada operación busca el máximo/mínimo real del día y determina: ✅ TP2, ✅ TP1, ❌ stop, ➖ no activada, ⏹ cerrada al final del día (con R aproximado).
 - Actualiza `trading/reportes/HISTORIAL.md`.
 
-### 2. Lanzar los tres subagentes en paralelo
+### 2. Lanzar los tres analistas de mercados en paralelo
 Usa la herramienta Agent con `subagent_type` = `analista-acciones`, `analista-cripto` y `analista-divisas`,
-pasando la fecha de hoy. Cada uno devuelve hasta 3 setups con el formato del punto 4 o "no operar".
+pasando la fecha de hoy y pidiéndoles que lean primero `trading/analisis/<fecha>/*.md`,
+`trading/datos/<fecha>/` y la sección "Lecciones vigentes" de `trading/aprendizaje/BITACORA.md`.
+Cada uno devuelve hasta 3 setups con el formato del punto 4 o "no operar".
+- **Regla de alineación:** solo se acepta un setup si va a favor del sesgo de fondo (`largo-plazo.md`) o, si va en
+  contra, con confianza ≥ 4 y objetivos cortos. Prefiere activos con alineación intradía 2–3.
+- **Cuenta virtual de 100 USD:** el capital actual es `python3 -c "import sys; sys.path.insert(0,'trading/ejecutor'); import deriv_ejecutor as D; print(D.capital_virtual())"`.
+  El riesgo por operación es el 1 % de ese capital; muestra en el cuadro cuántos USD se arriesgan y se ganan en cada salida.
 
 ### 3. Consolidar
 - Revisa coherencia entre mercados (ej.: si el DXY sube fuerte, no tener a la vez long EUR/USD y short USD/JPY sin motivo).
@@ -68,6 +103,13 @@ Crea `trading/reportes/AAAA-MM-DD.md` con este formato:
 
 ```
 # Plan de trading — AAAA-MM-DD
+
+## 🧠 Aprendizaje (de revisor-aprendizaje)
+- Ayer: ... · Por qué: ... · Lección nueva: ... · Cuenta virtual: ... USD
+
+## 🗺️ Mapa de gráficas
+| Activo | Fondo (anual/mensual/semanal) | Diario | Intradía (1h/15m) | Alineación |
+|---|---|---|---|---|
 
 ## 🌍 Contexto del día
 - Eventos de alto impacto (hora): ...
@@ -112,6 +154,7 @@ en el formato de `trading/ejecutor/README.md`:
   del plan a 16:30 UTC en EUR/USD, GBP/USD, XAU/USD y BTC/USD) no abre 15 min antes ni después de esas horas, y usa
   la `direccion` de las operaciones del plan como sesgo: solo opera a favor.
 - En el paso 1, suma también el resultado del scalper (`trading/ejecuciones/AAAA-MM-DD-scalping.json`) al USD del día.
+- Copia en `eventos_alto_impacto_utc` los eventos que entregue `analista-mercado`.
 - Valida antes de subir: `python3 -c "import json,sys; sys.path.insert(0,'trading/ejecutor'); import deriv_ejecutor as E; [print(o['activo'], E.validar_operacion(o) or 'OK') for o in json.load(open('trading/planes/AAAA-MM-DD.json'))['operaciones']]"`
 - En el paso 1 (verificar ayer), usa también `trading/ejecuciones/AAAA-MM-DD.json` (lo que el ejecutor hizo de verdad en Deriv) y anota en `HISTORIAL.md` el resultado en USD.
 

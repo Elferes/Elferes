@@ -10,9 +10,10 @@ Estrategia (tendencia + retroceso), evaluada en cada vela de 5 min cerrada:
   * Si el plan del día trae dirección para ese activo, solo opera en esa dirección.
   * No abre 15 min antes ni después de los eventos de alto impacto del plan ("eventos_alto_impacto_utc").
 
-Gestión de riesgo (CONFIG):
-  * riesgo por operación 0.25 % del saldo, máximo 2 abiertas y 6 en el día, 1 por activo;
-  * para el día si pierde 1 % o 3 operaciones seguidas, o si gana la META_DIARIA_USD (30 por defecto).
+Gestión de riesgo (CONFIG + trading/aprendizaje/parametros.json):
+  * se opera como una CUENTA VIRTUAL de CAPITAL_VIRTUAL_USD (100 por defecto) + resultados acumulados;
+  * riesgo por operación 1 % del capital virtual, máximo 2 abiertas y 6 en el día, 1 por activo;
+  * para el día si pierde 3 % o 3 operaciones seguidas, o si gana la meta (META_DIARIA_USD o 3 % del capital).
 
 Uso:
   python3 trading/ejecutor/scalper.py --modo verificar   # conecta y calcula señales, sin operar
@@ -33,12 +34,14 @@ import deriv_ejecutor as D  # noqa: E402
 
 CONFIG = {
     "simbolos": {"EUR/USD": "frxEURUSD", "GBP/USD": "frxGBPUSD", "XAU/USD": "frxXAUUSD", "BTC/USD": "cryBTCUSD"},
-    "riesgo_pct": 0.25,
+    "riesgo_pct": 1.0,
     "max_abiertas": 2,
     "max_operaciones_dia": 6,
-    "perdida_max_dia_pct": 1.0,
+    "perdida_max_dia_pct": 3.0,
     "max_perdidas_seguidas": 3,
-    "meta_diaria_usd": float(os.environ.get("META_DIARIA_USD", "30") or 30),
+    "meta_diaria_usd": None,        # None = 3 % del capital virtual (o META_DIARIA_USD)
+    "meta_diaria_pct": 3.0,
+    "rsi_compra_min": 45, "rsi_compra_max": 70, "rsi_venta_min": 30, "rsi_venta_max": 55,
     "granularidad": 300,           # velas de 5 min
     "atr_stop": 1.2,
     "atr_objetivo": 1.8,
@@ -52,6 +55,37 @@ CONFIG = {
 
 
 # --------------------------------------------------------------------------- indicadores
+# Límites de seguridad para lo que el agente de aprendizaje puede cambiar.
+LIMITES = {
+    "riesgo_pct": (0.25, 2.0), "atr_stop": (0.8, 2.5), "atr_objetivo": (1.0, 4.0),
+    "rsi_compra_min": (20, 60), "rsi_compra_max": (55, 85), "rsi_venta_min": (15, 45), "rsi_venta_max": (40, 80),
+    "max_velas_abierta": (2, 24), "max_operaciones_dia": (1, 12), "bloqueo_noticias_min": (5, 60),
+}
+
+
+def cargar_parametros(cfg, ruta=None):
+    """Aplica trading/aprendizaje/parametros.json sobre CONFIG, con límites de seguridad."""
+    ruta = ruta or D.RAIZ / "aprendizaje" / "parametros.json"
+    cfg, notas = dict(cfg), []
+    try:
+        p = json.loads(Path(ruta).read_text())
+    except (OSError, ValueError):
+        return cfg, ["sin parametros.json; se usan los valores por defecto"]
+    for k, (lo, hi) in LIMITES.items():
+        if k in p:
+            v = min(max(float(p[k]), lo), hi)
+            cfg[k] = int(v) if isinstance(cfg.get(k), int) else v
+            if v != float(p[k]):
+                notas.append(f"{k}={p[k]} fuera de límites, se usa {v}")
+    if cfg["atr_objetivo"] < 1.2 * cfg["atr_stop"]:
+        cfg["atr_objetivo"] = round(1.2 * cfg["atr_stop"], 2)
+        notas.append("atr_objetivo subido a 1.2 × atr_stop (R/B mínimo 1.2)")
+    if isinstance(p.get("activos"), list):
+        cfg["simbolos"] = {a: s for a, s in cfg["simbolos"].items() if a in p["activos"]} or cfg["simbolos"]
+    cfg["version_parametros"] = p.get("version")
+    return cfg, notas
+
+
 def ema(v, n):
     k, out = 2 / (n + 1), []
     for x in v:
@@ -93,8 +127,10 @@ def senal(velas, cfg, sesgo=None):
     v, precio = velas[-1], c[-1]
     toco21 = lambda k: velas[k]["low"] <= e21[k] <= velas[k]["high"]  # noqa: E731
     retroceso = any(toco21(k) for k in (-2, -3, -4))
-    largo = precio > e50[-1] and e9[-1] > e21[-1] and v["close"] > v["open"] and precio > e9[-1] and 45 <= r <= 70
-    corto = precio < e50[-1] and e9[-1] < e21[-1] and v["close"] < v["open"] and precio < e9[-1] and 30 <= r <= 55
+    largo = (precio > e50[-1] and e9[-1] > e21[-1] and v["close"] > v["open"] and precio > e9[-1]
+             and cfg["rsi_compra_min"] <= r <= cfg["rsi_compra_max"])
+    corto = (precio < e50[-1] and e9[-1] < e21[-1] and v["close"] < v["open"] and precio < e9[-1]
+             and cfg["rsi_venta_min"] <= r <= cfg["rsi_venta_max"])
     if not retroceso or not (largo or corto):
         return None
     direccion = "compra" if largo else "venta"
@@ -102,7 +138,11 @@ def senal(velas, cfg, sesgo=None):
         return None
     s = 1 if largo else -1
     return {"direccion": direccion, "entrada": precio, "stop": precio - s * cfg["atr_stop"] * a,
-            "tp": precio + s * cfg["atr_objetivo"] * a, "atr": a, "rsi": round(r, 1)}
+            "tp": precio + s * cfg["atr_objetivo"] * a, "atr": a, "rsi": round(r, 1),
+            # contexto para el agente de aprendizaje
+            "contexto": {"dist_ema50_atr": round((precio - e50[-1]) / a, 2), "ema9_21_atr": round((e9[-1] - e21[-1]) / a, 2),
+                         "rango_vela_atr": round((v["high"] - v["low"]) / a, 2), "hora_utc": dt.datetime.fromtimestamp(
+                             v["epoch"] + 300, dt.timezone.utc).strftime("%H:%M")}}
 
 
 def en_bloqueo(ahora, eventos, minutos):
@@ -117,8 +157,8 @@ async def abrir(api, simbolo, activo, s, cfg, reg):
     if (largo and not s["stop"] < precio < s["tp"]) or (not largo and not s["tp"] < precio < s["stop"]):
         reg.evento(f"{activo}: el precio ({precio}) ya salió de la zona de la señal, no se entra")
         return None
-    riesgo_usd = await api.saldo() * cfg["riesgo_pct"] / 100
-    tam = D.dimensionar(precio, s["stop"], riesgo_usd, await api.multiplicadores(simbolo, tipo), cfg["stake_minimo"] * 2)
+    riesgo_usd = cfg["capital"] * cfg["riesgo_pct"] / 100
+    tam = D.dimensionar(precio, s["stop"], riesgo_usd, await api.multiplicadores(simbolo, tipo), cfg["stake_minimo"], 1)
     if not tam:
         reg.evento(f"{activo}: señal {s['direccion']} pero no se puede dimensionar (riesgo {riesgo_usd:.2f})")
         return None
@@ -132,7 +172,8 @@ async def abrir(api, simbolo, activo, s, cfg, reg):
         return None
     t = {"activo": activo, "simbolo": simbolo, "tipo": tipo, "contract_id": c["contract_id"], "precio_ref": precio,
          "stop": s["stop"], "tp": s["tp"], "multiplicador": m, "stake": stake, "sl_usd": sl, "tp_usd": tp,
-         "rsi": s["rsi"], "abierta_epoch": time.time(), "abierto": True, "profit": 0.0}
+         "rsi": s["rsi"], "atr": s["atr"], "contexto": s["contexto"], "direccion": s["direccion"],
+         "abierta_epoch": time.time(), "abierto": True, "profit": 0.0, "cierre": None}
     reg.datos["operaciones"].append(t)
     reg.evento(f"{activo}: ABIERTA {s['direccion'].upper()} x{m} stake {stake} | entrada ~{precio:.5g} "
                f"stop {s['stop']:.5g} objetivo {s['tp']:.5g} | riesgo {sl:.2f} / premio {tp:.2f} USD")
@@ -145,9 +186,13 @@ async def vigilar(api, t, cfg, reg, forzar=False):
     if not c.get("is_sold") and (forzar or vencida):
         await api.vender(t["contract_id"])
         c = await api.contrato(t["contract_id"])
-        reg.evento(f"{t['activo']}: cerrada por {'fin de jornada' if forzar else 'tiempo (30 min)'}")
+        t["cierre"] = "fin de jornada" if forzar else "tiempo"
+        reg.evento(f"{t['activo']}: cerrada por {t['cierre']}")
     if c.get("is_sold"):
         t["abierto"], t["profit"] = False, float(c.get("profit", 0))
+        if not t["cierre"]:
+            t["cierre"] = "objetivo" if t["profit"] > 0 else "stop"
+        t["duracion_min"] = round((time.time() - t["abierta_epoch"]) / 60, 1)
         reg.evento(f"{t['activo']}: resultado {t['profit']:+.2f} USD")
     return t["abierto"]
 
@@ -166,7 +211,15 @@ async def correr(plan, modo, cfg):
     except Exception as e:
         reg.evento(f"No se pudo conectar a Deriv: {type(e).__name__}: {e}")
         return 1
-    reg.evento(f"Scalper conectado: cuenta {'DEMO' if cuenta.get('is_virtual') else 'REAL'} {cuenta.get('loginid')}")
+    reg.evento(f"Scalper conectado: cuenta {'DEMO' if cuenta.get('is_virtual') else 'REAL'} {cuenta.get('loginid')} | "
+               f"cuenta virtual {cfg['capital']} USD, riesgo {cfg['riesgo_pct']} % = "
+               f"{cfg['capital'] * cfg['riesgo_pct'] / 100:.2f} USD por operación, meta {cfg['meta_diaria_usd']:.2f} USD, "
+               f"parámetros v{cfg.get('version_parametros')}")
+    for n in cfg.get("notas_parametros", []):
+        reg.evento(f"Parámetros: {n}")
+    if cfg["capital"] <= 10:
+        reg.evento("Cuenta virtual agotada: no se opera")
+        return 1
     if not cuenta.get("is_virtual") and os.environ.get("DERIV_PERMITIR_REAL", "").lower() != "si":
         reg.evento("La cuenta NO es demo: no se opera")
         return 1
@@ -194,7 +247,7 @@ async def correr(plan, modo, cfg):
         await api.ws.close()
         return 0
 
-    saldo0 = await api.saldo()
+    saldo0 = cfg["capital"]
     fin = dt.datetime.combine(dt.datetime.now(dt.timezone.utc).date(),
                               dt.time.fromisoformat(cfg["fin_utc"]), dt.timezone.utc)
     inicio, abiertas, ultima, total, seguidas, realizado = time.time(), [], {}, 0, 0, 0.0
@@ -241,7 +294,9 @@ async def correr(plan, modo, cfg):
         await asyncio.sleep(cfg["intervalo_s"])
 
     gan = [t for t in reg.datos["operaciones"] if t["profit"] > 0]
-    reg.datos["resumen"] = {"modo": modo, "operaciones": len(reg.datos["operaciones"]), "ganadoras": len(gan),
+    reg.datos["resumen"] = {"modo": modo, "capital_virtual": modo == "ejecutar", "capital_inicio": saldo0,
+                            "parametros_version": cfg.get("version_parametros"),
+                            "operaciones": len(reg.datos["operaciones"]), "ganadoras": len(gan),
                             "resultado_usd": round(realizado, 2), "motivo_fin": motivo}
     reg.evento(f"Fin del scalping ({motivo}): {len(reg.datos['operaciones'])} operaciones, "
                f"{len(gan)} ganadoras, resultado {realizado:+.2f} USD")
@@ -259,7 +314,16 @@ def main():
         sys.exit("fecha inválida")
     ruta = D.RAIZ / "planes" / f"{fecha}.json"
     plan = json.loads(ruta.read_text()) if ruta.exists() else {"fecha": fecha, "operaciones": []}
-    return asyncio.run(correr(plan, a.modo, CONFIG))
+    return asyncio.run(correr(plan, a.modo, preparar_config()))
+
+
+def preparar_config(cfg=None, capital=None):
+    cfg, notas = cargar_parametros(cfg or CONFIG)
+    cfg["capital"] = D.capital_virtual() if capital is None else capital
+    meta_env = os.environ.get("META_DIARIA_USD", "").strip()
+    cfg["meta_diaria_usd"] = float(meta_env) if meta_env else round(cfg["capital"] * cfg["meta_diaria_pct"] / 100, 2)
+    cfg["notas_parametros"] = notas
+    return cfg
 
 
 if __name__ == "__main__":

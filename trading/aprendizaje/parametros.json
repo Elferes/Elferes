@@ -1,0 +1,15 @@
+{
+  "_nota": "Parámetros del scalper que el agente revisor-aprendizaje puede ajustar. scalper.py aplica límites de seguridad (LIMITES) y ignora claves desconocidas. Cambia como máximo UN parámetro por semana y registra el experimento en BITACORA.md.",
+  "version": 1,
+  "activos": ["EUR/USD", "GBP/USD", "XAU/USD", "BTC/USD"],
+  "riesgo_pct": 1.0,
+  "atr_stop": 1.2,
+  "atr_objetivo": 1.8,
+  "rsi_compra_min": 45,
+  "rsi_compra_max": 70,
+  "rsi_venta_min": 30,
+  "rsi_venta_max": 55,
+  "max_velas_abierta": 6,
+  "max_operaciones_dia": 6,
+  "bloqueo_noticias_min": 15
+}

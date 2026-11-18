@@ -64,7 +64,7 @@ def rb(direccion, entrada, stop, tp):
     return None if riesgo <= 0 else premio / riesgo
 
 
-def dimensionar(entrada, stop, riesgo_usd, multiplicadores, stake_minimo=1.0):
+def dimensionar(entrada, stop, riesgo_usd, multiplicadores, stake_minimo=1.0, partes=2):
     """Elige multiplicador y stake para que tocar el stop cueste ~riesgo_usd.
 
     Ganancia/pérdida de un Multiplier = stake * m * variación% del precio.
@@ -75,14 +75,29 @@ def dimensionar(entrada, stop, riesgo_usd, multiplicadores, stake_minimo=1.0):
     if d <= 0 or riesgo_usd <= 0:
         return None
     nocional = riesgo_usd / d
-    validos = [m for m in sorted(multiplicadores) if m <= 1 / d]
+    # m <= 1/d (stop_loss <= stake) y cada parte con al menos stake_minimo (cuentas pequeñas)
+    validos = [m for m in sorted(multiplicadores) if m <= 1 / d and nocional / m / partes >= stake_minimo]
     if not validos:
         return None
     m = validos[-1]  # el mayor permitido = menos capital inmovilizado
-    stake = round(nocional / m, 2)
-    if stake / 2 < stake_minimo:
-        return None
-    return m, stake
+    return m, round(nocional / m, 2)
+
+
+def capital_virtual(raiz=None):
+    """Capital de la cuenta virtual: CAPITAL_VIRTUAL_USD (100 por defecto) + resultados acumulados.
+
+    Suma resumen.resultado_usd de las ejecuciones marcadas con "capital_virtual": true.
+    """
+    base = float(os.environ.get("CAPITAL_VIRTUAL_USD", "") or 100)
+    total = 0.0
+    for f in sorted(((raiz or RAIZ) / "ejecuciones").glob("*.json")):
+        try:
+            r = json.loads(f.read_text()).get("resumen", {})
+        except (ValueError, OSError):
+            continue
+        if r.get("capital_virtual"):
+            total += float(r.get("resultado_usd") or 0)
+    return round(base + total, 2)
 
 
 def monto(stake, m, entrada, precio):
@@ -314,7 +329,7 @@ async def abrir(api, op, cfg, reg):
     if r is None or r < cfg["rb_minimo_tp2"]:
         reg.evento(f"{op['activo']}: R/B real hasta TP2 = {r and round(r, 2)} < {cfg['rb_minimo_tp2']}, no se entra")
         return None
-    riesgo_usd = await api.saldo() * cfg["riesgo_pct"] / 100
+    riesgo_usd = cfg["capital"] * cfg["riesgo_pct"] / 100
     mults = await api.multiplicadores(sym, tipo)
     tam = dimensionar(precio, op["stop"], riesgo_usd, mults, cfg["stake_minimo"])
     if not tam:
@@ -384,7 +399,8 @@ async def ejecutar(plan, modo, cfg):
         return 1
     es_demo = bool(cuenta.get("is_virtual"))
     reg.evento(f"Conectado a Deriv: cuenta {'DEMO' if es_demo else 'REAL'} {cuenta.get('loginid')}, "
-               f"saldo {cuenta.get('balance')} {cuenta.get('currency')}")
+               f"saldo real {cuenta.get('balance')} {cuenta.get('currency')}; se opera como cuenta virtual "
+               f"de {cfg['capital']} USD")
     if not es_demo and os.environ.get("DERIV_PERMITIR_REAL", "").lower() != "si":
         reg.evento("La cuenta NO es demo y DERIV_PERMITIR_REAL no es 'si': no se opera")
         return 1
@@ -413,13 +429,16 @@ async def ejecutar(plan, modo, cfg):
         reg.evento(f"{op['activo']}: listo ({op['gatillo']} en {op['nivel']}, multiplicadores {mults})")
         ops.append({"op": op, "estado": {}, "hecho": False})
 
+    if cfg["capital"] <= 10:
+        reg.evento(f"Cuenta virtual agotada ({cfg['capital']} USD): no se opera")
+        return 1
     if modo == "verificar" or not ops:
         reg.datos["resumen"] = {"modo": modo, "operaciones_validas": len(ops)}
         reg.evento("Verificación terminada" if modo == "verificar" else "No hay operaciones ejecutables hoy")
         await api.ws.close()
         return 0
 
-    saldo_inicial = await api.saldo()
+    saldo_inicial = cfg["capital"]
     inicio, abiertas, realizado = time.time(), [], 0.0
     while True:
         ahora = dt.datetime.now(dt.timezone.utc)
@@ -462,7 +481,7 @@ async def ejecutar(plan, modo, cfg):
         await asyncio.sleep(cfg["intervalo_s"])
 
     reg.datos["resumen"] = {
-        "modo": modo, "saldo_inicial": saldo_inicial, "saldo_final": await api.saldo(),
+        "modo": modo, "capital_virtual": True, "capital_inicio": saldo_inicial,
         "resultado_usd": round(sum(t["resultado_usd"] for t in reg.datos["operaciones"]), 2),
         "operaciones_abiertas": len(reg.datos["operaciones"]),
     }
@@ -499,11 +518,11 @@ def main():
         sys.exit("fecha inválida")
     ruta = RAIZ / "planes" / f"{fecha}.json"
     if args.modo == "prueba" and not ruta.exists():
-        return asyncio.run(ejecutar({"fecha": fecha, "operaciones": []}, "prueba", CONFIG))
+        return asyncio.run(ejecutar({"fecha": fecha, "operaciones": []}, "prueba", CONFIG | {"capital": capital_virtual()}))
     if not ruta.exists():
         print(f"No hay plan para {fecha} ({ruta}); nada que hacer.")
         return 0
-    return asyncio.run(ejecutar(json.loads(ruta.read_text()), args.modo, CONFIG))
+    return asyncio.run(ejecutar(json.loads(ruta.read_text()), args.modo, CONFIG | {"capital": capital_virtual()}))
 
 
 if __name__ == "__main__":

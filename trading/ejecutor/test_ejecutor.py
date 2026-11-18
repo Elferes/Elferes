@@ -28,8 +28,15 @@ class Logica(unittest.TestCase):
         self.assertAlmostEqual(E.monto(stake, m, 1.1, 1.1025), 100, delta=0.05)
         self.assertLessEqual(E.monto(stake / 2, m, 1.1, 1.1025), stake / 2)
 
+    def test_cuenta_pequena(self):
+        # 100 USD, 1 % = 1 USD de riesgo, stop de 25 pips: elige un multiplicador menor para que cada mitad >= 1 USD
+        m, stake = E.dimensionar(1.1, 1.1025, 1.0, [100, 200, 300, 500, 800])
+        self.assertEqual(m, 200)
+        self.assertGreaterEqual(stake / 2, 1)
+        self.assertAlmostEqual(E.monto(stake, m, 1.1, 1.1025), 1.0, delta=0.02)
+
     def test_dimensionar_imposible(self):
-        self.assertIsNone(E.dimensionar(100, 99, 1, [100, 200]))      # stake < mínimo
+        self.assertIsNone(E.dimensionar(100, 99, 0.5, [100, 200]))    # stake < mínimo
         self.assertIsNone(E.dimensionar(100, 50, 100, [5, 10]))       # stop demasiado lejos
 
     def test_validar(self):
@@ -105,7 +112,7 @@ class Flujo(unittest.TestCase):
         falso = DerivFalso()
         E.Deriv = lambda *a: falso
         E.RAIZ = Path(__file__).resolve().parents[2] / ".tmp_test"
-        cfg = E.CONFIG | {"intervalo_s": 0}
+        cfg = E.CONFIG | {"intervalo_s": 0, "capital": 10000.0}
         plan = {"fecha": "2099-01-01", "operaciones": [OP]}
         import os
         os.environ["DERIV_TOKEN"] = "falso"
