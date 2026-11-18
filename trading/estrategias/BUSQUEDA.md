@@ -2,7 +2,7 @@
 
 - Variantes probadas: **11664** (base × filtros × salida) en 24 series.
 - Protocolo: se elige la mejor variante solo con el 70 % antiguo; se aprueba si en el 30 % reciente tiene ≥ 30 operaciones, esperanza ≥ +0.1 R, PF ≥ 1.2, entrenamiento ≥ +0.05 R, **significancia estadística t ≥ 2.0 en la prueba** (≈ menos de 5 % de probabilidad de ser suerte) y t ≥ 1.5 en entrenamiento, y **las dos mitades de la prueba en positivo**. Costes incluidos.
-- **Aprobadas con datos reales: 0** · **Aprobadas con precios desordenados (suerte): 0** de 242 candidatas.
+- **Aprobadas con datos reales: 0** · **Aprobadas con precios desordenados (suerte): 0** de 248 candidatas.
 
 Tasa de aprobación real 0.0% frente a 0.0% por azar. **No hay más ganadoras que las esperables por suerte: tomar con mucha cautela.**
 
@@ -15,18 +15,18 @@ Tasa de aprobación real 0.0% frente a 0.0% por azar. **No hay más ganadoras qu
 
 | Activo | TF | Variante | Prueba ops | Esperanza | t | PF | Motivo |
 |---|---|---|---|---|---|---|---|
-| US Tech 100 | 1h | `macd_giro|vol_baja|obj2r` | 19 | 0.516 | 1.52 | 2.12 | pocas ops |
-| XAU/USD | 1h | `ruptura_asiatica|vol_alta|obj2r` | 15 | 0.514 | 1.61 | 2.71 | pocas ops |
-| US Tech 100 | 1h | `donchian|tendencia200,vol_baja|base` | 39 | 0.41 | 2.07 | 1.96 | una mitad o el entreno flojos |
+| US Tech 100 | 1h | `donchian|tendencia200,vol_baja|base` | 40 | 0.498 | 2.59 | 2.28 | una mitad o el entreno flojos |
+| US 500 | 1h | `cruce_ema|sesion_lny|obj1r` | 35 | 0.478 | 3.33 | 3.0 | una mitad o el entreno flojos |
+| XAU/USD | 1h | `ruptura_asiatica|vol_alta|obj2r` | 16 | 0.474 | 1.57 | 2.63 | pocas ops |
+| US Tech 100 | 1h | `macd_giro|vol_baja|obj2r` | 18 | 0.404 | 1.14 | 1.78 | pocas ops |
 | GBP/USD | 1h | `envolvente_nivel|tendencia200|obj2r` | 26 | 0.376 | 1.41 | 1.85 | pocas ops |
 | US Tech 100 | 1h | `ruptura_rango|sesion_lny|obj1r` | 20 | 0.364 | 2.11 | 2.77 | pocas ops |
-| USD/JPY | 4h | `inside_bar|sesion_lny|obj2r` | 21 | 0.355 | 1.26 | 1.9 | pocas ops |
+| US 500 | 1h | `macd_giro|tendencia200,sesion_lny|base` | 28 | 0.354 | 1.57 | 1.84 | pocas ops |
+| XAU/USD | 4h | `donchian|tendencia200,sesion_lny|base` | 28 | 0.35 | 1.62 | 1.96 | pocas ops |
 | XAU/USD | 15m | `cruce_ema|vol_alta|obj1r` | 12 | 0.345 | 1.34 | 2.27 | pocas ops |
-| XAU/USD | 1h | `macd_giro|vol_alta|obj2r` | 65 | 0.33 | 1.87 | 1.65 | no significativa (t bajo) |
-| US 500 | 1h | `macd_giro|tendencia200,sesion_lny|base` | 28 | 0.323 | 1.4 | 1.72 | pocas ops |
-| XAU/USD | 4h | `donchian|tendencia200,sesion_lny|base` | 29 | 0.283 | 1.3 | 1.69 | pocas ops |
-| AUD/USD | 1h | `cruce_ema|tendencia200,vol_baja|obj2r` | 49 | 0.255 | 1.28 | 1.49 | no significativa (t bajo) |
-| EUR/USD | 4h | `doble_techo_suelo|vol_baja|obj2r` | 38 | 0.25 | 1.24 | 1.59 | no significativa (t bajo) |
-| XAU/USD | 4h | `cruce_ema||obj2r` | 29 | 0.238 | 1.0 | 1.57 | pocas ops |
-| USD/JPY | 4h | `rsi2_reversion|sesion_ny|obj2r` | 49 | 0.232 | 1.19 | 1.45 | no significativa (t bajo) |
-| USD/JPY | 1h | `envolvente_nivel|vol_alta|base` | 57 | 0.216 | 1.43 | 1.51 | no significativa (t bajo) |
+| XAU/USD | 1h | `macd_giro|vol_alta|obj2r` | 63 | 0.322 | 1.8 | 1.63 | no significativa (t bajo) |
+| USD/JPY | 4h | `inside_bar|sesion_lny|obj2r` | 21 | 0.301 | 1.11 | 1.77 | pocas ops |
+| AUD/USD | 1h | `cruce_ema|tendencia200,vol_baja|obj2r` | 49 | 0.228 | 1.16 | 1.44 | no significativa (t bajo) |
+| XAU/USD | 4h | `macd_giro|tendencia200|obj2r` | 33 | 0.227 | 0.99 | 1.46 | no significativa (t bajo) |
+| USD/JPY | 1h | `envolvente_nivel|vol_alta|base` | 56 | 0.221 | 1.44 | 1.51 | no significativa (t bajo) |
+| EUR/USD | 4h | `doble_techo_suelo|vol_baja|obj2r` | 38 | 0.201 | 1.03 | 1.47 | no significativa (t bajo) |
