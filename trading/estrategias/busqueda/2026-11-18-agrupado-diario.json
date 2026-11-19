@@ -1,0 +1,3170 @@
+{
+ "fecha": "2026-11-18",
+ "criterio": {
+  "min_ops_prueba": 30,
+  "min_esperanza": 0.1,
+  "min_pf": 1.2,
+  "min_ops_entreno": 50,
+  "min_esp_entreno": 0.05,
+  "min_t_prueba": 2.0,
+  "min_t_entreno": 1.5
+ },
+ "series": [
+  {
+   "activo": "EUR/USD",
+   "tf": "15m",
+   "velas": 5578,
+   "segundos": 54.9
+  },
+  {
+   "activo": "GBP/USD",
+   "tf": "15m",
+   "velas": 5579,
+   "segundos": 55.0
+  },
+  {
+   "activo": "USD/JPY",
+   "tf": "15m",
+   "velas": 5559,
+   "segundos": 54.9
+  },
+  {
+   "activo": "AUD/USD",
+   "tf": "15m",
+   "velas": 5587,
+   "segundos": 55.1
+  },
+  {
+   "activo": "XAU/USD",
+   "tf": "15m",
+   "velas": 4586,
+   "segundos": 45.2
+  },
+  {
+   "activo": "BTC/USD",
+   "tf": "15m",
+   "velas": 5655,
+   "segundos": 55.8
+  },
+  {
+   "activo": "US 500",
+   "tf": "15m",
+   "velas": 1561,
+   "segundos": 14.7
+  },
+  {
+   "activo": "US Tech 100",
+   "tf": "15m",
+   "velas": 1561,
+   "segundos": 14.6
+  },
+  {
+   "activo": "EUR/USD",
+   "tf": "1h",
+   "velas": 17176,
+   "segundos": 171.5
+  },
+  {
+   "activo": "GBP/USD",
+   "tf": "1h",
+   "velas": 17179,
+   "segundos": 171.6
+  },
+  {
+   "activo": "USD/JPY",
+   "tf": "1h",
+   "velas": 17081,
+   "segundos": 170.7
+  },
+  {
+   "activo": "AUD/USD",
+   "tf": "1h",
+   "velas": 17243,
+   "segundos": 172.3
+  },
+  {
+   "activo": "XAU/USD",
+   "tf": "1h",
+   "velas": 13678,
+   "segundos": 136.0
+  },
+  {
+   "activo": "BTC/USD",
+   "tf": "1h",
+   "velas": 17462,
+   "segundos": 175.3
+  },
+  {
+   "activo": "US 500",
+   "tf": "1h",
+   "velas": 5066,
+   "segundos": 49.3
+  },
+  {
+   "activo": "US Tech 100",
+   "tf": "1h",
+   "velas": 5065,
+   "segundos": 49.4
+  }
+ ],
+ "candidatas": [
+  {
+   "activo": "TODOS",
+   "tf": "15m",
+   "base": "tendencia_retroceso",
+   "variante": "tendencia_retroceso|d_tend,sesion_lny|base",
+   "entrenamiento": {
+    "operaciones": 357,
+    "acierto_pct": 44.0,
+    "t_stat": -2.36,
+    "esperanza_r": -0.143,
+    "total_r": -51.12,
+    "profit_factor": 0.77,
+    "max_drawdown_r": 65.5
+   },
+   "prueba": {
+    "operaciones": 193,
+    "acierto_pct": 42.0,
+    "t_stat": -1.73,
+    "esperanza_r": -0.141,
+    "total_r": -27.22,
+    "profit_factor": 0.77,
+    "max_drawdown_r": 34.16
+   },
+   "prueba_mitad1": {
+    "operaciones": 88,
+    "acierto_pct": 38.6,
+    "t_stat": -1.69,
+    "esperanza_r": -0.202,
+    "total_r": -17.74,
+    "profit_factor": 0.68,
+    "max_drawdown_r": 21.17
+   },
+   "prueba_mitad2": {
+    "operaciones": 105,
+    "acierto_pct": 44.8,
+    "t_stat": -0.81,
+    "esperanza_r": -0.09,
+    "total_r": -9.49,
+    "profit_factor": 0.85,
+    "max_drawdown_r": 17.87
+   },
+   "prueba_por_activo": {
+    "EUR/USD": {
+     "operaciones": 35,
+     "acierto_pct": 40.0,
+     "t_stat": -0.9,
+     "esperanza_r": -0.171,
+     "total_r": -5.98,
+     "profit_factor": 0.72,
+     "max_drawdown_r": 9.51
+    },
+    "GBP/USD": {
+     "operaciones": 29,
+     "acierto_pct": 44.8,
+     "t_stat": -0.77,
+     "esperanza_r": -0.173,
+     "total_r": -5.01,
+     "profit_factor": 0.75,
+     "max_drawdown_r": 8.65
+    },
+    "USD/JPY": {
+     "operaciones": 26,
+     "acierto_pct": 30.8,
+     "t_stat": -2.38,
+     "esperanza_r": -0.483,
+     "total_r": -12.55,
+     "profit_factor": 0.38,
+     "max_drawdown_r": 14.05
+    },
+    "AUD/USD": {
+     "operaciones": 38,
+     "acierto_pct": 44.7,
+     "t_stat": -0.55,
+     "esperanza_r": -0.109,
+     "total_r": -4.13,
+     "profit_factor": 0.83,
+     "max_drawdown_r": 8.2
+    },
+    "XAU/USD": {
+     "operaciones": 26,
+     "acierto_pct": 42.3,
+     "t_stat": 0.05,
+     "esperanza_r": 0.011,
+     "total_r": 0.3,
+     "profit_factor": 1.02,
+     "max_drawdown_r": 4.82
+    },
+    "BTC/USD": {
+     "operaciones": 31,
+     "acierto_pct": 48.4,
+     "t_stat": 0.23,
+     "esperanza_r": 0.046,
+     "total_r": 1.43,
+     "profit_factor": 1.1,
+     "max_drawdown_r": 5.98
+    },
+    "US 500": {
+     "operaciones": 5,
+     "acierto_pct": 40.0,
+     "t_stat": -0.62,
+     "esperanza_r": -0.311,
+     "total_r": -1.55,
+     "profit_factor": 0.52,
+     "max_drawdown_r": 2.12
+    },
+    "US Tech 100": {
+     "operaciones": 3,
+     "acierto_pct": 33.3,
+     "t_stat": 0.13,
+     "esperanza_r": 0.096,
+     "total_r": 0.29,
+     "profit_factor": 1.25,
+     "max_drawdown_r": 1.14
+    }
+   },
+   "aprobada": false,
+   "ops_prueba": []
+  },
+  {
+   "activo": "TODOS",
+   "tf": "15m",
+   "base": "ruptura_rango",
+   "variante": "ruptura_rango|d_tend,tendencia200|obj1r",
+   "entrenamiento": {
+    "operaciones": 150,
+    "acierto_pct": 46.7,
+    "t_stat": -2.6,
+    "esperanza_r": -0.187,
+    "total_r": -28.01,
+    "profit_factor": 0.63,
+    "max_drawdown_r": 34.36
+   },
+   "prueba": {
+    "operaciones": 86,
+    "acierto_pct": 47.7,
+    "t_stat": -1.66,
+    "esperanza_r": -0.167,
+    "total_r": -14.35,
+    "profit_factor": 0.68,
+    "max_drawdown_r": 16.0
+   },
+   "prueba_mitad1": {
+    "operaciones": 37,
+    "acierto_pct": 48.6,
+    "t_stat": -1.08,
+    "esperanza_r": -0.157,
+    "total_r": -5.81,
+    "profit_factor": 0.68,
+    "max_drawdown_r": 7.67
+   },
+   "prueba_mitad2": {
+    "operaciones": 49,
+    "acierto_pct": 46.9,
+    "t_stat": -1.25,
+    "esperanza_r": -0.174,
+    "total_r": -8.54,
+    "profit_factor": 0.69,
+    "max_drawdown_r": 11.19
+   },
+   "prueba_por_activo": {
+    "EUR/USD": {
+     "operaciones": 11,
+     "acierto_pct": 54.5,
+     "t_stat": -0.58,
+     "esperanza_r": -0.167,
+     "total_r": -1.84,
+     "profit_factor": 0.68,
+     "max_drawdown_r": 3.48
+    },
+    "GBP/USD": {
+     "operaciones": 10,
+     "acierto_pct": 60.0,
+     "t_stat": -0.01,
+     "esperanza_r": -0.004,
+     "total_r": -0.04,
+     "profit_factor": 0.99,
+     "max_drawdown_r": 3.12
+    },
+    "USD/JPY": {
+     "operaciones": 14,
+     "acierto_pct": 35.7,
+     "t_stat": -1.4,
+     "esperanza_r": -0.34,
+     "total_r": -4.75,
+     "profit_factor": 0.44,
+     "max_drawdown_r": 6.2
+    },
+    "AUD/USD": {
+     "operaciones": 12,
+     "acierto_pct": 33.3,
+     "t_stat": -1.68,
+     "esperanza_r": -0.438,
+     "total_r": -5.25,
+     "profit_factor": 0.34,
+     "max_drawdown_r": 6.73
+    },
+    "XAU/USD": {
+     "operaciones": 13,
+     "acierto_pct": 69.2,
+     "t_stat": 0.87,
+     "esperanza_r": 0.212,
+     "total_r": 2.75,
+     "profit_factor": 1.71,
+     "max_drawdown_r": 2.79
+    },
+    "BTC/USD": {
+     "operaciones": 15,
+     "acierto_pct": 60.0,
+     "t_stat": 0.25,
+     "esperanza_r": 0.062,
+     "total_r": 0.93,
+     "profit_factor": 1.14,
+     "max_drawdown_r": 2.35
+    },
+    "US 500": {
+     "operaciones": 3,
+     "acierto_pct": 0.0,
+     "t_stat": -2.17,
+     "esperanza_r": -0.765,
+     "total_r": -2.29,
+     "profit_factor": 0.0,
+     "max_drawdown_r": 2.29
+    },
+    "US Tech 100": {
+     "operaciones": 8,
+     "acierto_pct": 25.0,
+     "t_stat": -1.5,
+     "esperanza_r": -0.481,
+     "total_r": -3.85,
+     "profit_factor": 0.33,
+     "max_drawdown_r": 4.73
+    }
+   },
+   "aprobada": false,
+   "ops_prueba": []
+  },
+  {
+   "activo": "TODOS",
+   "tf": "15m",
+   "base": "cruce_ema",
+   "variante": "cruce_ema|d_tend,sesion_lny|obj1r",
+   "entrenamiento": {
+    "operaciones": 145,
+    "acierto_pct": 51.0,
+    "t_stat": -2.22,
+    "esperanza_r": -0.181,
+    "total_r": -26.2,
+    "profit_factor": 0.68,
+    "max_drawdown_r": 30.14
+   },
+   "prueba": {
+    "operaciones": 79,
+    "acierto_pct": 59.5,
+    "t_stat": 0.27,
+    "esperanza_r": 0.028,
+    "total_r": 2.21,
+    "profit_factor": 1.07,
+    "max_drawdown_r": 9.32
+   },
+   "prueba_mitad1": {
+    "operaciones": 38,
+    "acierto_pct": 57.9,
+    "t_stat": 0.03,
+    "esperanza_r": 0.005,
+    "total_r": 0.19,
+    "profit_factor": 1.01,
+    "max_drawdown_r": 5.15
+   },
+   "prueba_mitad2": {
+    "operaciones": 41,
+    "acierto_pct": 61.0,
+    "t_stat": 0.33,
+    "esperanza_r": 0.049,
+    "total_r": 2.02,
+    "profit_factor": 1.12,
+    "max_drawdown_r": 8.46
+   },
+   "prueba_por_activo": {
+    "EUR/USD": {
+     "operaciones": 16,
+     "acierto_pct": 56.2,
+     "t_stat": -0.07,
+     "esperanza_r": -0.016,
+     "total_r": -0.26,
+     "profit_factor": 0.96,
+     "max_drawdown_r": 3.73
+    },
+    "GBP/USD": {
+     "operaciones": 16,
+     "acierto_pct": 56.2,
+     "t_stat": -0.56,
+     "esperanza_r": -0.142,
+     "total_r": -2.28,
+     "profit_factor": 0.74,
+     "max_drawdown_r": 4.86
+    },
+    "USD/JPY": {
+     "operaciones": 13,
+     "acierto_pct": 61.5,
+     "t_stat": 0.25,
+     "esperanza_r": 0.07,
+     "total_r": 0.9,
+     "profit_factor": 1.16,
+     "max_drawdown_r": 2.38
+    },
+    "AUD/USD": {
+     "operaciones": 13,
+     "acierto_pct": 61.5,
+     "t_stat": -0.04,
+     "esperanza_r": -0.011,
+     "total_r": -0.15,
+     "profit_factor": 0.97,
+     "max_drawdown_r": 3.84
+    },
+    "XAU/USD": {
+     "operaciones": 4,
+     "acierto_pct": 25.0,
+     "t_stat": -0.79,
+     "esperanza_r": -0.37,
+     "total_r": -1.48,
+     "profit_factor": 0.37,
+     "max_drawdown_r": 2.36
+    },
+    "BTC/USD": {
+     "operaciones": 11,
+     "acierto_pct": 63.6,
+     "t_stat": 0.72,
+     "esperanza_r": 0.172,
+     "total_r": 1.89,
+     "profit_factor": 1.65,
+     "max_drawdown_r": 2.58
+    },
+    "US 500": {
+     "operaciones": 4,
+     "acierto_pct": 100.0,
+     "t_stat": 91.68,
+     "esperanza_r": 0.926,
+     "total_r": 3.71,
+     "profit_factor": null,
+     "max_drawdown_r": 0.0
+    },
+    "US Tech 100": {
+     "operaciones": 2,
+     "acierto_pct": 50.0,
+     "t_stat": -0.06,
+     "esperanza_r": -0.058,
+     "total_r": -0.12,
+     "profit_factor": 0.89,
+     "max_drawdown_r": 1.05
+    }
+   },
+   "aprobada": false,
+   "ops_prueba": []
+  },
+  {
+   "activo": "TODOS",
+   "tf": "15m",
+   "base": "envolvente_nivel",
+   "variante": "envolvente_nivel|d_tend,sesion_lny|base",
+   "entrenamiento": {
+    "operaciones": 107,
+    "acierto_pct": 44.9,
+    "t_stat": -0.41,
+    "esperanza_r": -0.041,
+    "total_r": -4.34,
+    "profit_factor": 0.92,
+    "max_drawdown_r": 10.22
+   },
+   "prueba": {
+    "operaciones": 45,
+    "acierto_pct": 35.6,
+    "t_stat": -2.25,
+    "esperanza_r": -0.348,
+    "total_r": -15.68,
+    "profit_factor": 0.49,
+    "max_drawdown_r": 17.89
+   },
+   "prueba_mitad1": {
+    "operaciones": 26,
+    "acierto_pct": 30.8,
+    "t_stat": -1.83,
+    "esperanza_r": -0.391,
+    "total_r": -10.15,
+    "profit_factor": 0.47,
+    "max_drawdown_r": 11.05
+   },
+   "prueba_mitad2": {
+    "operaciones": 19,
+    "acierto_pct": 42.1,
+    "t_stat": -1.27,
+    "esperanza_r": -0.291,
+    "total_r": -5.52,
+    "profit_factor": 0.52,
+    "max_drawdown_r": 7.52
+   },
+   "prueba_por_activo": {
+    "EUR/USD": {
+     "operaciones": 3,
+     "acierto_pct": 66.7,
+     "t_stat": 0.52,
+     "esperanza_r": 0.456,
+     "total_r": 1.37,
+     "profit_factor": 2.05,
+     "max_drawdown_r": 1.31
+    },
+    "GBP/USD": {
+     "operaciones": 12,
+     "acierto_pct": 41.7,
+     "t_stat": -0.94,
+     "esperanza_r": -0.309,
+     "total_r": -3.71,
+     "profit_factor": 0.56,
+     "max_drawdown_r": 5.17
+    },
+    "USD/JPY": {
+     "operaciones": 10,
+     "acierto_pct": 50.0,
+     "t_stat": 0.09,
+     "esperanza_r": 0.035,
+     "total_r": 0.35,
+     "profit_factor": 1.07,
+     "max_drawdown_r": 2.47
+    },
+    "AUD/USD": {
+     "operaciones": 2,
+     "acierto_pct": 50.0,
+     "t_stat": -0.07,
+     "esperanza_r": -0.078,
+     "total_r": -0.16,
+     "profit_factor": 0.87,
+     "max_drawdown_r": 1.23
+    },
+    "XAU/USD": {
+     "operaciones": 5,
+     "acierto_pct": 40.0,
+     "t_stat": -0.83,
+     "esperanza_r": -0.288,
+     "total_r": -1.44,
+     "profit_factor": 0.39,
+     "max_drawdown_r": 1.96
+    },
+    "BTC/USD": {
+     "operaciones": 10,
+     "acierto_pct": 10.0,
+     "t_stat": -4.84,
+     "esperanza_r": -0.894,
+     "total_r": -8.94,
+     "profit_factor": 0.04,
+     "max_drawdown_r": 8.94
+    },
+    "US 500": {
+     "operaciones": 2,
+     "acierto_pct": 0.0,
+     "t_stat": -117.78,
+     "esperanza_r": -1.06,
+     "total_r": -2.12,
+     "profit_factor": 0.0,
+     "max_drawdown_r": 2.12
+    },
+    "US Tech 100": {
+     "operaciones": 1,
+     "acierto_pct": 0.0,
+     "t_stat": 0.0,
+     "esperanza_r": -1.029,
+     "total_r": -1.03,
+     "profit_factor": 0.0,
+     "max_drawdown_r": 1.03
+    }
+   },
+   "aprobada": false,
+   "ops_prueba": []
+  },
+  {
+   "activo": "TODOS",
+   "tf": "15m",
+   "base": "rsi2_reversion",
+   "variante": "rsi2_reversion|d_tend,sesion_ny|obj2r",
+   "entrenamiento": {
+    "operaciones": 475,
+    "acierto_pct": 38.1,
+    "t_stat": -3.0,
+    "esperanza_r": -0.167,
+    "total_r": -79.33,
+    "profit_factor": 0.74,
+    "max_drawdown_r": 83.35
+   },
+   "prueba": {
+    "operaciones": 254,
+    "acierto_pct": 40.6,
+    "t_stat": -1.26,
+    "esperanza_r": -0.098,
+    "total_r": -24.94,
+    "profit_factor": 0.84,
+    "max_drawdown_r": 30.34
+   },
+   "prueba_mitad1": {
+    "operaciones": 134,
+    "acierto_pct": 38.1,
+    "t_stat": -1.68,
+    "esperanza_r": -0.179,
+    "total_r": -23.92,
+    "profit_factor": 0.73,
+    "max_drawdown_r": 28.91
+   },
+   "prueba_mitad2": {
+    "operaciones": 120,
+    "acierto_pct": 43.3,
+    "t_stat": -0.07,
+    "esperanza_r": -0.008,
+    "total_r": -1.02,
+    "profit_factor": 0.99,
+    "max_drawdown_r": 12.03
+   },
+   "prueba_por_activo": {
+    "EUR/USD": {
+     "operaciones": 33,
+     "acierto_pct": 51.5,
+     "t_stat": 0.41,
+     "esperanza_r": 0.096,
+     "total_r": 3.18,
+     "profit_factor": 1.17,
+     "max_drawdown_r": 4.17
+    },
+    "GBP/USD": {
+     "operaciones": 37,
+     "acierto_pct": 32.4,
+     "t_stat": -0.96,
+     "esperanza_r": -0.21,
+     "total_r": -7.78,
+     "profit_factor": 0.71,
+     "max_drawdown_r": 11.72
+    },
+    "USD/JPY": {
+     "operaciones": 43,
+     "acierto_pct": 27.9,
+     "t_stat": -2.63,
+     "esperanza_r": -0.396,
+     "total_r": -17.04,
+     "profit_factor": 0.4,
+     "max_drawdown_r": 19.93
+    },
+    "AUD/USD": {
+     "operaciones": 22,
+     "acierto_pct": 63.6,
+     "t_stat": 1.76,
+     "esperanza_r": 0.489,
+     "total_r": 10.77,
+     "profit_factor": 2.27,
+     "max_drawdown_r": 4.01
+    },
+    "XAU/USD": {
+     "operaciones": 23,
+     "acierto_pct": 52.2,
+     "t_stat": 1.08,
+     "esperanza_r": 0.311,
+     "total_r": 7.16,
+     "profit_factor": 1.65,
+     "max_drawdown_r": 4.9
+    },
+    "BTC/USD": {
+     "operaciones": 34,
+     "acierto_pct": 50.0,
+     "t_stat": 0.26,
+     "esperanza_r": 0.059,
+     "total_r": 1.99,
+     "profit_factor": 1.11,
+     "max_drawdown_r": 8.97
+    },
+    "US 500": {
+     "operaciones": 33,
+     "acierto_pct": 30.3,
+     "t_stat": -1.67,
+     "esperanza_r": -0.334,
+     "total_r": -11.03,
+     "profit_factor": 0.54,
+     "max_drawdown_r": 16.02
+    },
+    "US Tech 100": {
+     "operaciones": 29,
+     "acierto_pct": 31.0,
+     "t_stat": -2.18,
+     "esperanza_r": -0.42,
+     "total_r": -12.18,
+     "profit_factor": 0.42,
+     "max_drawdown_r": 13.24
+    }
+   },
+   "aprobada": false,
+   "ops_prueba": []
+  },
+  {
+   "activo": "TODOS",
+   "tf": "15m",
+   "base": "donchian",
+   "variante": "donchian|d_tend,sesion_lny|base",
+   "entrenamiento": {
+    "operaciones": 314,
+    "acierto_pct": 42.4,
+    "t_stat": -2.66,
+    "esperanza_r": -0.173,
+    "total_r": -54.24,
+    "profit_factor": 0.73,
+    "max_drawdown_r": 60.91
+   },
+   "prueba": {
+    "operaciones": 183,
+    "acierto_pct": 47.0,
+    "t_stat": -0.41,
+    "esperanza_r": -0.036,
+    "total_r": -6.62,
+    "profit_factor": 0.94,
+    "max_drawdown_r": 25.8
+   },
+   "prueba_mitad1": {
+    "operaciones": 84,
+    "acierto_pct": 39.3,
+    "t_stat": -1.65,
+    "esperanza_r": -0.214,
+    "total_r": -17.95,
+    "profit_factor": 0.69,
+    "max_drawdown_r": 22.65
+   },
+   "prueba_mitad2": {
+    "operaciones": 99,
+    "acierto_pct": 53.5,
+    "t_stat": 0.97,
+    "esperanza_r": 0.114,
+    "total_r": 11.33,
+    "profit_factor": 1.23,
+    "max_drawdown_r": 10.04
+   },
+   "prueba_por_activo": {
+    "EUR/USD": {
+     "operaciones": 40,
+     "acierto_pct": 57.5,
+     "t_stat": 1.24,
+     "esperanza_r": 0.221,
+     "total_r": 8.85,
+     "profit_factor": 1.53,
+     "max_drawdown_r": 6.08
+    },
+    "GBP/USD": {
+     "operaciones": 26,
+     "acierto_pct": 46.2,
+     "t_stat": -0.6,
+     "esperanza_r": -0.142,
+     "total_r": -3.7,
+     "profit_factor": 0.78,
+     "max_drawdown_r": 8.09
+    },
+    "USD/JPY": {
+     "operaciones": 15,
+     "acierto_pct": 26.7,
+     "t_stat": -1.82,
+     "esperanza_r": -0.494,
+     "total_r": -7.41,
+     "profit_factor": 0.37,
+     "max_drawdown_r": 7.62
+    },
+    "AUD/USD": {
+     "operaciones": 35,
+     "acierto_pct": 51.4,
+     "t_stat": -0.05,
+     "esperanza_r": -0.01,
+     "total_r": -0.34,
+     "profit_factor": 0.98,
+     "max_drawdown_r": 6.27
+    },
+    "XAU/USD": {
+     "operaciones": 27,
+     "acierto_pct": 51.9,
+     "t_stat": 0.63,
+     "esperanza_r": 0.145,
+     "total_r": 3.91,
+     "profit_factor": 1.3,
+     "max_drawdown_r": 6.22
+    },
+    "BTC/USD": {
+     "operaciones": 23,
+     "acierto_pct": 26.1,
+     "t_stat": -2.34,
+     "esperanza_r": -0.529,
+     "total_r": -12.18,
+     "profit_factor": 0.36,
+     "max_drawdown_r": 12.18
+    },
+    "US 500": {
+     "operaciones": 7,
+     "acierto_pct": 71.4,
+     "t_stat": 1.51,
+     "esperanza_r": 0.692,
+     "total_r": 4.84,
+     "profit_factor": 3.23,
+     "max_drawdown_r": 1.11
+    },
+    "US Tech 100": {
+     "operaciones": 10,
+     "acierto_pct": 40.0,
+     "t_stat": -0.14,
+     "esperanza_r": -0.059,
+     "total_r": -0.59,
+     "profit_factor": 0.91,
+     "max_drawdown_r": 3.89
+    }
+   },
+   "aprobada": false,
+   "ops_prueba": []
+  },
+  {
+   "activo": "TODOS",
+   "tf": "15m",
+   "base": "squeeze",
+   "variante": "squeeze|d_impulso|obj2r",
+   "entrenamiento": {
+    "operaciones": 122,
+    "acierto_pct": 32.8,
+    "t_stat": -1.78,
+    "esperanza_r": -0.209,
+    "total_r": -25.5,
+    "profit_factor": 0.71,
+    "max_drawdown_r": 31.92
+   },
+   "prueba": {
+    "operaciones": 41,
+    "acierto_pct": 41.5,
+    "t_stat": -0.67,
+    "esperanza_r": -0.132,
+    "total_r": -5.42,
+    "profit_factor": 0.79,
+    "max_drawdown_r": 9.73
+   },
+   "prueba_mitad1": {
+    "operaciones": 18,
+    "acierto_pct": 38.9,
+    "t_stat": -0.49,
+    "esperanza_r": -0.162,
+    "total_r": -2.92,
+    "profit_factor": 0.78,
+    "max_drawdown_r": 4.26
+   },
+   "prueba_mitad2": {
+    "operaciones": 23,
+    "acierto_pct": 43.5,
+    "t_stat": -0.44,
+    "esperanza_r": -0.109,
+    "total_r": -2.5,
+    "profit_factor": 0.81,
+    "max_drawdown_r": 6.77
+   },
+   "prueba_por_activo": {
+    "EUR/USD": {
+     "operaciones": 3,
+     "acierto_pct": 33.3,
+     "t_stat": -1.01,
+     "esperanza_r": -0.622,
+     "total_r": -1.86,
+     "profit_factor": 0.25,
+     "max_drawdown_r": 1.86
+    },
+    "GBP/USD": {
+     "operaciones": 4,
+     "acierto_pct": 50.0,
+     "t_stat": -0.28,
+     "esperanza_r": -0.198,
+     "total_r": -0.79,
+     "profit_factor": 0.68,
+     "max_drawdown_r": 1.26
+    },
+    "USD/JPY": {
+     "operaciones": 12,
+     "acierto_pct": 41.7,
+     "t_stat": -0.29,
+     "esperanza_r": -0.101,
+     "total_r": -1.21,
+     "profit_factor": 0.82,
+     "max_drawdown_r": 4.03
+    },
+    "AUD/USD": {
+     "operaciones": 4,
+     "acierto_pct": 25.0,
+     "t_stat": -2.31,
+     "esperanza_r": -0.896,
+     "total_r": -3.59,
+     "profit_factor": 0.07,
+     "max_drawdown_r": 3.59
+    },
+    "XAU/USD": {
+     "operaciones": 6,
+     "acierto_pct": 33.3,
+     "t_stat": -0.17,
+     "esperanza_r": -0.11,
+     "total_r": -0.66,
+     "profit_factor": 0.85,
+     "max_drawdown_r": 3.32
+    },
+    "BTC/USD": {
+     "operaciones": 6,
+     "acierto_pct": 50.0,
+     "t_stat": 0.45,
+     "esperanza_r": 0.275,
+     "total_r": 1.65,
+     "profit_factor": 1.56,
+     "max_drawdown_r": 1.61
+    },
+    "US 500": {
+     "operaciones": 1,
+     "acierto_pct": 100.0,
+     "t_stat": 0.0,
+     "esperanza_r": 0.388,
+     "total_r": 0.39,
+     "profit_factor": null,
+     "max_drawdown_r": 0.0
+    },
+    "US Tech 100": {
+     "operaciones": 5,
+     "acierto_pct": 40.0,
+     "t_stat": 0.18,
+     "esperanza_r": 0.132,
+     "total_r": 0.66,
+     "profit_factor": 1.21,
+     "max_drawdown_r": 3.21
+    }
+   },
+   "aprobada": false,
+   "ops_prueba": []
+  },
+  {
+   "activo": "TODOS",
+   "tf": "15m",
+   "base": "inside_bar",
+   "variante": "inside_bar|d_tend,sesion_ny|obj2r",
+   "entrenamiento": {
+    "operaciones": 137,
+    "acierto_pct": 38.7,
+    "t_stat": -2.29,
+    "esperanza_r": -0.201,
+    "total_r": -27.57,
+    "profit_factor": 0.64,
+    "max_drawdown_r": 35.03
+   },
+   "prueba": {
+    "operaciones": 68,
+    "acierto_pct": 42.6,
+    "t_stat": -0.13,
+    "esperanza_r": -0.017,
+    "total_r": -1.16,
+    "profit_factor": 0.96,
+    "max_drawdown_r": 8.52
+   },
+   "prueba_mitad1": {
+    "operaciones": 36,
+    "acierto_pct": 30.6,
+    "t_stat": -2.63,
+    "esperanza_r": -0.414,
+    "total_r": -14.92,
+    "profit_factor": 0.4,
+    "max_drawdown_r": 15.83
+   },
+   "prueba_mitad2": {
+    "operaciones": 32,
+    "acierto_pct": 56.2,
+    "t_stat": 2.23,
+    "esperanza_r": 0.43,
+    "total_r": 13.76,
+    "profit_factor": 2.67,
+    "max_drawdown_r": 3.19
+   },
+   "prueba_por_activo": {
+    "EUR/USD": {
+     "operaciones": 3,
+     "acierto_pct": 33.3,
+     "t_stat": -0.29,
+     "esperanza_r": -0.167,
+     "total_r": -0.5,
+     "profit_factor": 0.63,
+     "max_drawdown_r": 1.35
+    },
+    "GBP/USD": {
+     "operaciones": 10,
+     "acierto_pct": 30.0,
+     "t_stat": -0.93,
+     "esperanza_r": -0.341,
+     "total_r": -3.41,
+     "profit_factor": 0.5,
+     "max_drawdown_r": 3.47
+    },
+    "USD/JPY": {
+     "operaciones": 7,
+     "acierto_pct": 28.6,
+     "t_stat": -1.09,
+     "esperanza_r": -0.288,
+     "total_r": -2.02,
+     "profit_factor": 0.35,
+     "max_drawdown_r": 2.63
+    },
+    "AUD/USD": {
+     "operaciones": 7,
+     "acierto_pct": 57.1,
+     "t_stat": 0.89,
+     "esperanza_r": 0.426,
+     "total_r": 2.98,
+     "profit_factor": 2.23,
+     "max_drawdown_r": 1.74
+    },
+    "XAU/USD": {
+     "operaciones": 16,
+     "acierto_pct": 62.5,
+     "t_stat": 1.38,
+     "esperanza_r": 0.396,
+     "total_r": 6.34,
+     "profit_factor": 2.3,
+     "max_drawdown_r": 4.4
+    },
+    "BTC/USD": {
+     "operaciones": 9,
+     "acierto_pct": 44.4,
+     "t_stat": -0.0,
+     "esperanza_r": -0.0,
+     "total_r": -0.0,
+     "profit_factor": 1.0,
+     "max_drawdown_r": 3.63
+    },
+    "US 500": {
+     "operaciones": 7,
+     "acierto_pct": 57.1,
+     "t_stat": 0.28,
+     "esperanza_r": 0.131,
+     "total_r": 0.92,
+     "profit_factor": 1.28,
+     "max_drawdown_r": 3.24
+    },
+    "US Tech 100": {
+     "operaciones": 9,
+     "acierto_pct": 11.1,
+     "t_stat": -2.67,
+     "esperanza_r": -0.608,
+     "total_r": -5.47,
+     "profit_factor": 0.14,
+     "max_drawdown_r": 5.96
+    }
+   },
+   "aprobada": false,
+   "ops_prueba": []
+  },
+  {
+   "activo": "TODOS",
+   "tf": "15m",
+   "base": "macd_giro",
+   "variante": "macd_giro|d_tend,sesion_lny|obj1r",
+   "entrenamiento": {
+    "operaciones": 197,
+    "acierto_pct": 48.7,
+    "t_stat": -3.39,
+    "esperanza_r": -0.238,
+    "total_r": -46.97,
+    "profit_factor": 0.61,
+    "max_drawdown_r": 54.89
+   },
+   "prueba": {
+    "operaciones": 101,
+    "acierto_pct": 49.5,
+    "t_stat": -2.26,
+    "esperanza_r": -0.219,
+    "total_r": -22.09,
+    "profit_factor": 0.63,
+    "max_drawdown_r": 27.4
+   },
+   "prueba_mitad1": {
+    "operaciones": 41,
+    "acierto_pct": 41.5,
+    "t_stat": -2.68,
+    "esperanza_r": -0.407,
+    "total_r": -16.68,
+    "profit_factor": 0.42,
+    "max_drawdown_r": 18.56
+   },
+   "prueba_mitad2": {
+    "operaciones": 60,
+    "acierto_pct": 55.0,
+    "t_stat": -0.73,
+    "esperanza_r": -0.09,
+    "total_r": -5.41,
+    "profit_factor": 0.82,
+    "max_drawdown_r": 13.04
+   },
+   "prueba_por_activo": {
+    "EUR/USD": {
+     "operaciones": 17,
+     "acierto_pct": 47.1,
+     "t_stat": -1.1,
+     "esperanza_r": -0.276,
+     "total_r": -4.69,
+     "profit_factor": 0.57,
+     "max_drawdown_r": 5.43
+    },
+    "GBP/USD": {
+     "operaciones": 17,
+     "acierto_pct": 52.9,
+     "t_stat": -0.87,
+     "esperanza_r": -0.218,
+     "total_r": -3.7,
+     "profit_factor": 0.64,
+     "max_drawdown_r": 5.19
+    },
+    "USD/JPY": {
+     "operaciones": 10,
+     "acierto_pct": 30.0,
+     "t_stat": -2.33,
+     "esperanza_r": -0.633,
+     "total_r": -6.33,
+     "profit_factor": 0.21,
+     "max_drawdown_r": 7.12
+    },
+    "AUD/USD": {
+     "operaciones": 20,
+     "acierto_pct": 55.0,
+     "t_stat": -0.73,
+     "esperanza_r": -0.163,
+     "total_r": -3.26,
+     "profit_factor": 0.7,
+     "max_drawdown_r": 5.55
+    },
+    "XAU/USD": {
+     "operaciones": 14,
+     "acierto_pct": 42.9,
+     "t_stat": -0.78,
+     "esperanza_r": -0.193,
+     "total_r": -2.7,
+     "profit_factor": 0.64,
+     "max_drawdown_r": 4.64
+    },
+    "BTC/USD": {
+     "operaciones": 17,
+     "acierto_pct": 47.1,
+     "t_stat": -1.26,
+     "esperanza_r": -0.297,
+     "total_r": -5.05,
+     "profit_factor": 0.51,
+     "max_drawdown_r": 6.72
+    },
+    "US 500": {
+     "operaciones": 2,
+     "acierto_pct": 50.0,
+     "t_stat": -0.09,
+     "esperanza_r": -0.086,
+     "total_r": -0.17,
+     "profit_factor": 0.84,
+     "max_drawdown_r": 1.06
+    },
+    "US Tech 100": {
+     "operaciones": 4,
+     "acierto_pct": 100.0,
+     "t_stat": 167.55,
+     "esperanza_r": 0.952,
+     "total_r": 3.81,
+     "profit_factor": null,
+     "max_drawdown_r": 0.0
+    }
+   },
+   "aprobada": false,
+   "ops_prueba": []
+  },
+  {
+   "activo": "TODOS",
+   "tf": "15m",
+   "base": "doble_techo_suelo",
+   "variante": "doble_techo_suelo|d_tend,sesion_lny|obj2r",
+   "entrenamiento": {
+    "operaciones": 230,
+    "acierto_pct": 46.1,
+    "t_stat": -0.37,
+    "esperanza_r": -0.026,
+    "total_r": -5.98,
+    "profit_factor": 0.94,
+    "max_drawdown_r": 22.76
+   },
+   "prueba": {
+    "operaciones": 120,
+    "acierto_pct": 41.7,
+    "t_stat": -1.57,
+    "esperanza_r": -0.147,
+    "total_r": -17.58,
+    "profit_factor": 0.72,
+    "max_drawdown_r": 28.49
+   },
+   "prueba_mitad1": {
+    "operaciones": 58,
+    "acierto_pct": 41.4,
+    "t_stat": -1.94,
+    "esperanza_r": -0.249,
+    "total_r": -14.46,
+    "profit_factor": 0.56,
+    "max_drawdown_r": 20.5
+   },
+   "prueba_mitad2": {
+    "operaciones": 62,
+    "acierto_pct": 41.9,
+    "t_stat": -0.37,
+    "esperanza_r": -0.05,
+    "total_r": -3.13,
+    "profit_factor": 0.89,
+    "max_drawdown_r": 11.74
+   },
+   "prueba_por_activo": {
+    "EUR/USD": {
+     "operaciones": 10,
+     "acierto_pct": 60.0,
+     "t_stat": 0.5,
+     "esperanza_r": 0.196,
+     "total_r": 1.96,
+     "profit_factor": 1.45,
+     "max_drawdown_r": 2.06
+    },
+    "GBP/USD": {
+     "operaciones": 15,
+     "acierto_pct": 40.0,
+     "t_stat": -0.73,
+     "esperanza_r": -0.19,
+     "total_r": -2.85,
+     "profit_factor": 0.63,
+     "max_drawdown_r": 5.02
+    },
+    "USD/JPY": {
+     "operaciones": 22,
+     "acierto_pct": 27.3,
+     "t_stat": -1.7,
+     "esperanza_r": -0.353,
+     "total_r": -7.77,
+     "profit_factor": 0.43,
+     "max_drawdown_r": 10.12
+    },
+    "AUD/USD": {
+     "operaciones": 21,
+     "acierto_pct": 28.6,
+     "t_stat": -0.95,
+     "esperanza_r": -0.253,
+     "total_r": -5.31,
+     "profit_factor": 0.62,
+     "max_drawdown_r": 5.85
+    },
+    "XAU/USD": {
+     "operaciones": 26,
+     "acierto_pct": 46.2,
+     "t_stat": -1.18,
+     "esperanza_r": -0.213,
+     "total_r": -5.55,
+     "profit_factor": 0.58,
+     "max_drawdown_r": 8.05
+    },
+    "BTC/USD": {
+     "operaciones": 16,
+     "acierto_pct": 56.2,
+     "t_stat": 0.36,
+     "esperanza_r": 0.099,
+     "total_r": 1.58,
+     "profit_factor": 1.24,
+     "max_drawdown_r": 4.84
+    },
+    "US 500": {
+     "operaciones": 6,
+     "acierto_pct": 50.0,
+     "t_stat": -0.23,
+     "esperanza_r": -0.067,
+     "total_r": -0.4,
+     "profit_factor": 0.8,
+     "max_drawdown_r": 1.98
+    },
+    "US Tech 100": {
+     "operaciones": 4,
+     "acierto_pct": 50.0,
+     "t_stat": 0.52,
+     "esperanza_r": 0.189,
+     "total_r": 0.75,
+     "profit_factor": 2.05,
+     "max_drawdown_r": 0.72
+    }
+   },
+   "aprobada": false,
+   "ops_prueba": []
+  },
+  {
+   "activo": "TODOS",
+   "tf": "15m",
+   "base": "divergencia_rsi",
+   "variante": "divergencia_rsi|d_impulso|obj1r",
+   "entrenamiento": {
+    "operaciones": 219,
+    "acierto_pct": 38.4,
+    "t_stat": -4.46,
+    "esperanza_r": -0.587,
+    "total_r": -128.6,
+    "profit_factor": 0.29,
+    "max_drawdown_r": 128.75
+   },
+   "prueba": {
+    "operaciones": 92,
+    "acierto_pct": 47.8,
+    "t_stat": -1.73,
+    "esperanza_r": -0.143,
+    "total_r": -13.15,
+    "profit_factor": 0.66,
+    "max_drawdown_r": 13.58
+   },
+   "prueba_mitad1": {
+    "operaciones": 44,
+    "acierto_pct": 43.2,
+    "t_stat": -1.46,
+    "esperanza_r": -0.171,
+    "total_r": -7.53,
+    "profit_factor": 0.6,
+    "max_drawdown_r": 7.53
+   },
+   "prueba_mitad2": {
+    "operaciones": 48,
+    "acierto_pct": 52.1,
+    "t_stat": -0.99,
+    "esperanza_r": -0.117,
+    "total_r": -5.62,
+    "profit_factor": 0.72,
+    "max_drawdown_r": 8.03
+   },
+   "prueba_por_activo": {
+    "EUR/USD": {
+     "operaciones": 8,
+     "acierto_pct": 25.0,
+     "t_stat": -1.26,
+     "esperanza_r": -0.358,
+     "total_r": -2.87,
+     "profit_factor": 0.34,
+     "max_drawdown_r": 3.73
+    },
+    "GBP/USD": {
+     "operaciones": 15,
+     "acierto_pct": 33.3,
+     "t_stat": -3.01,
+     "esperanza_r": -0.488,
+     "total_r": -7.33,
+     "profit_factor": 0.1,
+     "max_drawdown_r": 7.62
+    },
+    "USD/JPY": {
+     "operaciones": 19,
+     "acierto_pct": 52.6,
+     "t_stat": 0.12,
+     "esperanza_r": 0.02,
+     "total_r": 0.38,
+     "profit_factor": 1.07,
+     "max_drawdown_r": 3.12
+    },
+    "AUD/USD": {
+     "operaciones": 13,
+     "acierto_pct": 46.2,
+     "t_stat": -0.59,
+     "esperanza_r": -0.133,
+     "total_r": -1.72,
+     "profit_factor": 0.69,
+     "max_drawdown_r": 3.4
+    },
+    "XAU/USD": {
+     "operaciones": 13,
+     "acierto_pct": 69.2,
+     "t_stat": 1.88,
+     "esperanza_r": 0.337,
+     "total_r": 4.38,
+     "profit_factor": 3.32,
+     "max_drawdown_r": 1.19
+    },
+    "BTC/USD": {
+     "operaciones": 20,
+     "acierto_pct": 50.0,
+     "t_stat": -1.27,
+     "esperanza_r": -0.261,
+     "total_r": -5.22,
+     "profit_factor": 0.53,
+     "max_drawdown_r": 6.86
+    },
+    "US 500": {
+     "operaciones": 3,
+     "acierto_pct": 33.3,
+     "t_stat": -0.59,
+     "esperanza_r": -0.401,
+     "total_r": -1.2,
+     "profit_factor": 0.44,
+     "max_drawdown_r": 2.16
+    },
+    "US Tech 100": {
+     "operaciones": 1,
+     "acierto_pct": 100.0,
+     "t_stat": 0.0,
+     "esperanza_r": 0.423,
+     "total_r": 0.42,
+     "profit_factor": null,
+     "max_drawdown_r": 0.0
+    }
+   },
+   "aprobada": false,
+   "ops_prueba": []
+  },
+  {
+   "activo": "TODOS",
+   "tf": "15m",
+   "base": "pin_nivel",
+   "variante": "pin_nivel|d_tend,vol_alta|obj2r",
+   "entrenamiento": {
+    "operaciones": 112,
+    "acierto_pct": 30.4,
+    "t_stat": -2.8,
+    "esperanza_r": -0.313,
+    "total_r": -35.08,
+    "profit_factor": 0.56,
+    "max_drawdown_r": 40.38
+   },
+   "prueba": {
+    "operaciones": 49,
+    "acierto_pct": 40.8,
+    "t_stat": -0.86,
+    "esperanza_r": -0.151,
+    "total_r": -7.4,
+    "profit_factor": 0.76,
+    "max_drawdown_r": 12.06
+   },
+   "prueba_mitad1": {
+    "operaciones": 29,
+    "acierto_pct": 41.4,
+    "t_stat": -0.2,
+    "esperanza_r": -0.049,
+    "total_r": -1.41,
+    "profit_factor": 0.92,
+    "max_drawdown_r": 6.22
+   },
+   "prueba_mitad2": {
+    "operaciones": 20,
+    "acierto_pct": 40.0,
+    "t_stat": -1.19,
+    "esperanza_r": -0.3,
+    "total_r": -5.99,
+    "profit_factor": 0.55,
+    "max_drawdown_r": 8.22
+   },
+   "prueba_por_activo": {
+    "EUR/USD": {
+     "operaciones": 5,
+     "acierto_pct": 40.0,
+     "t_stat": 0.06,
+     "esperanza_r": 0.037,
+     "total_r": 0.19,
+     "profit_factor": 1.07,
+     "max_drawdown_r": 1.45
+    },
+    "GBP/USD": {
+     "operaciones": 9,
+     "acierto_pct": 33.3,
+     "t_stat": -1.33,
+     "esperanza_r": -0.545,
+     "total_r": -4.91,
+     "profit_factor": 0.39,
+     "max_drawdown_r": 6.19
+    },
+    "USD/JPY": {
+     "operaciones": 10,
+     "acierto_pct": 30.0,
+     "t_stat": -1.58,
+     "esperanza_r": -0.519,
+     "total_r": -5.19,
+     "profit_factor": 0.32,
+     "max_drawdown_r": 5.9
+    },
+    "AUD/USD": {
+     "operaciones": 5,
+     "acierto_pct": 60.0,
+     "t_stat": 0.69,
+     "esperanza_r": 0.511,
+     "total_r": 2.56,
+     "profit_factor": 1.99,
+     "max_drawdown_r": 1.33
+    },
+    "XAU/USD": {
+     "operaciones": 5,
+     "acierto_pct": 40.0,
+     "t_stat": 0.19,
+     "esperanza_r": 0.116,
+     "total_r": 0.58,
+     "profit_factor": 1.24,
+     "max_drawdown_r": 2.2
+    },
+    "BTC/USD": {
+     "operaciones": 7,
+     "acierto_pct": 57.1,
+     "t_stat": 0.19,
+     "esperanza_r": 0.097,
+     "total_r": 0.68,
+     "profit_factor": 1.19,
+     "max_drawdown_r": 1.34
+    },
+    "US 500": {
+     "operaciones": 5,
+     "acierto_pct": 40.0,
+     "t_stat": 0.16,
+     "esperanza_r": 0.082,
+     "total_r": 0.41,
+     "profit_factor": 1.25,
+     "max_drawdown_r": 1.14
+    },
+    "US Tech 100": {
+     "operaciones": 3,
+     "acierto_pct": 33.3,
+     "t_stat": -1.17,
+     "esperanza_r": -0.574,
+     "total_r": -1.72,
+     "profit_factor": 0.19,
+     "max_drawdown_r": 2.13
+    }
+   },
+   "aprobada": false,
+   "ops_prueba": []
+  },
+  {
+   "activo": "TODOS",
+   "tf": "1h",
+   "base": "tendencia_retroceso",
+   "variante": "tendencia_retroceso|d_tend,sesion_ny|obj2r",
+   "entrenamiento": {
+    "operaciones": 1357,
+    "acierto_pct": 39.9,
+    "t_stat": -0.78,
+    "esperanza_r": -0.027,
+    "total_r": -36.5,
+    "profit_factor": 0.95,
+    "max_drawdown_r": 68.34
+   },
+   "prueba": {
+    "operaciones": 540,
+    "acierto_pct": 36.3,
+    "t_stat": -3.1,
+    "esperanza_r": -0.157,
+    "total_r": -84.89,
+    "profit_factor": 0.75,
+    "max_drawdown_r": 101.0
+   },
+   "prueba_mitad1": {
+    "operaciones": 273,
+    "acierto_pct": 36.6,
+    "t_stat": -2.31,
+    "esperanza_r": -0.167,
+    "total_r": -45.64,
+    "profit_factor": 0.74,
+    "max_drawdown_r": 57.98
+   },
+   "prueba_mitad2": {
+    "operaciones": 267,
+    "acierto_pct": 36.0,
+    "t_stat": -2.07,
+    "esperanza_r": -0.147,
+    "total_r": -39.25,
+    "profit_factor": 0.75,
+    "max_drawdown_r": 50.69
+   },
+   "prueba_por_activo": {
+    "EUR/USD": {
+     "operaciones": 68,
+     "acierto_pct": 47.1,
+     "t_stat": 0.81,
+     "esperanza_r": 0.118,
+     "total_r": 8.06,
+     "profit_factor": 1.25,
+     "max_drawdown_r": 5.79
+    },
+    "GBP/USD": {
+     "operaciones": 72,
+     "acierto_pct": 29.2,
+     "t_stat": -3.22,
+     "esperanza_r": -0.378,
+     "total_r": -27.2,
+     "profit_factor": 0.44,
+     "max_drawdown_r": 29.83
+    },
+    "USD/JPY": {
+     "operaciones": 89,
+     "acierto_pct": 33.7,
+     "t_stat": -2.97,
+     "esperanza_r": -0.324,
+     "total_r": -28.8,
+     "profit_factor": 0.51,
+     "max_drawdown_r": 31.83
+    },
+    "AUD/USD": {
+     "operaciones": 77,
+     "acierto_pct": 40.3,
+     "t_stat": -0.08,
+     "esperanza_r": -0.011,
+     "total_r": -0.87,
+     "profit_factor": 0.98,
+     "max_drawdown_r": 11.35
+    },
+    "XAU/USD": {
+     "operaciones": 67,
+     "acierto_pct": 34.3,
+     "t_stat": -0.68,
+     "esperanza_r": -0.104,
+     "total_r": -6.97,
+     "profit_factor": 0.83,
+     "max_drawdown_r": 16.16
+    },
+    "BTC/USD": {
+     "operaciones": 80,
+     "acierto_pct": 32.5,
+     "t_stat": -2.27,
+     "esperanza_r": -0.287,
+     "total_r": -22.92,
+     "profit_factor": 0.57,
+     "max_drawdown_r": 22.92
+    },
+    "US 500": {
+     "operaciones": 47,
+     "acierto_pct": 38.3,
+     "t_stat": -0.1,
+     "esperanza_r": -0.019,
+     "total_r": -0.91,
+     "profit_factor": 0.97,
+     "max_drawdown_r": 13.63
+    },
+    "US Tech 100": {
+     "operaciones": 40,
+     "acierto_pct": 37.5,
+     "t_stat": -0.66,
+     "esperanza_r": -0.132,
+     "total_r": -5.27,
+     "profit_factor": 0.79,
+     "max_drawdown_r": 8.04
+    }
+   },
+   "aprobada": false,
+   "ops_prueba": []
+  },
+  {
+   "activo": "TODOS",
+   "tf": "1h",
+   "base": "ruptura_rango",
+   "variante": "ruptura_rango|d_tend,sesion_lny|obj2r",
+   "entrenamiento": {
+    "operaciones": 577,
+    "acierto_pct": 45.2,
+    "t_stat": 0.16,
+    "esperanza_r": 0.008,
+    "total_r": 4.6,
+    "profit_factor": 1.02,
+    "max_drawdown_r": 34.06
+   },
+   "prueba": {
+    "operaciones": 203,
+    "acierto_pct": 45.8,
+    "t_stat": 0.11,
+    "esperanza_r": 0.009,
+    "total_r": 1.82,
+    "profit_factor": 1.02,
+    "max_drawdown_r": 12.44
+   },
+   "prueba_mitad1": {
+    "operaciones": 100,
+    "acierto_pct": 43.0,
+    "t_stat": -0.36,
+    "esperanza_r": -0.04,
+    "total_r": -4.05,
+    "profit_factor": 0.92,
+    "max_drawdown_r": 10.67
+   },
+   "prueba_mitad2": {
+    "operaciones": 103,
+    "acierto_pct": 48.5,
+    "t_stat": 0.49,
+    "esperanza_r": 0.057,
+    "total_r": 5.87,
+    "profit_factor": 1.12,
+    "max_drawdown_r": 8.35
+   },
+   "prueba_por_activo": {
+    "EUR/USD": {
+     "operaciones": 37,
+     "acierto_pct": 48.6,
+     "t_stat": 0.61,
+     "esperanza_r": 0.122,
+     "total_r": 4.52,
+     "profit_factor": 1.26,
+     "max_drawdown_r": 6.08
+    },
+    "GBP/USD": {
+     "operaciones": 34,
+     "acierto_pct": 41.2,
+     "t_stat": -0.76,
+     "esperanza_r": -0.152,
+     "total_r": -5.16,
+     "profit_factor": 0.74,
+     "max_drawdown_r": 10.53
+    },
+    "USD/JPY": {
+     "operaciones": 33,
+     "acierto_pct": 48.5,
+     "t_stat": 0.31,
+     "esperanza_r": 0.062,
+     "total_r": 2.05,
+     "profit_factor": 1.13,
+     "max_drawdown_r": 5.43
+    },
+    "AUD/USD": {
+     "operaciones": 23,
+     "acierto_pct": 39.1,
+     "t_stat": -0.04,
+     "esperanza_r": -0.012,
+     "total_r": -0.27,
+     "profit_factor": 0.98,
+     "max_drawdown_r": 7.71
+    },
+    "XAU/USD": {
+     "operaciones": 25,
+     "acierto_pct": 48.0,
+     "t_stat": 0.69,
+     "esperanza_r": 0.171,
+     "total_r": 4.26,
+     "profit_factor": 1.38,
+     "max_drawdown_r": 3.76
+    },
+    "BTC/USD": {
+     "operaciones": 37,
+     "acierto_pct": 35.1,
+     "t_stat": -1.77,
+     "esperanza_r": -0.293,
+     "total_r": -10.85,
+     "profit_factor": 0.51,
+     "max_drawdown_r": 12.23
+    },
+    "US 500": {
+     "operaciones": 6,
+     "acierto_pct": 66.7,
+     "t_stat": 1.09,
+     "esperanza_r": 0.391,
+     "total_r": 2.34,
+     "profit_factor": 2.95,
+     "max_drawdown_r": 1.07
+    },
+    "US Tech 100": {
+     "operaciones": 8,
+     "acierto_pct": 87.5,
+     "t_stat": 2.17,
+     "esperanza_r": 0.614,
+     "total_r": 4.91,
+     "profit_factor": 5.79,
+     "max_drawdown_r": 1.02
+    }
+   },
+   "aprobada": false,
+   "ops_prueba": []
+  },
+  {
+   "activo": "TODOS",
+   "tf": "1h",
+   "base": "reversion_bollinger",
+   "variante": "reversion_bollinger|d_tend,vol_alta|obj2r",
+   "entrenamiento": {
+    "operaciones": 129,
+    "acierto_pct": 44.2,
+    "t_stat": 0.13,
+    "esperanza_r": 0.013,
+    "total_r": 1.74,
+    "profit_factor": 1.03,
+    "max_drawdown_r": 17.8
+   },
+   "prueba": {
+    "operaciones": 62,
+    "acierto_pct": 41.9,
+    "t_stat": -1.52,
+    "esperanza_r": -0.201,
+    "total_r": -12.47,
+    "profit_factor": 0.65,
+    "max_drawdown_r": 15.14
+   },
+   "prueba_mitad1": {
+    "operaciones": 33,
+    "acierto_pct": 57.6,
+    "t_stat": 0.22,
+    "esperanza_r": 0.04,
+    "total_r": 1.33,
+    "profit_factor": 1.09,
+    "max_drawdown_r": 6.02
+   },
+   "prueba_mitad2": {
+    "operaciones": 29,
+    "acierto_pct": 24.1,
+    "t_stat": -2.62,
+    "esperanza_r": -0.476,
+    "total_r": -13.8,
+    "profit_factor": 0.35,
+    "max_drawdown_r": 17.74
+   },
+   "prueba_por_activo": {
+    "EUR/USD": {
+     "operaciones": 7,
+     "acierto_pct": 42.9,
+     "t_stat": -0.43,
+     "esperanza_r": -0.194,
+     "total_r": -1.36,
+     "profit_factor": 0.68,
+     "max_drawdown_r": 2.14
+    },
+    "GBP/USD": {
+     "operaciones": 10,
+     "acierto_pct": 60.0,
+     "t_stat": 0.13,
+     "esperanza_r": 0.042,
+     "total_r": 0.42,
+     "profit_factor": 1.11,
+     "max_drawdown_r": 2.16
+    },
+    "USD/JPY": {
+     "operaciones": 5,
+     "acierto_pct": 20.0,
+     "t_stat": -3.52,
+     "esperanza_r": -0.831,
+     "total_r": -4.16,
+     "profit_factor": 0.03,
+     "max_drawdown_r": 4.27
+    },
+    "AUD/USD": {
+     "operaciones": 12,
+     "acierto_pct": 41.7,
+     "t_stat": -1.63,
+     "esperanza_r": -0.381,
+     "total_r": -4.57,
+     "profit_factor": 0.36,
+     "max_drawdown_r": 4.72
+    },
+    "XAU/USD": {
+     "operaciones": 8,
+     "acierto_pct": 50.0,
+     "t_stat": 0.16,
+     "esperanza_r": 0.068,
+     "total_r": 0.54,
+     "profit_factor": 1.13,
+     "max_drawdown_r": 2.09
+    },
+    "BTC/USD": {
+     "operaciones": 16,
+     "acierto_pct": 25.0,
+     "t_stat": -1.17,
+     "esperanza_r": -0.328,
+     "total_r": -5.24,
+     "profit_factor": 0.52,
+     "max_drawdown_r": 8.65
+    },
+    "US 500": {
+     "operaciones": 1,
+     "acierto_pct": 100.0,
+     "t_stat": 0.0,
+     "esperanza_r": 1.956,
+     "total_r": 1.96,
+     "profit_factor": null,
+     "max_drawdown_r": 0.0
+    },
+    "US Tech 100": {
+     "operaciones": 3,
+     "acierto_pct": 66.7,
+     "t_stat": -0.03,
+     "esperanza_r": -0.02,
+     "total_r": -0.06,
+     "profit_factor": 0.94,
+     "max_drawdown_r": 1.03
+    }
+   },
+   "aprobada": false,
+   "ops_prueba": []
+  },
+  {
+   "activo": "TODOS",
+   "tf": "1h",
+   "base": "cruce_ema",
+   "variante": "cruce_ema|d_tend,vol_alta|obj1r",
+   "entrenamiento": {
+    "operaciones": 579,
+    "acierto_pct": 53.5,
+    "t_stat": 0.12,
+    "esperanza_r": 0.005,
+    "total_r": 2.71,
+    "profit_factor": 1.01,
+    "max_drawdown_r": 25.04
+   },
+   "prueba": {
+    "operaciones": 226,
+    "acierto_pct": 42.5,
+    "t_stat": -3.15,
+    "esperanza_r": -0.202,
+    "total_r": -45.7,
+    "profit_factor": 0.65,
+    "max_drawdown_r": 50.89
+   },
+   "prueba_mitad1": {
+    "operaciones": 128,
+    "acierto_pct": 40.6,
+    "t_stat": -2.66,
+    "esperanza_r": -0.226,
+    "total_r": -28.91,
+    "profit_factor": 0.62,
+    "max_drawdown_r": 30.7
+   },
+   "prueba_mitad2": {
+    "operaciones": 98,
+    "acierto_pct": 44.9,
+    "t_stat": -1.74,
+    "esperanza_r": -0.171,
+    "total_r": -16.8,
+    "profit_factor": 0.7,
+    "max_drawdown_r": 24.05
+   },
+   "prueba_por_activo": {
+    "EUR/USD": {
+     "operaciones": 31,
+     "acierto_pct": 38.7,
+     "t_stat": -1.55,
+     "esperanza_r": -0.268,
+     "total_r": -8.32,
+     "profit_factor": 0.56,
+     "max_drawdown_r": 11.0
+    },
+    "GBP/USD": {
+     "operaciones": 28,
+     "acierto_pct": 28.6,
+     "t_stat": -2.84,
+     "esperanza_r": -0.487,
+     "total_r": -13.64,
+     "profit_factor": 0.34,
+     "max_drawdown_r": 13.64
+    },
+    "USD/JPY": {
+     "operaciones": 37,
+     "acierto_pct": 40.5,
+     "t_stat": -1.82,
+     "esperanza_r": -0.283,
+     "total_r": -10.47,
+     "profit_factor": 0.53,
+     "max_drawdown_r": 13.26
+    },
+    "AUD/USD": {
+     "operaciones": 38,
+     "acierto_pct": 47.4,
+     "t_stat": -0.47,
+     "esperanza_r": -0.073,
+     "total_r": -2.79,
+     "profit_factor": 0.85,
+     "max_drawdown_r": 5.87
+    },
+    "XAU/USD": {
+     "operaciones": 21,
+     "acierto_pct": 42.9,
+     "t_stat": -0.85,
+     "esperanza_r": -0.189,
+     "total_r": -3.96,
+     "profit_factor": 0.68,
+     "max_drawdown_r": 7.33
+    },
+    "BTC/USD": {
+     "operaciones": 38,
+     "acierto_pct": 42.1,
+     "t_stat": -1.36,
+     "esperanza_r": -0.215,
+     "total_r": -8.17,
+     "profit_factor": 0.64,
+     "max_drawdown_r": 9.73
+    },
+    "US 500": {
+     "operaciones": 18,
+     "acierto_pct": 50.0,
+     "t_stat": -0.26,
+     "esperanza_r": -0.061,
+     "total_r": -1.11,
+     "profit_factor": 0.88,
+     "max_drawdown_r": 3.6
+    },
+    "US Tech 100": {
+     "operaciones": 15,
+     "acierto_pct": 60.0,
+     "t_stat": 0.71,
+     "esperanza_r": 0.183,
+     "total_r": 2.75,
+     "profit_factor": 1.46,
+     "max_drawdown_r": 2.92
+    }
+   },
+   "aprobada": false,
+   "ops_prueba": []
+  },
+  {
+   "activo": "TODOS",
+   "tf": "1h",
+   "base": "envolvente_nivel",
+   "variante": "envolvente_nivel|d_tend,vol_alta|obj1r",
+   "entrenamiento": {
+    "operaciones": 388,
+    "acierto_pct": 51.0,
+    "t_stat": -1.19,
+    "esperanza_r": -0.054,
+    "total_r": -20.95,
+    "profit_factor": 0.88,
+    "max_drawdown_r": 31.48
+   },
+   "prueba": {
+    "operaciones": 147,
+    "acierto_pct": 54.4,
+    "t_stat": -0.23,
+    "esperanza_r": -0.017,
+    "total_r": -2.54,
+    "profit_factor": 0.96,
+    "max_drawdown_r": 11.65
+   },
+   "prueba_mitad1": {
+    "operaciones": 76,
+    "acierto_pct": 60.5,
+    "t_stat": 0.71,
+    "esperanza_r": 0.075,
+    "total_r": 5.67,
+    "profit_factor": 1.19,
+    "max_drawdown_r": 3.21
+   },
+   "prueba_mitad2": {
+    "operaciones": 71,
+    "acierto_pct": 47.9,
+    "t_stat": -1.04,
+    "esperanza_r": -0.116,
+    "total_r": -8.21,
+    "profit_factor": 0.77,
+    "max_drawdown_r": 13.85
+   },
+   "prueba_por_activo": {
+    "EUR/USD": {
+     "operaciones": 21,
+     "acierto_pct": 61.9,
+     "t_stat": 0.01,
+     "esperanza_r": 0.001,
+     "total_r": 0.03,
+     "profit_factor": 1.0,
+     "max_drawdown_r": 3.63
+    },
+    "GBP/USD": {
+     "operaciones": 24,
+     "acierto_pct": 45.8,
+     "t_stat": -0.98,
+     "esperanza_r": -0.184,
+     "total_r": -4.43,
+     "profit_factor": 0.65,
+     "max_drawdown_r": 6.18
+    },
+    "USD/JPY": {
+     "operaciones": 23,
+     "acierto_pct": 56.5,
+     "t_stat": -0.12,
+     "esperanza_r": -0.024,
+     "total_r": -0.55,
+     "profit_factor": 0.95,
+     "max_drawdown_r": 2.38
+    },
+    "AUD/USD": {
+     "operaciones": 19,
+     "acierto_pct": 42.1,
+     "t_stat": -0.83,
+     "esperanza_r": -0.172,
+     "total_r": -3.27,
+     "profit_factor": 0.66,
+     "max_drawdown_r": 4.15
+    },
+    "XAU/USD": {
+     "operaciones": 18,
+     "acierto_pct": 61.1,
+     "t_stat": 1.02,
+     "esperanza_r": 0.223,
+     "total_r": 4.01,
+     "profit_factor": 1.66,
+     "max_drawdown_r": 4.12
+    },
+    "BTC/USD": {
+     "operaciones": 30,
+     "acierto_pct": 53.3,
+     "t_stat": -0.38,
+     "esperanza_r": -0.069,
+     "total_r": -2.08,
+     "profit_factor": 0.86,
+     "max_drawdown_r": 5.09
+    },
+    "US 500": {
+     "operaciones": 6,
+     "acierto_pct": 83.3,
+     "t_stat": 2.91,
+     "esperanza_r": 0.654,
+     "total_r": 3.92,
+     "profit_factor": 11.66,
+     "max_drawdown_r": 0.37
+    },
+    "US Tech 100": {
+     "operaciones": 6,
+     "acierto_pct": 50.0,
+     "t_stat": -0.07,
+     "esperanza_r": -0.03,
+     "total_r": -0.18,
+     "profit_factor": 0.94,
+     "max_drawdown_r": 1.15
+    }
+   },
+   "aprobada": false,
+   "ops_prueba": []
+  },
+  {
+   "activo": "TODOS",
+   "tf": "1h",
+   "base": "rsi2_reversion",
+   "variante": "rsi2_reversion|d_retroceso|obj2r",
+   "entrenamiento": {
+    "operaciones": 1374,
+    "acierto_pct": 38.4,
+    "t_stat": -0.89,
+    "esperanza_r": -0.033,
+    "total_r": -45.23,
+    "profit_factor": 0.95,
+    "max_drawdown_r": 83.48
+   },
+   "prueba": {
+    "operaciones": 605,
+    "acierto_pct": 40.8,
+    "t_stat": 0.78,
+    "esperanza_r": 0.044,
+    "total_r": 26.79,
+    "profit_factor": 1.07,
+    "max_drawdown_r": 40.38
+   },
+   "prueba_mitad1": {
+    "operaciones": 317,
+    "acierto_pct": 43.5,
+    "t_stat": 1.51,
+    "esperanza_r": 0.119,
+    "total_r": 37.72,
+    "profit_factor": 1.2,
+    "max_drawdown_r": 24.93
+   },
+   "prueba_mitad2": {
+    "operaciones": 288,
+    "acierto_pct": 37.8,
+    "t_stat": -0.47,
+    "esperanza_r": -0.038,
+    "total_r": -10.93,
+    "profit_factor": 0.94,
+    "max_drawdown_r": 38.15
+   },
+   "prueba_por_activo": {
+    "EUR/USD": {
+     "operaciones": 91,
+     "acierto_pct": 41.8,
+     "t_stat": 0.17,
+     "esperanza_r": 0.025,
+     "total_r": 2.29,
+     "profit_factor": 1.04,
+     "max_drawdown_r": 9.93
+    },
+    "GBP/USD": {
+     "operaciones": 87,
+     "acierto_pct": 47.1,
+     "t_stat": 0.75,
+     "esperanza_r": 0.114,
+     "total_r": 9.92,
+     "profit_factor": 1.19,
+     "max_drawdown_r": 15.06
+    },
+    "USD/JPY": {
+     "operaciones": 61,
+     "acierto_pct": 44.3,
+     "t_stat": 1.06,
+     "esperanza_r": 0.19,
+     "total_r": 11.56,
+     "profit_factor": 1.34,
+     "max_drawdown_r": 6.61
+    },
+    "AUD/USD": {
+     "operaciones": 94,
+     "acierto_pct": 33.0,
+     "t_stat": -1.0,
+     "esperanza_r": -0.143,
+     "total_r": -13.44,
+     "profit_factor": 0.81,
+     "max_drawdown_r": 24.02
+    },
+    "XAU/USD": {
+     "operaciones": 89,
+     "acierto_pct": 32.6,
+     "t_stat": -0.94,
+     "esperanza_r": -0.134,
+     "total_r": -11.91,
+     "profit_factor": 0.81,
+     "max_drawdown_r": 24.09
+    },
+    "BTC/USD": {
+     "operaciones": 110,
+     "acierto_pct": 40.0,
+     "t_stat": -0.18,
+     "esperanza_r": -0.023,
+     "total_r": -2.55,
+     "profit_factor": 0.96,
+     "max_drawdown_r": 18.78
+    },
+    "US 500": {
+     "operaciones": 37,
+     "acierto_pct": 54.1,
+     "t_stat": 2.08,
+     "esperanza_r": 0.514,
+     "total_r": 19.03,
+     "profit_factor": 2.06,
+     "max_drawdown_r": 3.24
+    },
+    "US Tech 100": {
+     "operaciones": 36,
+     "acierto_pct": 47.2,
+     "t_stat": 1.32,
+     "esperanza_r": 0.33,
+     "total_r": 11.89,
+     "profit_factor": 1.6,
+     "max_drawdown_r": 4.57
+    }
+   },
+   "aprobada": false,
+   "ops_prueba": []
+  },
+  {
+   "activo": "TODOS",
+   "tf": "1h",
+   "base": "donchian",
+   "variante": "donchian|d_retroceso,sesion_ny|obj2r",
+   "entrenamiento": {
+    "operaciones": 279,
+    "acierto_pct": 42.3,
+    "t_stat": 0.49,
+    "esperanza_r": 0.038,
+    "total_r": 10.48,
+    "profit_factor": 1.07,
+    "max_drawdown_r": 22.89
+   },
+   "prueba": {
+    "operaciones": 117,
+    "acierto_pct": 39.3,
+    "t_stat": -1.39,
+    "esperanza_r": -0.154,
+    "total_r": -18.02,
+    "profit_factor": 0.75,
+    "max_drawdown_r": 31.17
+   },
+   "prueba_mitad1": {
+    "operaciones": 70,
+    "acierto_pct": 35.7,
+    "t_stat": -1.9,
+    "esperanza_r": -0.264,
+    "total_r": -18.49,
+    "profit_factor": 0.61,
+    "max_drawdown_r": 26.09
+   },
+   "prueba_mitad2": {
+    "operaciones": 47,
+    "acierto_pct": 44.7,
+    "t_stat": 0.05,
+    "esperanza_r": 0.01,
+    "total_r": 0.47,
+    "profit_factor": 1.02,
+    "max_drawdown_r": 12.86
+   },
+   "prueba_por_activo": {
+    "EUR/USD": {
+     "operaciones": 17,
+     "acierto_pct": 41.2,
+     "t_stat": -1.32,
+     "esperanza_r": -0.334,
+     "total_r": -5.68,
+     "profit_factor": 0.48,
+     "max_drawdown_r": 7.19
+    },
+    "GBP/USD": {
+     "operaciones": 17,
+     "acierto_pct": 23.5,
+     "t_stat": -4.24,
+     "esperanza_r": -0.656,
+     "total_r": -11.16,
+     "profit_factor": 0.11,
+     "max_drawdown_r": 11.28
+    },
+    "USD/JPY": {
+     "operaciones": 12,
+     "acierto_pct": 16.7,
+     "t_stat": -3.5,
+     "esperanza_r": -0.726,
+     "total_r": -8.71,
+     "profit_factor": 0.13,
+     "max_drawdown_r": 8.71
+    },
+    "AUD/USD": {
+     "operaciones": 21,
+     "acierto_pct": 42.9,
+     "t_stat": -0.31,
+     "esperanza_r": -0.086,
+     "total_r": -1.82,
+     "profit_factor": 0.86,
+     "max_drawdown_r": 7.45
+    },
+    "XAU/USD": {
+     "operaciones": 18,
+     "acierto_pct": 44.4,
+     "t_stat": 0.38,
+     "esperanza_r": 0.119,
+     "total_r": 2.15,
+     "profit_factor": 1.23,
+     "max_drawdown_r": 4.31
+    },
+    "BTC/USD": {
+     "operaciones": 21,
+     "acierto_pct": 47.6,
+     "t_stat": 0.55,
+     "esperanza_r": 0.167,
+     "total_r": 3.51,
+     "profit_factor": 1.3,
+     "max_drawdown_r": 3.27
+    },
+    "US 500": {
+     "operaciones": 4,
+     "acierto_pct": 50.0,
+     "t_stat": 0.52,
+     "esperanza_r": 0.448,
+     "total_r": 1.79,
+     "profit_factor": 1.85,
+     "max_drawdown_r": 1.07
+    },
+    "US Tech 100": {
+     "operaciones": 7,
+     "acierto_pct": 57.1,
+     "t_stat": 0.53,
+     "esperanza_r": 0.27,
+     "total_r": 1.89,
+     "profit_factor": 1.61,
+     "max_drawdown_r": 3.09
+    }
+   },
+   "aprobada": false,
+   "ops_prueba": []
+  },
+  {
+   "activo": "TODOS",
+   "tf": "1h",
+   "base": "squeeze",
+   "variante": "squeeze|d_impulso|obj1r",
+   "entrenamiento": {
+    "operaciones": 373,
+    "acierto_pct": 53.4,
+    "t_stat": -0.61,
+    "esperanza_r": -0.031,
+    "total_r": -11.58,
+    "profit_factor": 0.94,
+    "max_drawdown_r": 20.0
+   },
+   "prueba": {
+    "operaciones": 175,
+    "acierto_pct": 50.9,
+    "t_stat": -1.03,
+    "esperanza_r": -0.076,
+    "total_r": -13.36,
+    "profit_factor": 0.85,
+    "max_drawdown_r": 25.64
+   },
+   "prueba_mitad1": {
+    "operaciones": 88,
+    "acierto_pct": 56.8,
+    "t_stat": 0.5,
+    "esperanza_r": 0.052,
+    "total_r": 4.57,
+    "profit_factor": 1.12,
+    "max_drawdown_r": 12.03
+   },
+   "prueba_mitad2": {
+    "operaciones": 87,
+    "acierto_pct": 44.8,
+    "t_stat": -1.98,
+    "esperanza_r": -0.206,
+    "total_r": -17.93,
+    "profit_factor": 0.65,
+    "max_drawdown_r": 22.87
+   },
+   "prueba_por_activo": {
+    "EUR/USD": {
+     "operaciones": 22,
+     "acierto_pct": 50.0,
+     "t_stat": -0.65,
+     "esperanza_r": -0.134,
+     "total_r": -2.96,
+     "profit_factor": 0.74,
+     "max_drawdown_r": 6.41
+    },
+    "GBP/USD": {
+     "operaciones": 23,
+     "acierto_pct": 52.2,
+     "t_stat": -0.51,
+     "esperanza_r": -0.108,
+     "total_r": -2.48,
+     "profit_factor": 0.8,
+     "max_drawdown_r": 5.89
+    },
+    "USD/JPY": {
+     "operaciones": 31,
+     "acierto_pct": 32.3,
+     "t_stat": -2.82,
+     "esperanza_r": -0.473,
+     "total_r": -14.67,
+     "profit_factor": 0.37,
+     "max_drawdown_r": 14.67
+    },
+    "AUD/USD": {
+     "operaciones": 22,
+     "acierto_pct": 54.5,
+     "t_stat": 0.72,
+     "esperanza_r": 0.14,
+     "total_r": 3.08,
+     "profit_factor": 1.39,
+     "max_drawdown_r": 4.04
+    },
+    "XAU/USD": {
+     "operaciones": 24,
+     "acierto_pct": 54.2,
+     "t_stat": 0.15,
+     "esperanza_r": 0.032,
+     "total_r": 0.77,
+     "profit_factor": 1.07,
+     "max_drawdown_r": 4.82
+    },
+    "BTC/USD": {
+     "operaciones": 48,
+     "acierto_pct": 54.2,
+     "t_stat": -0.28,
+     "esperanza_r": -0.04,
+     "total_r": -1.9,
+     "profit_factor": 0.92,
+     "max_drawdown_r": 7.7
+    },
+    "US 500": {
+     "operaciones": 3,
+     "acierto_pct": 100.0,
+     "t_stat": 64.75,
+     "esperanza_r": 0.956,
+     "total_r": 2.87,
+     "profit_factor": null,
+     "max_drawdown_r": 0.0
+    },
+    "US Tech 100": {
+     "operaciones": 2,
+     "acierto_pct": 100.0,
+     "t_stat": 161.17,
+     "esperanza_r": 0.967,
+     "total_r": 1.93,
+     "profit_factor": null,
+     "max_drawdown_r": 0.0
+    }
+   },
+   "aprobada": false,
+   "ops_prueba": []
+  },
+  {
+   "activo": "TODOS",
+   "tf": "1h",
+   "base": "inside_bar",
+   "variante": "inside_bar|d_tend,sesion_ny|obj2r",
+   "entrenamiento": {
+    "operaciones": 541,
+    "acierto_pct": 44.5,
+    "t_stat": 1.05,
+    "esperanza_r": 0.052,
+    "total_r": 28.23,
+    "profit_factor": 1.11,
+    "max_drawdown_r": 19.79
+   },
+   "prueba": {
+    "operaciones": 239,
+    "acierto_pct": 39.3,
+    "t_stat": -1.4,
+    "esperanza_r": -0.099,
+    "total_r": -23.58,
+    "profit_factor": 0.81,
+    "max_drawdown_r": 32.93
+   },
+   "prueba_mitad1": {
+    "operaciones": 128,
+    "acierto_pct": 43.0,
+    "t_stat": -0.16,
+    "esperanza_r": -0.016,
+    "total_r": -1.99,
+    "profit_factor": 0.97,
+    "max_drawdown_r": 17.92
+   },
+   "prueba_mitad2": {
+    "operaciones": 111,
+    "acierto_pct": 35.1,
+    "t_stat": -1.94,
+    "esperanza_r": -0.195,
+    "total_r": -21.6,
+    "profit_factor": 0.66,
+    "max_drawdown_r": 24.78
+   },
+   "prueba_por_activo": {
+    "EUR/USD": {
+     "operaciones": 17,
+     "acierto_pct": 41.2,
+     "t_stat": -0.39,
+     "esperanza_r": -0.087,
+     "total_r": -1.49,
+     "profit_factor": 0.8,
+     "max_drawdown_r": 4.44
+    },
+    "GBP/USD": {
+     "operaciones": 26,
+     "acierto_pct": 19.2,
+     "t_stat": -4.38,
+     "esperanza_r": -0.556,
+     "total_r": -14.47,
+     "profit_factor": 0.15,
+     "max_drawdown_r": 14.47
+    },
+    "USD/JPY": {
+     "operaciones": 26,
+     "acierto_pct": 42.3,
+     "t_stat": -0.65,
+     "esperanza_r": -0.132,
+     "total_r": -3.42,
+     "profit_factor": 0.75,
+     "max_drawdown_r": 5.38
+    },
+    "AUD/USD": {
+     "operaciones": 20,
+     "acierto_pct": 50.0,
+     "t_stat": -0.13,
+     "esperanza_r": -0.029,
+     "total_r": -0.57,
+     "profit_factor": 0.93,
+     "max_drawdown_r": 3.26
+    },
+    "XAU/USD": {
+     "operaciones": 33,
+     "acierto_pct": 39.4,
+     "t_stat": -0.53,
+     "esperanza_r": -0.098,
+     "total_r": -3.24,
+     "profit_factor": 0.8,
+     "max_drawdown_r": 6.51
+    },
+    "BTC/USD": {
+     "operaciones": 39,
+     "acierto_pct": 41.0,
+     "t_stat": -0.07,
+     "esperanza_r": -0.012,
+     "total_r": -0.48,
+     "profit_factor": 0.97,
+     "max_drawdown_r": 8.4
+    },
+    "US 500": {
+     "operaciones": 44,
+     "acierto_pct": 38.6,
+     "t_stat": -0.81,
+     "esperanza_r": -0.15,
+     "total_r": -6.6,
+     "profit_factor": 0.76,
+     "max_drawdown_r": 13.04
+    },
+    "US Tech 100": {
+     "operaciones": 34,
+     "acierto_pct": 44.1,
+     "t_stat": 0.9,
+     "esperanza_r": 0.197,
+     "total_r": 6.68,
+     "profit_factor": 1.41,
+     "max_drawdown_r": 3.09
+    }
+   },
+   "aprobada": false,
+   "ops_prueba": []
+  },
+  {
+   "activo": "TODOS",
+   "tf": "1h",
+   "base": "macd_giro",
+   "variante": "macd_giro|d_tend,vol_baja|obj2r",
+   "entrenamiento": {
+    "operaciones": 821,
+    "acierto_pct": 41.0,
+    "t_stat": 0.94,
+    "esperanza_r": 0.045,
+    "total_r": 37.3,
+    "profit_factor": 1.07,
+    "max_drawdown_r": 31.91
+   },
+   "prueba": {
+    "operaciones": 337,
+    "acierto_pct": 41.8,
+    "t_stat": 0.6,
+    "esperanza_r": 0.044,
+    "total_r": 14.89,
+    "profit_factor": 1.07,
+    "max_drawdown_r": 17.37
+   },
+   "prueba_mitad1": {
+    "operaciones": 163,
+    "acierto_pct": 41.1,
+    "t_stat": 0.06,
+    "esperanza_r": 0.006,
+    "total_r": 0.98,
+    "profit_factor": 1.01,
+    "max_drawdown_r": 20.79
+   },
+   "prueba_mitad2": {
+    "operaciones": 174,
+    "acierto_pct": 42.5,
+    "t_stat": 0.77,
+    "esperanza_r": 0.08,
+    "total_r": 13.91,
+    "profit_factor": 1.13,
+    "max_drawdown_r": 8.37
+   },
+   "prueba_por_activo": {
+    "EUR/USD": {
+     "operaciones": 46,
+     "acierto_pct": 45.7,
+     "t_stat": 0.47,
+     "esperanza_r": 0.096,
+     "total_r": 4.44,
+     "profit_factor": 1.16,
+     "max_drawdown_r": 6.93
+    },
+    "GBP/USD": {
+     "operaciones": 53,
+     "acierto_pct": 39.6,
+     "t_stat": 0.01,
+     "esperanza_r": 0.002,
+     "total_r": 0.11,
+     "profit_factor": 1.0,
+     "max_drawdown_r": 8.47
+    },
+    "USD/JPY": {
+     "operaciones": 71,
+     "acierto_pct": 38.0,
+     "t_stat": -0.61,
+     "esperanza_r": -0.086,
+     "total_r": -6.12,
+     "profit_factor": 0.85,
+     "max_drawdown_r": 14.25
+    },
+    "AUD/USD": {
+     "operaciones": 45,
+     "acierto_pct": 53.3,
+     "t_stat": 1.43,
+     "esperanza_r": 0.291,
+     "total_r": 13.11,
+     "profit_factor": 1.58,
+     "max_drawdown_r": 6.48
+    },
+    "XAU/USD": {
+     "operaciones": 44,
+     "acierto_pct": 25.0,
+     "t_stat": -1.96,
+     "esperanza_r": -0.349,
+     "total_r": -15.37,
+     "profit_factor": 0.53,
+     "max_drawdown_r": 16.26
+    },
+    "BTC/USD": {
+     "operaciones": 51,
+     "acierto_pct": 47.1,
+     "t_stat": 1.08,
+     "esperanza_r": 0.216,
+     "total_r": 11.01,
+     "profit_factor": 1.38,
+     "max_drawdown_r": 4.24
+    },
+    "US 500": {
+     "operaciones": 16,
+     "acierto_pct": 43.8,
+     "t_stat": 0.39,
+     "esperanza_r": 0.139,
+     "total_r": 2.23,
+     "profit_factor": 1.24,
+     "max_drawdown_r": 5.46
+    },
+    "US Tech 100": {
+     "operaciones": 11,
+     "acierto_pct": 54.5,
+     "t_stat": 1.1,
+     "esperanza_r": 0.499,
+     "total_r": 5.49,
+     "profit_factor": 2.06,
+     "max_drawdown_r": 2.07
+    }
+   },
+   "aprobada": false,
+   "ops_prueba": []
+  },
+  {
+   "activo": "TODOS",
+   "tf": "1h",
+   "base": "doble_techo_suelo",
+   "variante": "doble_techo_suelo|d_retroceso,sesion_ny|obj2r",
+   "entrenamiento": {
+    "operaciones": 231,
+    "acierto_pct": 45.5,
+    "t_stat": 0.39,
+    "esperanza_r": 0.028,
+    "total_r": 6.55,
+    "profit_factor": 1.06,
+    "max_drawdown_r": 16.93
+   },
+   "prueba": {
+    "operaciones": 114,
+    "acierto_pct": 37.7,
+    "t_stat": -1.55,
+    "esperanza_r": -0.138,
+    "total_r": -15.76,
+    "profit_factor": 0.71,
+    "max_drawdown_r": 22.12
+   },
+   "prueba_mitad1": {
+    "operaciones": 62,
+    "acierto_pct": 41.9,
+    "t_stat": -0.59,
+    "esperanza_r": -0.075,
+    "total_r": -4.68,
+    "profit_factor": 0.84,
+    "max_drawdown_r": 12.44
+   },
+   "prueba_mitad2": {
+    "operaciones": 52,
+    "acierto_pct": 32.7,
+    "t_stat": -1.77,
+    "esperanza_r": -0.213,
+    "total_r": -11.08,
+    "profit_factor": 0.55,
+    "max_drawdown_r": 14.75
+   },
+   "prueba_por_activo": {
+    "EUR/USD": {
+     "operaciones": 17,
+     "acierto_pct": 41.2,
+     "t_stat": -0.16,
+     "esperanza_r": -0.032,
+     "total_r": -0.54,
+     "profit_factor": 0.91,
+     "max_drawdown_r": 2.6
+    },
+    "GBP/USD": {
+     "operaciones": 11,
+     "acierto_pct": 45.5,
+     "t_stat": -0.0,
+     "esperanza_r": -0.001,
+     "total_r": -0.01,
+     "profit_factor": 1.0,
+     "max_drawdown_r": 3.19
+    },
+    "USD/JPY": {
+     "operaciones": 10,
+     "acierto_pct": 50.0,
+     "t_stat": 1.31,
+     "esperanza_r": 0.329,
+     "total_r": 3.29,
+     "profit_factor": 5.25,
+     "max_drawdown_r": 0.36
+    },
+    "AUD/USD": {
+     "operaciones": 8,
+     "acierto_pct": 25.0,
+     "t_stat": -0.95,
+     "esperanza_r": -0.364,
+     "total_r": -2.92,
+     "profit_factor": 0.44,
+     "max_drawdown_r": 4.17
+    },
+    "XAU/USD": {
+     "operaciones": 19,
+     "acierto_pct": 42.1,
+     "t_stat": -0.38,
+     "esperanza_r": -0.085,
+     "total_r": -1.62,
+     "profit_factor": 0.81,
+     "max_drawdown_r": 4.01
+    },
+    "BTC/USD": {
+     "operaciones": 25,
+     "acierto_pct": 20.0,
+     "t_stat": -3.16,
+     "esperanza_r": -0.514,
+     "total_r": -12.86,
+     "profit_factor": 0.24,
+     "max_drawdown_r": 13.54
+    },
+    "US 500": {
+     "operaciones": 18,
+     "acierto_pct": 44.4,
+     "t_stat": -0.11,
+     "esperanza_r": -0.028,
+     "total_r": -0.51,
+     "profit_factor": 0.94,
+     "max_drawdown_r": 6.26
+    },
+    "US Tech 100": {
+     "operaciones": 6,
+     "acierto_pct": 50.0,
+     "t_stat": -0.24,
+     "esperanza_r": -0.097,
+     "total_r": -0.58,
+     "profit_factor": 0.8,
+     "max_drawdown_r": 1.88
+    }
+   },
+   "aprobada": false,
+   "ops_prueba": []
+  },
+  {
+   "activo": "TODOS",
+   "tf": "1h",
+   "base": "divergencia_rsi",
+   "variante": "divergencia_rsi|d_tend,d_impulso|obj2r",
+   "entrenamiento": {
+    "operaciones": 272,
+    "acierto_pct": 47.1,
+    "t_stat": 0.1,
+    "esperanza_r": 0.007,
+    "total_r": 1.96,
+    "profit_factor": 1.01,
+    "max_drawdown_r": 21.02
+   },
+   "prueba": {
+    "operaciones": 94,
+    "acierto_pct": 55.3,
+    "t_stat": 1.74,
+    "esperanza_r": 0.175,
+    "total_r": 16.47,
+    "profit_factor": 1.57,
+    "max_drawdown_r": 4.48
+   },
+   "prueba_mitad1": {
+    "operaciones": 52,
+    "acierto_pct": 61.5,
+    "t_stat": 2.35,
+    "esperanza_r": 0.315,
+    "total_r": 16.4,
+    "profit_factor": 2.4,
+    "max_drawdown_r": 2.2
+   },
+   "prueba_mitad2": {
+    "operaciones": 42,
+    "acierto_pct": 47.6,
+    "t_stat": 0.01,
+    "esperanza_r": 0.002,
+    "total_r": 0.07,
+    "profit_factor": 1.0,
+    "max_drawdown_r": 8.29
+   },
+   "prueba_por_activo": {
+    "EUR/USD": {
+     "operaciones": 14,
+     "acierto_pct": 57.1,
+     "t_stat": 1.08,
+     "esperanza_r": 0.269,
+     "total_r": 3.76,
+     "profit_factor": 2.21,
+     "max_drawdown_r": 2.38
+    },
+    "GBP/USD": {
+     "operaciones": 13,
+     "acierto_pct": 38.5,
+     "t_stat": -0.42,
+     "esperanza_r": -0.118,
+     "total_r": -1.53,
+     "profit_factor": 0.75,
+     "max_drawdown_r": 2.9
+    },
+    "USD/JPY": {
+     "operaciones": 15,
+     "acierto_pct": 80.0,
+     "t_stat": 1.49,
+     "esperanza_r": 0.303,
+     "total_r": 4.54,
+     "profit_factor": 2.68,
+     "max_drawdown_r": 2.22
+    },
+    "AUD/USD": {
+     "operaciones": 16,
+     "acierto_pct": 37.5,
+     "t_stat": -0.59,
+     "esperanza_r": -0.117,
+     "total_r": -1.88,
+     "profit_factor": 0.67,
+     "max_drawdown_r": 3.83
+    },
+    "XAU/USD": {
+     "operaciones": 14,
+     "acierto_pct": 57.1,
+     "t_stat": 1.13,
+     "esperanza_r": 0.36,
+     "total_r": 5.04,
+     "profit_factor": 2.17,
+     "max_drawdown_r": 2.2
+    },
+    "BTC/USD": {
+     "operaciones": 13,
+     "acierto_pct": 69.2,
+     "t_stat": 1.39,
+     "esperanza_r": 0.436,
+     "total_r": 5.66,
+     "profit_factor": 2.49,
+     "max_drawdown_r": 1.47
+    },
+    "US 500": {
+     "operaciones": 5,
+     "acierto_pct": 40.0,
+     "t_stat": 0.42,
+     "esperanza_r": 0.17,
+     "total_r": 0.85,
+     "profit_factor": 1.67,
+     "max_drawdown_r": 1.02
+    },
+    "US Tech 100": {
+     "operaciones": 4,
+     "acierto_pct": 50.0,
+     "t_stat": 0.01,
+     "esperanza_r": 0.005,
+     "total_r": 0.02,
+     "profit_factor": 1.01,
+     "max_drawdown_r": 2.02
+    }
+   },
+   "aprobada": false,
+   "ops_prueba": []
+  },
+  {
+   "activo": "TODOS",
+   "tf": "1h",
+   "base": "ruptura_asiatica",
+   "variante": "ruptura_asiatica|d_tend,d_impulso|obj2r",
+   "entrenamiento": {
+    "operaciones": 400,
+    "acierto_pct": 43.2,
+    "t_stat": -0.1,
+    "esperanza_r": -0.006,
+    "total_r": -2.39,
+    "profit_factor": 0.99,
+    "max_drawdown_r": 24.17
+   },
+   "prueba": {
+    "operaciones": 164,
+    "acierto_pct": 43.3,
+    "t_stat": 0.5,
+    "esperanza_r": 0.05,
+    "total_r": 8.17,
+    "profit_factor": 1.09,
+    "max_drawdown_r": 11.69
+   },
+   "prueba_mitad1": {
+    "operaciones": 84,
+    "acierto_pct": 38.1,
+    "t_stat": -0.47,
+    "esperanza_r": -0.063,
+    "total_r": -5.32,
+    "profit_factor": 0.89,
+    "max_drawdown_r": 16.15
+   },
+   "prueba_mitad2": {
+    "operaciones": 80,
+    "acierto_pct": 48.8,
+    "t_stat": 1.14,
+    "esperanza_r": 0.169,
+    "total_r": 13.48,
+    "profit_factor": 1.33,
+    "max_drawdown_r": 10.23
+   },
+   "prueba_por_activo": {
+    "EUR/USD": {
+     "operaciones": 30,
+     "acierto_pct": 43.3,
+     "t_stat": 0.57,
+     "esperanza_r": 0.145,
+     "total_r": 4.34,
+     "profit_factor": 1.25,
+     "max_drawdown_r": 6.21
+    },
+    "GBP/USD": {
+     "operaciones": 39,
+     "acierto_pct": 41.0,
+     "t_stat": -0.02,
+     "esperanza_r": -0.004,
+     "total_r": -0.16,
+     "profit_factor": 0.99,
+     "max_drawdown_r": 8.87
+    },
+    "USD/JPY": {
+     "operaciones": 32,
+     "acierto_pct": 34.4,
+     "t_stat": -1.5,
+     "esperanza_r": -0.268,
+     "total_r": -8.58,
+     "profit_factor": 0.53,
+     "max_drawdown_r": 9.73
+    },
+    "AUD/USD": {
+     "operaciones": 22,
+     "acierto_pct": 54.5,
+     "t_stat": 0.96,
+     "esperanza_r": 0.254,
+     "total_r": 5.58,
+     "profit_factor": 1.57,
+     "max_drawdown_r": 4.53
+    },
+    "XAU/USD": {
+     "operaciones": 16,
+     "acierto_pct": 56.2,
+     "t_stat": 1.34,
+     "esperanza_r": 0.463,
+     "total_r": 7.41,
+     "profit_factor": 2.12,
+     "max_drawdown_r": 2.08
+    },
+    "BTC/USD": {
+     "operaciones": 25,
+     "acierto_pct": 40.0,
+     "t_stat": -0.07,
+     "esperanza_r": -0.017,
+     "total_r": -0.42,
+     "profit_factor": 0.97,
+     "max_drawdown_r": 4.89
+    }
+   },
+   "aprobada": false,
+   "ops_prueba": []
+  },
+  {
+   "activo": "TODOS",
+   "tf": "1h",
+   "base": "pin_nivel",
+   "variante": "pin_nivel|d_retroceso|obj2r",
+   "entrenamiento": {
+    "operaciones": 202,
+    "acierto_pct": 43.6,
+    "t_stat": 0.31,
+    "esperanza_r": 0.029,
+    "total_r": 5.76,
+    "profit_factor": 1.05,
+    "max_drawdown_r": 18.66
+   },
+   "prueba": {
+    "operaciones": 80,
+    "acierto_pct": 46.2,
+    "t_stat": 0.97,
+    "esperanza_r": 0.147,
+    "total_r": 11.78,
+    "profit_factor": 1.26,
+    "max_drawdown_r": 10.12
+   },
+   "prueba_mitad1": {
+    "operaciones": 44,
+    "acierto_pct": 52.3,
+    "t_stat": 1.36,
+    "esperanza_r": 0.285,
+    "total_r": 12.54,
+    "profit_factor": 1.55,
+    "max_drawdown_r": 6.58
+   },
+   "prueba_mitad2": {
+    "operaciones": 36,
+    "acierto_pct": 38.9,
+    "t_stat": -0.1,
+    "esperanza_r": -0.021,
+    "total_r": -0.75,
+    "profit_factor": 0.97,
+    "max_drawdown_r": 10.98
+   },
+   "prueba_por_activo": {
+    "EUR/USD": {
+     "operaciones": 11,
+     "acierto_pct": 54.5,
+     "t_stat": 1.0,
+     "esperanza_r": 0.404,
+     "total_r": 4.44,
+     "profit_factor": 2.02,
+     "max_drawdown_r": 3.74
+    },
+    "GBP/USD": {
+     "operaciones": 9,
+     "acierto_pct": 22.2,
+     "t_stat": -4.84,
+     "esperanza_r": -0.88,
+     "total_r": -7.92,
+     "profit_factor": 0.02,
+     "max_drawdown_r": 7.92
+    },
+    "USD/JPY": {
+     "operaciones": 8,
+     "acierto_pct": 62.5,
+     "t_stat": 0.91,
+     "esperanza_r": 0.453,
+     "total_r": 3.63,
+     "profit_factor": 2.09,
+     "max_drawdown_r": 2.2
+    },
+    "AUD/USD": {
+     "operaciones": 10,
+     "acierto_pct": 40.0,
+     "t_stat": -0.17,
+     "esperanza_r": -0.067,
+     "total_r": -0.67,
+     "profit_factor": 0.88,
+     "max_drawdown_r": 3.41
+    },
+    "XAU/USD": {
+     "operaciones": 12,
+     "acierto_pct": 33.3,
+     "t_stat": -0.1,
+     "esperanza_r": -0.042,
+     "total_r": -0.5,
+     "profit_factor": 0.94,
+     "max_drawdown_r": 3.14
+    },
+    "BTC/USD": {
+     "operaciones": 21,
+     "acierto_pct": 52.4,
+     "t_stat": 1.12,
+     "esperanza_r": 0.34,
+     "total_r": 7.15,
+     "profit_factor": 1.68,
+     "max_drawdown_r": 3.16
+    },
+    "US 500": {
+     "operaciones": 4,
+     "acierto_pct": 25.0,
+     "t_stat": -0.39,
+     "esperanza_r": -0.287,
+     "total_r": -1.15,
+     "profit_factor": 0.63,
+     "max_drawdown_r": 3.08
+    },
+    "US Tech 100": {
+     "operaciones": 5,
+     "acierto_pct": 80.0,
+     "t_stat": 2.26,
+     "esperanza_r": 1.363,
+     "total_r": 6.81,
+     "profit_factor": 7.53,
+     "max_drawdown_r": 1.04
+    }
+   },
+   "aprobada": false,
+   "ops_prueba": []
+  }
+ ],
+ "aprobadas": [],
+ "variantes_probadas": 1120,
+ "falsos_positivos": 1,
+ "candidatas_permutadas": 25,
+ "errores": {},
+ "modo": "agrupado",
+ "candidatas_reales": 26,
+ "cartera": {}
+}
