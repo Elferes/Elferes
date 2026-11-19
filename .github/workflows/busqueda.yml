@@ -21,6 +21,10 @@ on:
         description: "Probar cada regla en todos los activos a la vez"
         type: boolean
         default: false
+      diario:
+        description: "Fusión: filtrar operaciones rápidas con el contexto del gráfico diario"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -48,12 +52,14 @@ jobs:
           ACTIVOS: ${{ inputs.activos }}
           TFS: ${{ inputs.temporalidades }}
           AGRUPADO: ${{ inputs.agrupado }}
+          DIARIO: ${{ inputs.diario }}
           CAMBIOS: ${{ toJSON(github.event.head_commit) }}
         run: |
           args=""
           if [ "$AGRUPADO" = "true" ] || echo "$CAMBIOS" | grep -q "busqueda-agrupada"; then
             args="--agrupado --temporalidades ${TFS:-1h,4h,1d}"; TFS=""
           fi
+          if [ "$DIARIO" = "true" ]; then args="$args --diario"; fi
           if [ -n "$ACTIVOS" ]; then args="$args --activos $ACTIVOS"; fi
           if [ -n "$TFS" ]; then args="$args --temporalidades $TFS"; fi
           python trading/ejecutor/busqueda.py $args

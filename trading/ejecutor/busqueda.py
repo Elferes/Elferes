@@ -34,6 +34,9 @@ COSTE_PCT = dict(B.COSTE_PCT, **{"AUD/USD": 0.00015, "US Tech 100": 0.0002})
 MAX_VELAS = {"15m": 8, "1h": 12, "4h": 10, "1d": 10}
 FILTROS_COMBOS = [(), ("tendencia200",), ("sesion_lny",), ("sesion_ny",), ("vol_alta",), ("vol_baja",),
                   ("tendencia200", "sesion_lny"), ("tendencia200", "vol_alta"), ("tendencia200", "vol_baja")]
+FILTROS_DIARIO = [("d_tend",), ("d_retroceso",), ("d_impulso",), ("d_tend", "d_impulso"), ("d_tend", "sesion_ny"),
+                  ("d_retroceso", "sesion_ny"), ("d_tend", "sesion_lny"), ("d_tend", "vol_baja"), ("d_tend", "vol_alta"),
+                  ("d_tend", "tendencia200")]
 CRITERIO = {"min_ops_prueba": 30, "min_esperanza": 0.10, "min_pf": 1.2, "min_ops_entreno": 50, "min_esp_entreno": 0.05,
             "min_t_prueba": 2.0, "min_t_entreno": 1.5}
 
@@ -130,7 +133,7 @@ def senales_serie(velas, cfg):
     return feats, sigs
 
 
-def evaluar_agrupado(series, tf):
+def evaluar_agrupado(series, tf, combos=None):
     """Una misma regla en TODOS los activos a la vez. series: {activo: (velas, feats, sigs)}.
 
     Elige la variante con el entrenamiento conjunto y la juzga con la prueba conjunta. Así una regla tiene
@@ -139,7 +142,7 @@ def evaluar_agrupado(series, tf):
     elegidas, probadas = [], 0
     for base in E.ESTRATEGIAS:
         mejor = None
-        for filtros, salida in itertools.product(FILTROS_COMBOS, E.SALIDAS):
+        for filtros, salida in itertools.product(combos or FILTROS_COMBOS, E.SALIDAS):
             probadas += 1
             ent, pru, m1, m2, por_activo = [], [], [], [], {}
             for activo, (velas, feats, sigs) in series.items():
@@ -243,6 +246,7 @@ def main():
     ap.add_argument("--temporalidades", default="15m,1h,4h")
     ap.add_argument("--sin-permutacion", action="store_true")
     ap.add_argument("--agrupado", action="store_true", help="una regla en todos los activos a la vez")
+    ap.add_argument("--diario", action="store_true", help="filtros con el contexto del gráfico diario (fusión)")
     a = ap.parse_args()
     cfg = S.preparar_config(S.CONFIG, capital=100.0)
     res = {"fecha": dt.datetime.now(D.ZONA).date().isoformat(), "criterio": CRITERIO, "series": [],
@@ -259,19 +263,26 @@ def main():
                     res["errores"][f"{activo} {tf}"] = f"{type(e).__name__}: {e}"
                     continue
                 t0 = time.time()
-                reales[activo] = (velas, *senales_serie(velas, cfg))
+                ctx = E.contexto_diario(velas_tf(activo, "1d")) if a.diario else None
+
+                def preparar(vs):
+                    feats, sigs = senales_serie(vs, cfg)
+                    if ctx:
+                        feats = [E.con_contexto(f, ctx, v["epoch"]) for f, v in zip(feats, vs)]
+                    return vs, feats, sigs
+                reales[activo] = preparar(velas)
                 if not a.sin_permutacion:
-                    pv = permutar(velas, hash((activo, tf)) & 0xffff)
-                    azar[activo] = (pv, *senales_serie(pv, cfg))
+                    azar[activo] = preparar(permutar(velas, hash((activo, tf)) & 0xffff))
                 res["series"].append({"activo": activo, "tf": tf, "velas": len(velas), "segundos": round(time.time() - t0, 1)})
                 print(f"{activo:11} {tf:3} {len(velas):6} velas listas", flush=True)
-            el, n = evaluar_agrupado(reales, tf)
+            combos = FILTROS_DIARIO if a.diario else None
+            el, n = evaluar_agrupado(reales, tf, combos)
             res["variantes_probadas"] += n
             res["candidatas"] += el
             res["aprobadas"] += [x for x in el if x["aprobada"]]
             msg = f"== {tf}: aprobadas={[x['variante'] for x in el if x['aprobada']]}"
             if azar:
-                elp, _ = evaluar_agrupado(azar, tf)
+                elp, _ = evaluar_agrupado(azar, tf, combos)
                 res["candidatas_permutadas"] += len(elp)
                 res["falsos_positivos"] += sum(x["aprobada"] for x in elp)
                 msg += f" | azar aprobadas={sum(x['aprobada'] for x in elp)}/{len(elp)}"
@@ -299,7 +310,7 @@ def main():
     res["cartera"] = cartera(res["aprobadas"])
     carpeta = D.RAIZ / "estrategias" / "busqueda"
     carpeta.mkdir(parents=True, exist_ok=True)
-    sufijo = "-agrupado" if a.agrupado else ""
+    sufijo = ("-agrupado" if a.agrupado else "") + ("-diario" if a.diario else "")
     (carpeta / f"{res['fecha']}{sufijo}.json").write_text(json.dumps(res, ensure_ascii=False, indent=1))
     (D.RAIZ / "estrategias" / f"BUSQUEDA{sufijo.upper()}.md").write_text(informe(res))
     print(informe(res))

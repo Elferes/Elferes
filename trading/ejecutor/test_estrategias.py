@@ -91,5 +91,21 @@ class Patrones(unittest.TestCase):
         self.assertEqual(m["profit_factor"], 1.5)
 
 
+
+class TestContextoDiario(unittest.TestCase):
+    def test_sin_mirar_el_futuro(self):
+        import datetime as dt
+        t0 = int(dt.datetime(2024, 1, 1, tzinfo=dt.timezone.utc).timestamp())
+        d = [{"epoch": t0 + i * 86400, "open": 100 + i, "high": 102 + i, "low": 99 + i, "close": 101 + i - 2 * (i % 2)}
+             for i in range(10)]
+        ctx = E.contexto_diario(d)
+        for i in range(1, 10):
+            f = dt.datetime.fromtimestamp(d[i]["epoch"], dt.timezone.utc).date()
+            self.assertEqual(ctx[f]["d_alcista"], d[i - 1]["close"] > d[i - 1]["open"])
+        s = {"direccion": "compra", "entrada": 1, "stop": 0.9, "tp": 1.2}
+        self.assertFalse(E.FILTROS["d_tend"](s, {"d_sobre200": None}))
+        self.assertTrue(E.FILTROS["d_retroceso"](s, {"d_sobre200": True, "d_rsi2": 10}))
+        self.assertFalse(E.FILTROS["d_retroceso"](s, {"d_sobre200": True, "d_rsi2": 60}))
+
 if __name__ == "__main__":
     unittest.main()

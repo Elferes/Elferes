@@ -332,7 +332,42 @@ FILTROS = {
     "sesion_ny": lambda s, f: 13 <= f["hora"] < 20,
     "vol_alta": lambda s, f: bool(f["atr_mediana"]) and f["atr"] > f["atr_mediana"],
     "vol_baja": lambda s, f: bool(f["atr_mediana"]) and f["atr"] <= f["atr_mediana"],
+    # Contexto DIARIO (día anterior ya cerrado): se añade a los rasgos con contexto_diario().
+    "d_tend": lambda s, f: f.get("d_sobre200") is not None and (s["direccion"] == "compra") == f["d_sobre200"],
+    "d_retroceso": lambda s, f: f.get("d_rsi2") is not None and f.get("d_sobre200") is not None and (
+        (s["direccion"] == "compra" and f["d_sobre200"] and f["d_rsi2"] < 25)
+        or (s["direccion"] == "venta" and not f["d_sobre200"] and f["d_rsi2"] > 75)),
+    "d_impulso": lambda s, f: f.get("d_alcista") is not None and (s["direccion"] == "compra") == f["d_alcista"],
 }
+
+
+def contexto_diario(diarias):
+    """{fecha: rasgos del ÚLTIMO día cerrado ANTES de esa fecha} a partir de velas diarias (sin mirar el futuro)."""
+    out, cierres = {}, []
+    previo = None
+    for v in diarias:
+        fecha = dt.datetime.fromtimestamp(v["epoch"], dt.timezone.utc).date()
+        if previo is not None:
+            out[fecha] = previo
+        cierres.append(v["close"])
+        rsi2 = None
+        if len(cierres) >= 3:
+            g = [max(0, cierres[i] - cierres[i - 1]) for i in range(len(cierres) - 2, len(cierres))]
+            p = [max(0, cierres[i - 1] - cierres[i]) for i in range(len(cierres) - 2, len(cierres))]
+            rsi2 = 100.0 if sum(p) == 0 else 100 - 100 / (1 + sum(g) / sum(p))
+        previo = {"d_sobre200": (v["close"] > sum(cierres[-200:]) / 200) if len(cierres) >= 200 else None,
+                  "d_rsi2": rsi2, "d_alcista": v["close"] > v["open"]}
+    if previo is not None:
+        out["siguiente"] = previo
+    return out
+
+
+def con_contexto(f, ctx, epoch):
+    """Añade a los rasgos f el contexto diario vigente en el instante epoch."""
+    if f is None:
+        return None
+    fecha = dt.datetime.fromtimestamp(epoch, dt.timezone.utc).date()
+    return dict(f, **ctx.get(fecha, {}))
 SALIDAS = {"base": None, "obj1r": 1.0, "obj1.5r": 1.5, "obj2r": 2.0}
 
 
