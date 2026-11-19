@@ -48,3 +48,13 @@ conclusión y por qué funcionó o falló. Ranking actual: [RANKING.md](RANKING.
   243 ops, t 3.1) pero con un tramo débil. A favor de la tendencia y en diario sí funciona; en intradía pierde.
 - **Pendiente:** son operaciones de varios días; el scalper intradía no las puede ejecutar. Hace falta un ejecutor diario
   y confirmar qué índices tienen Multipliers en Deriv (US 500 no los tiene).
+
+### 2026-11-19 — Fusión: operaciones rápidas (15m/1h) filtradas con el contexto diario
+- **Hipótesis:** si el diario tiene ventaja (tendencia SMA200 + retroceso RSI2), entrar en 15m/1h solo en esa dirección
+  debería heredar la ventaja con operaciones rápidas.
+- **Resultado (8 activos agrupados, 1120 variantes):** 0 aprobadas (1 de 25 por azar). Mejor: `divergencia_rsi|d_tend,d_impulso|obj2r`
+  1h, +0.18 R en 94 ops, t 1.74 (no significativa).
+- **Lo interesante:** `rsi2_reversion|d_retroceso|obj2r` en 1h gana solo en los índices de EE.UU. (US 500 +0.51 R en 37 ops,
+  US Tech 100 +0.33 R en 36) y pierde o empata en divisas, oro y BTC. Coincide con el hallazgo diario: la ventaja está en los
+  índices, no en la estrategia rápida. Muestra pequeña (73 ops): hipótesis, no regla.
+- **Conclusión:** con datos de velas y costes reales no aparece ninguna estrategia rápida rentable de forma fiable.
