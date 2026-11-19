@@ -54,6 +54,7 @@ Para cada pick candidato:
 - Calcula la probabilidad implícita de la cuota `1/cuota`.
 - **Solo acepta el pick si `p ≥ 0.70` y `p > 1/cuota` (tiene valor).**
 - Descarta partidos con mucha incertidumbre (alineaciones dudosas, clima extremo, equipos con rotación masiva).
+- **Confirma la fecha de cada partido** en una fuente oficial o un marcador (ESPN, sitio de la liga, web del club) del año en curso. Cuidado con páginas del mismo partido de temporadas anteriores (mismo día, otro año). Si no puedes confirmarla, descarta el pick.
 - Máximo un pick por partido (evita correlaciones engañosas). En NBA no combines un prop de jugador con el total del mismo partido.
 - Props de jugador solo si su línea está claramente por debajo de su promedio reciente (últimos 5 y 10) con minutos estables.
 - En tenis evita a jugadores que vuelven de lesión o retirada y los partidos de primera ronda con mucha incertidumbre.
