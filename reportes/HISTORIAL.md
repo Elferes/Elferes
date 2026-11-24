@@ -14,7 +14,9 @@
 | 21 nov | Bet Builder Bournemouth–Forest 3.70 | 4 | 1-2 de 4 | ❌ 2-0 (sin ambos marcan) | -1.00u |
 | 22 nov | Cuota 2 domingo (Barça +1.5, Liverpool +1.5, Atlético X2) 1.95 | 3 | 3 de 3 | ✅ 3-2, 4-0, 0-3 | +0.95u |
 | 22 nov | Bet Builder Liverpool–United | 4 | 3 de 4 | ❌ 4-0 (sin ambos marcan) | -1.00u |
+| 23 nov | Cuota 13.6 (7 picks) | 7 | 3 de 7 | ❌ Raptors, Inter, Santos, Brentford | -1.00u |
+| 23 nov | Alternativa 2.35 (4 picks) | 4 | 3 de 4 | ❌ Raptors | -1.00u |
 
-**Total:** 12 combinadas · 3 ganadas (las de cuota ~2 y la de rebotes) · Beneficio con 1u por combinada ≈ -5.9u
+**Total:** 14 combinadas · 3 ganadas · Beneficio con 1u por combinada ≈ -7.9u
 
 Selecciones individuales: 7 ✅ · 2 ❌
